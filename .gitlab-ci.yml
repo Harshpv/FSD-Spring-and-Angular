@@ -62,7 +62,7 @@ angular_lint:
   stage: ng_quality
   script:
     - cd product-webapp
-    - cd webapp
+    - cd lap-lunch
     - npm install
     - npm run lint -- --format json
   only:
