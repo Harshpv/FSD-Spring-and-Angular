@@ -35,11 +35,12 @@ test_coverage:
     - v1.0.2
     - v1.0.3
     - stage
-#  script:
-#    - mvn clean install
+  script:
+    - mvn clean install
 #    - cat aggregator/target/site/jacoco-aggregate/index.html
-#  artifacts:
-#    paths:
+  artifacts:
+    paths:
+      - /target/*.jar
 #      - aggregator/target/site/jacoco-aggregate/index.html
 
 java_lint:
