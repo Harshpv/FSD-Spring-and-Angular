@@ -1,19 +1,8 @@
 package com.menuservice.services;
 
-import static org.springframework.data.mongodb.core.FindAndModifyOptions.options;
-import static org.springframework.data.mongodb.core.query.Criteria.where;
-import static org.springframework.data.mongodb.core.query.Query.query;
-
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.menuservice.datamodel.MenuModel;
@@ -24,9 +13,12 @@ import com.menuservice.repository.MenuRepository;
 
 @Service
 public class Services {
-
+	
+	//Calling menurepository to use in creating wanted service.
+	@Autowired
 	private final MenuRepository menuRepository;
 
+	@SuppressWarnings("unused")
 	private MenuModel menuModel;
 
 	public Services(MenuRepository menuRepository) {
@@ -34,12 +26,14 @@ public class Services {
 
 	}
 
+	//addItems method consists of bussiness logic to add new data to database
 	public void addItems(MenuModel menuModel) throws MenuAlreadyExistsException {
 
 		menuRepository.insert(menuModel);
 
 	}
 
+	//updateItems method consists of bussiness logic to update data already present in  database
 	public MenuModel updateItem(MenuModel menuModel) throws MenuNotFoundException {
 
 		MenuModel savedMenuModel = menuRepository.findById(menuModel.getItemId()).get();
@@ -58,6 +52,7 @@ public class Services {
 		throw new MenuNotFoundException();
 	}
 
+	//getItems method consists of bussiness logic to fetch all the data present in the database
 	public List<MenuModel> getItems() throws MenuNotFoundException {
 
 		if (menuRepository.count() == 0) {
@@ -66,7 +61,7 @@ public class Services {
 		return menuRepository.findAll();
 
 	}
-
+	//getItemsById method consists of bussiness logic to fetch specific data present in the database using itemId.
 	public MenuModel getItemsById(int itemId) throws MenuNotFoundException {
 
 		if (menuRepository.existsById(itemId)) {
@@ -77,7 +72,7 @@ public class Services {
 		throw new MenuNotFoundException();
 
 	}
-
+	//deleteItems method consists of bussiness logic to delete the data present in the database using itemId.
 	public void deleteById(int itemId) throws MenuNotFoundException {
 		if (menuRepository.existsById(itemId)) {
 

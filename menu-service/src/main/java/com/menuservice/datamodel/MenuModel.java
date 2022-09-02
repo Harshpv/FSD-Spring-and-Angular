@@ -1,27 +1,14 @@
 package com.menuservice.datamodel;
 
-import javax.annotation.Generated;
-
-import org.bson.codecs.pojo.annotations.BsonId;
-import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-import com.mongodb.lang.Nullable;
-
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
 @Document(collection="menuitems")
-
 public class MenuModel {
 	
-//	@Transient
-//	public static final String SEQUENCE_NAME="item_sequence";
+
 	
 	@Id
 	private int itemId;
@@ -34,8 +21,15 @@ public class MenuModel {
 	private String category;
 	@Field(name="cost")
 	private long itemCost;
-//	private Binary itemImage;
+	@Field(name="image")
+	private String itemImage;
 
+	public String getItemImage() {
+		return itemImage;
+	}
+	public void setItemImage(String itemImage) {
+		this.itemImage = itemImage;
+	}
 	public int getItemId() {
 		return itemId;
 	}
@@ -66,13 +60,14 @@ public class MenuModel {
 	public void setItemCost(long itemCost) {
 		this.itemCost = itemCost;
 	}
-	public MenuModel(int itemId, String itemName, String itemDescription, String category, long itemCost) {
+	public MenuModel(int itemId, String itemName, String itemDescription, String category, long itemCost,String itemImage) {
 		super();
 		this.itemId = itemId;
 		this.itemName = itemName;
 		this.itemDescription = itemDescription;
 		this.category = category;
 		this.itemCost = itemCost;
+		this.itemImage=itemImage;
 	}
 	public MenuModel() {
 		super();
@@ -81,7 +76,7 @@ public class MenuModel {
 	@Override
 	public String toString() {
 		return "MenuModel [itemId=" + itemId + ", itemName=" + itemName + ", itemDescription=" + itemDescription
-				+ ", category=" + category + ", itemCost=" + itemCost + "]";
+				+ ", category=" + category + ", itemCost=" + itemCost + ", itemImage=" +" itemImage + ]";
 	}
 
 
