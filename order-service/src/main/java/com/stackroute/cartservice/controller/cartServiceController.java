@@ -34,7 +34,7 @@ public class cartServiceController {
 
 		this.services = services;
 	}
-
+//To get add new items  to cart by post mapping
 	@PostMapping(value = "/create")
 		public ResponseEntity<Object> addItemsToCart(@RequestBody Cart cart) {
 		try {
@@ -42,7 +42,7 @@ public class cartServiceController {
 			return new ResponseEntity<>(HttpStatus.CREATED);
 		} catch (CartAlreadyExistsException e) {
 
-			return new ResponseEntity<>("Cart details already exists!!",HttpStatus.CONFLICT);
+			return new ResponseEntity<>("Cart  already exists!!",HttpStatus.CONFLICT);
 		} catch (Exception e) {
 			return new ResponseEntity<>("Cart details already exists!!!", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
@@ -51,7 +51,7 @@ public class cartServiceController {
 	}
 	
 	
-	
+	//To update or save the cart using email Id
 	@PutMapping("/{userEmailId}")
 	public ResponseEntity<Object> saveOrUpdat(@RequestBody Cart cart) {
 		try {
@@ -69,13 +69,13 @@ public class cartServiceController {
 		
 
 	}
-	
+	// To find cart by using user email id 
 	@GetMapping("/{userEmailId}")
-	public ResponseEntity<Cart> findCartByCartId(@PathVariable String userEmailId) {
+	public ResponseEntity<Cart> findCartByEmailId(@PathVariable String userEmailId) {
 
 		try {
 
-			return new ResponseEntity(services.findCartByCartId(userEmailId), HttpStatus.OK);
+			return new ResponseEntity(services.findCartByEmailId(userEmailId), HttpStatus.OK);
 
 		} catch (CartNotFoundException e) {
 
@@ -88,7 +88,7 @@ public class cartServiceController {
 	}
 
 
-
+	//to find all the carts 
 	@GetMapping
 	public ResponseEntity<List<Cart>> findAllCarts() {
 		try {

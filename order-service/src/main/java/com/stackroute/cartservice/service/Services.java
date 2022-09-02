@@ -18,7 +18,7 @@ public class Services {
 
 		this.cartRepository = cartRepository;
 	}
-	
+	// To get add new items  to cart
 	public void addItemsToCart(Cart cart) throws CartAlreadyExistsException  {
 
 		
@@ -28,6 +28,7 @@ public class Services {
 		cartRepository.save(cart);
 
 	}
+	// to find all the carts 
 	public List<Cart> findAllCarts() throws CartNotFoundException {
 
 		
@@ -39,7 +40,7 @@ public class Services {
 
 	 
 	 
-	 
+	 // To update or save the cart using email Id
 	 public Cart saveOrUpdate(Cart cart) throws CartNotFoundException {
 
 			Cart savedMenuModel = cartRepository.findById(cart.getUserEmailId()).get();
@@ -57,8 +58,8 @@ public class Services {
 			throw new CartNotFoundException();
 		}
 	
-
-	 public Cart findCartByCartId(String userEmailId) throws CartNotFoundException {
+// To find cart by using user email id
+	 public Cart findCartByEmailId(String userEmailId) throws CartNotFoundException {
 
 			if (
 					cartRepository.existsById(userEmailId)) {
