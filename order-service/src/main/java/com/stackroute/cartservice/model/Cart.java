@@ -2,10 +2,12 @@ package com.stackroute.cartservice.model;
 
 import java.util.List;
 
+import org.bson.codecs.pojo.annotations.BsonId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.mongodb.lang.NonNull;
 
 
@@ -13,28 +15,14 @@ import com.mongodb.lang.NonNull;
 
 @Document(collection = "carts")
 public class Cart {
-	@Id
-    private String userid;
-
+	
+    @Id
     private @NonNull String userEmailId;
 
-    @DBRef
+    
     private @NonNull List<Menu> items;
 
-	public Cart(String userid, String userEmailId, List<Menu> items) {
-		super();
-		this.userid = userid;
-		this.userEmailId = userEmailId;
-		this.items = items;
-	}
-
-	public String getUserid() {
-		return userid;
-	}
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
+	
 
 	public String getUserEmailId() {
 		return userEmailId;
@@ -51,6 +39,29 @@ public class Cart {
 	public void setItems(List<Menu> items) {
 		this.items = items;
 	}
+
+	@Override
+	public String toString() {
+		return "Cart [ userEmailId=" + userEmailId + ", items=" + items + "]";
+	}
+
+	public Cart( String userEmailId, List<Menu> items) {
+		super();
+		
+		this.userEmailId = userEmailId;
+		this.items = items;
+	}
+
+	public Cart() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	
+
+ 
+	
 
 
 
