@@ -7,6 +7,12 @@ public class ErrorDetails {
 	private String message;
 	private String details;
 
+	public ErrorDetails(Date date, String message, String description) {
+		this.timestamp=date;
+		this.message=message;
+		this.details=description;
+	}
+	
 	public Date getTimestamp() {
 		return timestamp;
 	}
