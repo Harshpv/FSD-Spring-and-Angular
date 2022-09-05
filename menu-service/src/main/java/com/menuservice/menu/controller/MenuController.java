@@ -1,4 +1,4 @@
-package com.menuservice.controller;
+package com.menuservice.menu.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.menuservice.datamodel.MenuModel;
-import com.menuservice.exceptions.MenuAlreadyExistsException;
-import com.menuservice.exceptions.MenuNotFoundException;
-import com.menuservice.services.Services;
+import com.menuservice.menu.model.MenuModel;
+import com.menuservice.menu.exceptions.MenuAlreadyExistsException;
+import com.menuservice.menu.exceptions.MenuNotFoundException;
+import com.menuservice.menu.services.Services;
 
 
 

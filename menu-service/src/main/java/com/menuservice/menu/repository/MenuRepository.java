@@ -1,7 +1,7 @@
-package com.menuservice.repository;
+package com.menuservice.menu.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import com.menuservice.datamodel.MenuModel;
+import com.menuservice.menu.model.MenuModel;
 
 //Inheriting mongorepository
 public interface MenuRepository extends MongoRepository<MenuModel, Integer> {

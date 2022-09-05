@@ -1,4 +1,4 @@
-package com.menuservice.datamodel;
+package com.menuservice.menu.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

@@ -1,5 +1,6 @@
-package com.Subscription.Controller;
+package com.menuservice.Subscription.Controller;
 
+import com.menuservice.Subscription.Service.SubscriptionServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Subscription.Exception.SubscriptionAlreadyExistsException;
 import com.Subscription.Exception.SubscriptionNotFoundException;
 import com.Subscription.Model.Subscription;
-import com.Subscription.Service.SubscriptionServices;
-import com.menuservice.SubscriptionServiceApplication;
 
 
 

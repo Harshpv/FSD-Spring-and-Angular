@@ -1,4 +1,4 @@
-package com.menuservice.exceptions;
+package com.menuservice.menu.exceptions;
 import java.util.Date;
 
 public class ErrorDetails {

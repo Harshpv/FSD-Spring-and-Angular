@@ -1,17 +1,15 @@
-package com.menuservice.services;
+package com.menuservice.menu.services;
 
 import java.util.List;
-
-import javax.imageio.metadata.IIOMetadataFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.menuservice.datamodel.MenuModel;
-import com.menuservice.exceptions.MenuAlreadyExistsException;
-import com.menuservice.exceptions.MenuNotFoundException;
+import com.menuservice.menu.model.MenuModel;
+import com.menuservice.menu.exceptions.MenuAlreadyExistsException;
+import com.menuservice.menu.exceptions.MenuNotFoundException;
 //import com.menuservice.datamodel.MenuSequence;
-import com.menuservice.repository.MenuRepository;
+import com.menuservice.menu.repository.MenuRepository;
 
 @Service
 public class Services {
