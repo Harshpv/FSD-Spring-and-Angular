@@ -1,20 +1,7 @@
 package com.menuservice.controller;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.management.AttributeNotFoundException;
-
-import org.apache.logging.log4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.info.ProjectInfoProperties.Build;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators.Log;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,22 +14,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.menuservice.datamodel.MenuModel;
 import com.menuservice.exceptions.MenuAlreadyExistsException;
 import com.menuservice.exceptions.MenuNotFoundException;
-import com.menuservice.repository.MenuRepository;
 import com.menuservice.services.Services;
 
-import lombok.extern.log4j.Log4j;
-//import lombok.extern.java.Log;
-import lombok.extern.slf4j.Slf4j;
-import java.util.logging.Level;
 
-@Slf4j
+
 @RestController
 @RequestMapping("/api/v1")
-@Log4j
 public class MenuController {
-
+	
+	//Calling services class and creating object to use further.
 	private final Services services;
-
+	
+	//Calling menumodel class and creating object to use further.
+	@SuppressWarnings("unused")
 	private MenuModel menuModel;
 
 	public MenuController(Services services) {
@@ -50,8 +34,9 @@ public class MenuController {
 		this.services = services;
 	}
 
+	//Postmapping api used to post data to the mongo database. 
 	@PostMapping
-	public ResponseEntity addItems(@RequestBody MenuModel menuModel) {
+	public ResponseEntity<?> addItems(@RequestBody MenuModel menuModel) {
 
 		try {
 			services.addItems(menuModel);
@@ -64,64 +49,69 @@ public class MenuController {
 		}
 
 	}
-
-	@PutMapping("/{itemId}")
+	
+	//Putmapping api used to update data which already exists in the mongo database. 
+	@PutMapping
 	public ResponseEntity<Object> updateItem(@RequestBody MenuModel menuModel) {
 		try {
 
 			services.updateItem(menuModel);
-			return new ResponseEntity<>("Update success!!", HttpStatus.OK);
+			return new ResponseEntity<Object>("Update success!!", HttpStatus.OK);
 
 		} catch (MenuNotFoundException e) {
 
-			return new ResponseEntity<>("Menu not found!!", HttpStatus.CONFLICT);
+			return new ResponseEntity<Object>("Menu not found!!", HttpStatus.CONFLICT);
 		} catch (Exception e) {
-			return new ResponseEntity<>("Something went wrong we will be back soon !!",
+			return new ResponseEntity<Object>("Something went wrong we will be back soon !!",
 					HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}
-
+	
+	//Getmapping api used to fetch all the data  present in the mongo database. 
 	@GetMapping
-	public ResponseEntity<List<MenuModel>> getItems() {
+	public ResponseEntity<Object> getItems() {
 		try {
 			return ResponseEntity.ok(services.getItems());
 		} catch (MenuNotFoundException e) {
-			return new ResponseEntity("Empty repository!!", HttpStatus.CONFLICT);
+			return new ResponseEntity<Object>("Empty repository!!", HttpStatus.CONFLICT);
 		}
 	}
-
+	//Getmapping  api with id used to fetch specific data with it's id, present in the mongo database.
 	@GetMapping("/{itemId}")
-	public ResponseEntity<MenuModel> getItemsById(@PathVariable int itemId) {
+	public org.springframework.http.ResponseEntity<Object> getItemsById(@PathVariable int itemId) {
 
 		try {
 
-			return new ResponseEntity(services.getItemsById(itemId), HttpStatus.OK);
+			return new ResponseEntity<Object>(services.getItemsById(itemId), HttpStatus.OK);
 
 		} catch (MenuNotFoundException e) {
 
-			return new ResponseEntity("Menu not found!!", HttpStatus.CONFLICT);
+			return new ResponseEntity<Object>("Menu not found!!", HttpStatus.CONFLICT);
 		} catch (Exception e) {
 
-			return new ResponseEntity("Menu not found!!", HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<Object>("Menu not found!!", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}
 
+	//Deletemapping api with id used to delete specific data with it's id, present in the mongo database
+	@SuppressWarnings("unchecked")
 	@DeleteMapping("/{itemId}")
-	public void deleteItem(@PathVariable int itemId) {
+	public ResponseEntity<?> deleteItem(@PathVariable int itemId) {
 		try {
 
-			this.services.deleteById(itemId);
+			services.deleteById(itemId);
+			return new ResponseEntity<>("Deleted successfully!!", HttpStatus.OK);
 
-		} catch (MenuNotFoundException e) {
+		} catch (MenuNotFoundException e) { 
 
-			System.out.println("Not found");
+			
 
-			ResponseEntity.status(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>("Deleted successfully", HttpStatus.OK);
 		} catch (Exception e) {
 
-			ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Something went wrong!!", HttpStatus.INTERNAL_SERVER_ERROR);
 
 		}
 
