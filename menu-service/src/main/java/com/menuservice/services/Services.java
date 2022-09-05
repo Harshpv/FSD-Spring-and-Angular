@@ -83,12 +83,14 @@ public class Services {
 	}
 	//deleteItems method consists of business logic to delete the data present in the database using itemId.
 	public void deleteById(int itemId) throws MenuNotFoundException {
-		if (menuRepository.existsById(itemId)) {
+		if (!menuRepository.existsById(itemId)) {
 
-		   menuRepository.deleteById(itemId);
+//		   menuRepository.deleteById(itemId);
+		   throw new MenuNotFoundException();
 		}
 
-		throw new MenuNotFoundException();
+//		throw new MenuNotFoundException();
+		menuRepository.deleteById(itemId);
 	}
 
 }

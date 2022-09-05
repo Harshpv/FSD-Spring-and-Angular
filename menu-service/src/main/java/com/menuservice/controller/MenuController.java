@@ -2,6 +2,7 @@ package com.menuservice.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,7 @@ import com.menuservice.exceptions.MenuNotFoundException;
 import com.menuservice.services.Services;
 
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1")
 public class MenuController {
@@ -69,7 +70,7 @@ public class MenuController {
 	}
 	
 	//Getmapping api used to fetch all the data  present in the mongo database. 
-	@GetMapping
+	@GetMapping("/getall")
 	public ResponseEntity<Object> getItems() {
 		try {
 			return ResponseEntity.ok(services.getItems());
@@ -90,7 +91,7 @@ public class MenuController {
 			return new ResponseEntity<Object>("Menu not found!!", HttpStatus.CONFLICT);
 		} catch (Exception e) {
 
-			return new ResponseEntity<Object>("Menu not found!!", HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<Object>("Something went wrong !!", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}
@@ -108,7 +109,7 @@ public class MenuController {
 
 			
 
-			return new ResponseEntity<>("Deleted successfully", HttpStatus.OK);
+			return new ResponseEntity<>("Delete unsuccessfull!!", HttpStatus.CONFLICT);
 		} catch (Exception e) {
 
 			return new ResponseEntity<>("Something went wrong!!", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -117,6 +118,7 @@ public class MenuController {
 
 	}
 
+	@SuppressWarnings("unused")
 	private void ResponseEntity(String string, HttpStatus conflict) {
 		// TODO Auto-generated method stub
 
