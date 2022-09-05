@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 import com.Subscription.Model.Subscription;
 
 @SpringBootApplication
-public class SubscriptionServiceApplication {
-
+public class MenuServiceApplication {
+	
+	//It's the face of application which consists of main method to run the application
 	public static void main(String[] args) {
 		SpringApplication.run(SubscriptionServiceApplication.class, args);
 	}
