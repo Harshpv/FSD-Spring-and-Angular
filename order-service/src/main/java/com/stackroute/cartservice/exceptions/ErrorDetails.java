@@ -6,9 +6,7 @@ public class ErrorDetails {
 	private Date timestamp;
 	private String message;
 	private String details;
-	public ErrorDetails(Date date, String message2, String description) {
-		// TODO Auto-generated constructor stub
-	}
+
 	public Date getTimestamp() {
 		return timestamp;
 	}
