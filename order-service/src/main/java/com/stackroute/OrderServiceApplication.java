@@ -1,4 +1,4 @@
-package com.stackroute.OrderService;
+package com.stackroute;
 
 import org.springframework.boot.SpringApplication
 ;
