@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,10 +18,8 @@ public class OrderModel {
 	@Id
 	private int orderId; //unique Id for each order
 
-	@NonNull
 	private int userId;	 //obtain from userservice mongodb
 
-	@NonNull
 	private int payment; //total price for items
 
 	@Setter(AccessLevel.NONE)
