@@ -2,8 +2,8 @@ package com.Subscription.Exception;
 
 import java.util.Date;
 
-import com.menuservice.Subscription.Exception.ErrorDetails;
-import com.menuservice.Subscription.Exception.SubscriptionNotFoundException;
+import com.menuservice.Subscription.exception.ErrorDetails;
+import com.menuservice.Subscription.exception.SubscriptionNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

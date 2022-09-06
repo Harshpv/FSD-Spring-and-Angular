@@ -1,13 +1,12 @@
-package com.menuservice.Subscription.Service;
+package com.menuservice.Subscription.service;
 
-import com.menuservice.Subscription.Exception.SubscriptionAlreadyExistsException;
-import com.menuservice.Subscription.Exception.SubscriptionNotFoundException;
-import com.menuservice.Subscription.Model.Subscription;
+import com.menuservice.Subscription.exception.SubscriptionAlreadyExistsException;
+import com.menuservice.Subscription.exception.SubscriptionNotFoundException;
+import com.menuservice.Subscription.model.Subscription;
+import com.menuservice.Subscription.repository.SubscriptionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.SubscriptionRepository.SubscriptionRepository;
 
 import java.util.List;
 
@@ -15,9 +14,8 @@ import java.util.List;
 @Slf4j
 public class SubscriptionServices {
 
+	SubscriptionRepository subscriptionrepository;
 
-	private final SubscriptionRepository subscriptionrepository;
-	@Autowired
 	public SubscriptionServices(SubscriptionRepository subscriptionrepository) {
 		this.subscriptionrepository = subscriptionrepository;
 
