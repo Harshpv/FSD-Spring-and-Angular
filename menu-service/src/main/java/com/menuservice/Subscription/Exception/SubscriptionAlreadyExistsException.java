@@ -1,4 +1,4 @@
-package com.Subscription.Exception;
+package com.menuservice.Subscription.Exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

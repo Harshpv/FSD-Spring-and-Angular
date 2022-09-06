@@ -1,20 +1,23 @@
 package com.menuservice.Subscription.Service;
 
-import java.util.List;
-import com.Subscription.Model.Subscription;
-import javax.imageio.metadata.IIOMetadataFormat;
+import com.menuservice.Subscription.Exception.SubscriptionAlreadyExistsException;
+import com.menuservice.Subscription.Exception.SubscriptionNotFoundException;
+import com.menuservice.Subscription.Model.Subscription;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.Subscription.Exception.SubscriptionAlreadyExistsException;
-import com.Subscription.Exception.SubscriptionNotFoundException;
 import com.SubscriptionRepository.SubscriptionRepository;
 
+import java.util.List;
+
 @Service
+@Slf4j
 public class SubscriptionServices {
 
+
 	private final SubscriptionRepository subscriptionrepository;
-	private SubscriptionRepository subscription;
+	@Autowired
 	public SubscriptionServices(SubscriptionRepository subscriptionrepository) {
 		this.subscriptionrepository = subscriptionrepository;
 
@@ -26,15 +29,15 @@ public class SubscriptionServices {
 
 	}
 
-	//update items method conists of business logic to update data altready present in database
-	public String updateSubscription(Subscription subscripton) throws SubscriptionNotFoundException{
+	//update Subscription method conists of business logic to update data altready present in database
+	public String updateSubscription(Subscription subscription) throws SubscriptionNotFoundException {
 		if (subscriptionrepository.existsById(subscription.getSubscriptionId())) {
-			SubscriptionRepository.save(subscription);
+			subscriptionrepository.save(subscription);
 			return "update success";
 		}
 		throw new SubscriptionNotFoundException();
 	}
-	//getItems method consists of business logic to fetch all the data present in the database
+	//getsubscription method consists of business logic to fetch all the data present in the database
 		public List<Subscription> getItems() throws SubscriptionNotFoundException {
 
 			if (subscriptionrepository.count() == 0) {
@@ -44,7 +47,7 @@ public class SubscriptionServices {
 
 		}
 
-		//getItemsById method consists of business logic to fetch specific data present in the database using itemId.
+		//getSubscriptionById method consists of business logic to fetch specific data present in the database using itemId.
 		public Subscription getItemsById(int subscriptionId) throws SubscriptionNotFoundException {
 
 			if (subscriptionrepository.existsById(subscriptionId)) {
@@ -55,7 +58,7 @@ public class SubscriptionServices {
 			throw new SubscriptionNotFoundException();
 
 		}
-		//deleteItems method consists of business logic to delete the data present in the database using itemId.
+		//deleteSubscription method consists of business logic to delete the data present in the database using itemId.
 		public void deleteById(int subscriptionId) throws SubscriptionNotFoundException {
 			if (subscriptionrepository.existsById(subscriptionId)) {
 

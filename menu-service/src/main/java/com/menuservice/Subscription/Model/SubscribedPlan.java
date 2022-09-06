@@ -1,4 +1,4 @@
-package com.Subscription.Model;
+package com.menuservice.Subscription.Model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

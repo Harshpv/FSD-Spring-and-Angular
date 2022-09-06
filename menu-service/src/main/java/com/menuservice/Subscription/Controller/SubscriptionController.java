@@ -1,6 +1,10 @@
 package com.menuservice.Subscription.Controller;
 
+import com.menuservice.Subscription.Exception.SubscriptionAlreadyExistsException;
+import com.menuservice.Subscription.Exception.SubscriptionNotFoundException;
+import com.menuservice.Subscription.Model.Subscription;
 import com.menuservice.Subscription.Service.SubscriptionServices;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Subscription.Exception.SubscriptionAlreadyExistsException;
-import com.Subscription.Exception.SubscriptionNotFoundException;
-import com.Subscription.Model.Subscription;
 
-
-
-
+@Slf4j
 @RestController
 
 @RequestMapping("/api/v1/Subscription") 
@@ -37,7 +36,7 @@ public SubscriptionController(SubscriptionServices services) {
 	this.services = services;
 }
 
-//postmappin is used to post data into database
+//postmapping is used to post data into database
 @PostMapping
 public ResponseEntity<Object> addItemsToSubscription(@RequestBody Subscription subscription) {
 try {

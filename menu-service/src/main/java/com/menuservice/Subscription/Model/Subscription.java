@@ -1,4 +1,4 @@
-package com.Subscription.Model;
+package com.menuservice.Subscription.Model;
 
 import java.util.List;
 
@@ -13,7 +13,6 @@ public class Subscription {
 	
 		@Id
 		private int subscriptionId;
-		@Field
 		@Indexed(unique = true)
 		
 		private int subscrptionvalidity;
