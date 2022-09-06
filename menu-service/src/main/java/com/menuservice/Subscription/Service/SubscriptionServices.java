@@ -1,7 +1,7 @@
-package com.Subscription.Service;
+package com.menuservice.Subscription.Service;
 
 import java.util.List;
-import java.util.concurrent.Flow.Subscription;
+import com.Subscription.Model.Subscription;
 import javax.imageio.metadata.IIOMetadataFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
