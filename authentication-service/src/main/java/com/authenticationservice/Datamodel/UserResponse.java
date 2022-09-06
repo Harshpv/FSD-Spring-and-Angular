@@ -1,6 +1,10 @@
 package com.authenticationservice.Datamodel;
 
+import lombok.Getter;
+
 import java.io.Serializable;
+
+@Getter
 
 public class UserResponse implements Serializable {
 
@@ -13,9 +17,9 @@ public class UserResponse implements Serializable {
 		this.jwt = jwt;
 	}
 
-	public String getJwt() {
-		return jwt;
-	}
+//	public String getJwt() {
+//		return jwt;
+//	}
 
 	
 } 

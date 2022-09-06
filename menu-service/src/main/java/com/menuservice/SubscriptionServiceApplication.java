@@ -9,7 +9,7 @@ public class SubscriptionServiceApplication {
 	
 	//It's the face of application which consists of main method to run the application
 	public static void main(String[] args) {
-		SpringApplication.run(SubscriptionServiceApplication.class, args);
+		SpringApplication.run(MenuServiceApplication.class, args);
 	}
 
 
