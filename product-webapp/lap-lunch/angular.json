@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -94,6 +95,7 @@
               "src/assets"
             ],
             "styles": [
+               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -102,5 +104,8 @@
       }
     }
   },
-  "defaultProject": "lap-lunch"
+  "defaultProject": "lap-lunch",
+  "cli": {
+    "analytics": "5ae7a86a-6847-4151-a466-33b7da10562d"
+  }
 }
