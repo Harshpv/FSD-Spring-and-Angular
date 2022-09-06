@@ -1,4 +1,4 @@
-package com.Subscription.Exception;
+package com.menuservice.Subscription.exception;
 
 import java.util.Date;
 

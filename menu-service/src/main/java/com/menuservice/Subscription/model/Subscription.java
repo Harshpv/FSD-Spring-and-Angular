@@ -1,11 +1,10 @@
-package com.Subscription.Model;
+package com.menuservice.Subscription.model;
 
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "Subscription")
 
@@ -13,7 +12,6 @@ public class Subscription {
 	
 		@Id
 		private int subscriptionId;
-		@Field
 		@Indexed(unique = true)
 		
 		private int subscrptionvalidity;
