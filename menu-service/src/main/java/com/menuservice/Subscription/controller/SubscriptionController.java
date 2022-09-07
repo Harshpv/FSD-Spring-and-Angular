@@ -79,7 +79,7 @@ try {
 
 		//Getmapping  api with id used to fetch specific data with it's id, present in the mongo database.
 		@GetMapping("/{subscriptionId}")
-		public org.springframework.http.ResponseEntity<Object> getItemsById(@PathVariable int SubscriptionId) {
+		public org.springframework.http.ResponseEntity<Object> getItemsById(@PathVariable String SubscriptionId) {
 
 			try {
 
@@ -98,7 +98,7 @@ try {
 		//Deletemapping api with id used to delete specific data with it's id, present in the mongo database
 		@SuppressWarnings("unchecked")
 		@DeleteMapping("/{SubscriptionId}")
-		public ResponseEntity<?> deleteItem(@PathVariable int SubscriptionId) {
+		public ResponseEntity<?> deleteItem(@PathVariable String SubscriptionId) {
 			try {
 
 				services.deleteById(SubscriptionId);

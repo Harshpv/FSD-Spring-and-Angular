@@ -46,7 +46,7 @@ public class SubscriptionServices {
 		}
 
 		//getSubscriptionById method consists of business logic to fetch specific data present in the database using itemId.
-		public Subscription getItemsById(int subscriptionId) throws SubscriptionNotFoundException {
+		public Subscription getItemsById(String subscriptionId) throws SubscriptionNotFoundException {
 
 			if (subscriptionrepository.existsById(subscriptionId)) {
 
@@ -57,7 +57,7 @@ public class SubscriptionServices {
 
 		}
 		//deleteSubscription method consists of business logic to delete the data present in the database using itemId.
-		public void deleteById(int subscriptionId) throws SubscriptionNotFoundException {
+		public void deleteById(String subscriptionId) throws SubscriptionNotFoundException {
 			if (subscriptionrepository.existsById(subscriptionId)) {
 
 			   subscriptionrepository.deleteById(subscriptionId);
