@@ -13,7 +13,7 @@
     <h4>Categories</h4>
     <div class="container d-flex">
         <div class="All Items">
-            <a href="#">
+            <a (click)= "filter('')">
                 <img style="width: 100px; height: 100px;" src="assets/Allitems.jpg" alt="allitems">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <p>All Items</p>
@@ -22,16 +22,16 @@
         </div>
         
         <div class="Veg Items"></div>
-            <a href="#">
+            <a (click)= "filter('veg')">
                 <img style="width: 100px; height: 100px;" src="assets/vegitems.jpg"  alt="Veg Items">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p>Veg Items</p>
+                <p>VegItems</p>
             </a>
         <div class="Non-Veg Items">
-            <a href="#">
+            <a (click)= "filter('non veg')">
                
              <img style="width: 100px; height: 100px;" src="assets/nonveg.jpg"  alt="Non-Veg Items">
-             <p>Non-Veg Items</p>
+             <p>NonVegItems</p>
             </a>
         </div>
 
@@ -40,7 +40,7 @@
 
 <div class="container">
     <div class="row">
-        <ng-container *ngFor= "let item of itemList | filter:searchKey:'itemName'">
+        <ng-container *ngFor= "let item of filterCategory | filter:searchKey:'itemName'">
         <div class="card col-md-3">
             <img src={{item.itemImage}} alt="Dish Image">
             <h5>{{item.itemName}}</h5>
@@ -48,7 +48,7 @@
             <p><strong>Price:</strong>{{item.itemCost}}</p>
             <p>{{item.category}}</p>
             
-            <button class="btn btn-primary">Add to cart</button>
+            <button (click)=addItemsToCart(item) >Add +</button>
         </div>
     </ng-container> 
     </div>

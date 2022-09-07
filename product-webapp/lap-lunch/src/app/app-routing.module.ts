@@ -6,10 +6,10 @@ import { ProductComponent } from './pages/product/product.component';
 import { SearchheaderComponent } from './pages/searchheader/searchheader.component';
 
 const routes: Routes = [
-  {path:"",component:HeaderComponent},
+  {path:' ',redirectTo:'menu',pathMatch:'full'},
   {path:"menu",component:SearchheaderComponent},
   {path:"cart",component:CartComponent},
-  {path:"product",component:ProductComponent}
+  // {path:"product",component:ProductComponent} 
 ];
 
 @NgModule({

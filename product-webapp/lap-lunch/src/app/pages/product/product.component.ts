@@ -2,6 +2,7 @@ import { ReturnStatement } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Allitems } from '../Items/allitems';
 import { ApiserviceService } from '../menuapiservice/apiservice.service';
+import { CartService } from '../menuapiservice/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -10,15 +11,26 @@ import { ApiserviceService } from '../menuapiservice/apiservice.service';
 })
 export class ProductComponent implements OnInit {
 
-  public itemList: Allitems[] = [];
+  public itemList :any;
   searchKey : string="";
   public filterCategory: any;
-  constructor(private api: ApiserviceService) { }
+  constructor(private api: ApiserviceService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.api.getItem()
     .subscribe(res=>{
       this.itemList =res;
+      this.filterCategory=res;
+
+      this.itemList.forEach((a:any)=>{
+        // if(a.category==="veg"){
+        //   a.category="Veg Items"
+      
+        // }
+
+        Object.assign(a,{quantity:1,total:a.itemCost});
+      });
+      // console.log(this.itemList);
       
     })
     
@@ -26,6 +38,13 @@ export class ProductComponent implements OnInit {
       this.searchKey=val;
     })
   }
+
+  addItemsToCart(item:any){
+
+    this.cartService.addItemtocart(item);
+
+  }
+
   // ngOnInit(): void {
   //     this.api.getItem().subscribe((data: Allitems[])=>{
   //       console.log(data);
@@ -34,11 +53,11 @@ export class ProductComponent implements OnInit {
   //     });
   // }
 
-  // filter(category:string){
-  //   this.filterCategory=this.items
-  //   .filter((a:any)=>{
-  //     if(a.category==category||category==''){
-  //       ReturnStatement;
-  //     }
-  //   })}
+  filter(category:string){
+    this.filterCategory=this.itemList
+    .filter((a:any)=>{
+      if(a.category==category||category==''){
+        return a;
+      }
+    })}
 }

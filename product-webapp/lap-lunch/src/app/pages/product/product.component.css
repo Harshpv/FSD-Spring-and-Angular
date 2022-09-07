@@ -68,3 +68,11 @@
     transition: 0.3s ease-in-out;
     transform: scale(1.1);
 }
+
+.card button{
+    box-sizing: 10px;
+    border-color: green;
+    box-shadow: 5px;
+    border-radius: .5rem;
+    margin-left: 100px;
+}
