@@ -10,24 +10,29 @@ import { ApiserviceService } from '../menuapiservice/apiservice.service';
 })
 export class ProductComponent implements OnInit {
 
-  public items: Allitems[] = [];
+  public itemList: Allitems[] = [];
   searchKey : string="";
   public filterCategory: any;
   constructor(private api: ApiserviceService) { }
 
-  // ngOnInit(): void {
-  //   this.api.getItem()
-  //   .subscribe(res=>{
-  //     this.itemList =res;
-  //   })
-  // }
   ngOnInit(): void {
-      this.api.getItem().subscribe((data: Allitems[])=>{
-        console.log(data);
-  //      this.filterCategory=data;
-        this.items=data;
-      });
+    this.api.getItem()
+    .subscribe(res=>{
+      this.itemList =res;
+      
+    })
+    
+    this.api.search.subscribe((val:any)=>{
+      this.searchKey=val;
+    })
   }
+  // ngOnInit(): void {
+  //     this.api.getItem().subscribe((data: Allitems[])=>{
+  //       console.log(data);
+  // //      this.filterCategory=data;
+  //       this.items=data;
+  //     });
+  // }
 
   // filter(category:string){
   //   this.filterCategory=this.items

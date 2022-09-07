@@ -14,16 +14,24 @@
     <div class="container d-flex">
         <div class="All Items">
             <a href="#">
-                <img src="" alt="allitems">
+                <img style="width: 100px; height: 100px;" src="assets/Allitems.jpg" alt="allitems">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p>All Items</p>
+                
             </a>
         </div>
+        
         <div class="Veg Items"></div>
             <a href="#">
-                <img src="" alt="Veg Items">
+                <img style="width: 100px; height: 100px;" src="assets/vegitems.jpg"  alt="Veg Items">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p>Veg Items</p>
             </a>
         <div class="Non-Veg Items">
             <a href="#">
-                <img src="" alt="Non-Veg Items">
+               
+             <img style="width: 100px; height: 100px;" src="assets/nonveg.jpg"  alt="Non-Veg Items">
+             <p>Non-Veg Items</p>
             </a>
         </div>
 
@@ -32,11 +40,11 @@
 
 <div class="container">
     <div class="row">
-        <ng-container *ngFor="let item of items">
+        <ng-container *ngFor= "let item of itemList | filter:searchKey:'itemName'">
         <div class="card col-md-3">
-            <img src="{{item.itemImage}}" alt="Dish Image">
+            <img src={{item.itemImage}} alt="Dish Image">
             <h5>{{item.itemName}}</h5>
-            <p>{{item.itemDescription}}</p>
+            <p>{{item.itemDescription}}</p> 
             <p><strong>Price:</strong>{{item.itemCost}}</p>
             <p>{{item.category}}</p>
             

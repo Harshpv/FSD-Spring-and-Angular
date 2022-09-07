@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiserviceService } from '../menuapiservice/apiservice.service';
 
 @Component({
   selector: 'app-searchheader',
@@ -8,12 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class SearchheaderComponent implements OnInit {
   
   public searchvalue: string='';
-  constructor() { }
+  
+  constructor(private apisearchservice : ApiserviceService
+    ) { }
 
   ngOnInit(): void {
   }
-  // search(event:any){
-  //   this.searchvalue=(event.target as HTMLInputElement).value;
-  //   console.log(this.searchvalue);}
+   search(event:any){
+     this.searchvalue=(event.target as HTMLInputElement).value;
+     console.log(this.searchvalue);
+     this.apisearchservice.search.next(this.searchvalue);
+    
+    }
 }
  
