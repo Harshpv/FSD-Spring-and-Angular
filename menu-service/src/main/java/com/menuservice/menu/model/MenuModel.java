@@ -28,5 +28,6 @@ public class MenuModel {
 	private long itemCost;
 	@Field(name="image")
 	private String itemImage;
+	private SubPlansEnum subPlansEnum;
 	
 }

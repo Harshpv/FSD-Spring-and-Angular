@@ -38,7 +38,7 @@
     border-radius: .25rem;
 }
 .item img {
-    width: 64px;
+    width: 10px;
 }
 
 .item {
@@ -53,13 +53,15 @@
 .card {
     padding: 20px;
     margin: 50px;
+    background-color: rgb(198, 199, 207);
 }
 
 .card img {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     margin-bottom: 15px;
     transition: 0.3s ease-in-out;
+    border-radius: 0.25rem; 
 }
 
 .card img:hover {

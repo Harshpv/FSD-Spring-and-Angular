@@ -12,10 +12,12 @@ import { Allitems } from './pages/Items/allitems';
 //import { FilterPipe } from './pages/shared/filter.pipe';
 //import { MenuComponentComponent } from './menu-component/menu-component.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
   //  FilterPipe,
    
     

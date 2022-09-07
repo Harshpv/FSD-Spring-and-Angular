@@ -5,4 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(code= HttpStatus.CONFLICT, reason = "Order already exists")
 public class OrderAlreadyExistsException extends Exception{
+    public OrderAlreadyExistsException() {
+        super("Order already exists");
+    }
 }
