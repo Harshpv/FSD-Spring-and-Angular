@@ -8,6 +8,8 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { AppRoutingModule } from '../app-routing.module';
 import { filter } from 'rxjs';
 import { FilterPipe } from './shared/filter.pipe';
+import { RegistrationComponent } from './registration/registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //import { CommonComponentsModule } from '../common-components/common-components.module';
 
@@ -17,12 +19,15 @@ import { FilterPipe } from './shared/filter.pipe';
     CartComponent,
     ProductComponent,
     SearchheaderComponent,
-    FilterPipe
+    FilterPipe,
+    RegistrationComponent,
+    
   ],
   imports: [
     CommonModule,
     CommonComponentsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
     
   ],
   exports:[

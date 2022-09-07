@@ -54,7 +54,7 @@ public class UserRepositoryService {
         if (repository.existsById(user.getUserEmailId())) {
             Users users = repository.findById(user.getUserEmailId()).get();
             users.setUserEmailId(user.getUserEmailId());
-            users.setUserName(user.getUserName());
+
             users.setFirstName(user.getFirstName());
             users.setLastName(user.getLastName());
             users.setPassword(user.getPassword());
