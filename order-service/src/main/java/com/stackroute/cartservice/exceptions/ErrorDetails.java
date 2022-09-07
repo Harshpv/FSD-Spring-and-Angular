@@ -12,7 +12,11 @@ public class ErrorDetails {
 		this.message=message;
 		this.details=description;
 	}
+<<<<<<< HEAD
+
+=======
 	
+>>>>>>> 0e19d66a9ee02ed64f7004bf43cbf1510a395eaf
 	public Date getTimestamp() {
 		return timestamp;
 	}
