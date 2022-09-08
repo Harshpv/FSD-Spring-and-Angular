@@ -55,4 +55,7 @@ public class MenuService {
 		throw new MenuNotFoundException();
 
 	}
+	public Menu getByOrder(Long id){
+		return menuRepository.getByOrder(id);
+	}
 }
