@@ -7,7 +7,7 @@ import { SearchheaderComponent } from './pages/searchheader/searchheader.compone
 import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component'; //i have mentioed thid line
 
 const routes: Routes = [
-  {path:"",component:HeaderComponent},
+  {path:' ',redirectTo:'menu',pathMatch:'full'},
   {path:"menu",component:SearchheaderComponent},
   {path:"cart",component:CartComponent},
   {path:"product",component:ProductComponent},

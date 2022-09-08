@@ -5,25 +5,25 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: any[], filterString: string): any {
-    const results=[];
-    if(value.length===0 || filterString===' '){
+  transform(value: any[], filterString: string, propName: string): any[] {
+    const result:any=[];
+    if(!value || filterString===''|| propName===''){
       return value;
     }
+    value.forEach((a:any)=>{
+      if(a[propName].trim().toLowerCase().includes(filterString.toLocaleLowerCase()))
+        result.push(a);
+    });
+    return result;
 
-    // value.forEach((a:any)=>{
-    //   if(a[propName].trim().toLowerCase().includes(filterString.toLocaleLowerCase()))
-    //     result.push(a);
-    // });
+  //   for (const result of value) {
 
-    for (const result of value) {
-
-      if((result['itemName']===filterString)){
-        results.push(result);
-      }
+  //     if((result['itemName']===filterString)){
+  //       results.push(result);
+  //     }
       
-    }
-    return results;
-  }
+  //   }
+  //   return results;
+  // }
 
-}
+}}
