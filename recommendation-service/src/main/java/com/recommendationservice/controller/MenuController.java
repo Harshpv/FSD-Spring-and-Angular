@@ -2,6 +2,7 @@ package com.recommendationservice.controller;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import com.recommendationservice.service.MenuService;
 import com.recommendationservice.exceptions.MenuAlreadyExistsException;
 import com.recommendationservice.exceptions.MenuNotFoundException;
 import com.recommendationservice.model.Menu;
-
+@Slf4j
 @RestController
 @RequestMapping("/api/v2")
 public class MenuController {
@@ -28,8 +29,10 @@ public class MenuController {
 	@GetMapping
 	public ResponseEntity<Object> getAllMenu() {
 		try {
+			log.info("All menu were retrieved");
 			return ResponseEntity.ok(menuService.getAllMenu());
 		} catch (MenuNotFoundException e) {
+			log.error("No menu items were found");
 			return new ResponseEntity<Object>("No Menu item found was found in the database!", HttpStatus.CONFLICT);
 		}
 	}
@@ -37,10 +40,13 @@ public class MenuController {
 	@GetMapping("/{itemId}")
 	public ResponseEntity<Object> getById(@PathVariable Long itemId) {
 		try {
+			log.info("The requested item was found");
 			return new ResponseEntity<Object>(menuService.findByItemId(itemId), HttpStatus.OK);
 		} catch (MenuNotFoundException e) {
+			log.error("The requested menu could not be found");
 			return new ResponseEntity<Object>("The requested menu could not be found.", HttpStatus.CONFLICT);
 		} catch (Exception e) {
+			log.error(e.getMessage());
 			return new ResponseEntity<Object>("Oops!Something went wrong !!", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
@@ -50,12 +56,13 @@ public class MenuController {
 	public ResponseEntity<?> addMenu(@RequestBody Menu menu) {
 		try {
 			menuService.addMenu(menu);
-
+			log.info("The menu was added successfully");
 			return new ResponseEntity<>("Menu Added Successfully",HttpStatus.CREATED);
 		} catch (MenuAlreadyExistsException e) {
-
+			log.error("The menu already exists");
 			return new ResponseEntity<>("Item details already exist!!", HttpStatus.CONFLICT);
 		} catch (Exception e) {
+			log.error(e.getMessage());
 			return new ResponseEntity<>("Oops. Something Went Wrong!!!", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
@@ -78,12 +85,20 @@ public class MenuController {
 //		return userService.findByName(name);
 		try {
 			menuService.updateMenu(menu);
+			log.info("item updated successfully");
 			return new ResponseEntity<Object>("Menu Updated Successfully", HttpStatus.OK);
 		} catch (MenuNotFoundException e) {
+			log.error("Menu could not be found");
 			return new ResponseEntity<Object>("The requested User could not be found.", HttpStatus.CONFLICT);
 		} catch (Exception e) {
+			log.error(e.getMessage());
 			return new ResponseEntity<Object>("Oops!Something went wrong !!", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+	
+	@GetMapping("/order/{id}")
+	public Menu getByOrder (@PathVariable Long id){
+		return menuService.getByOrder(id);
 	}
 
 }

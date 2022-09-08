@@ -13,11 +13,16 @@ import { Allitems } from './pages/Items/allitems';
 //import { MenuComponentComponent } from './menu-component/menu-component.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
+import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    SubscriptionPlansComponent,
+    SubscribedPlanComponent,
   //  FilterPipe,
    
     

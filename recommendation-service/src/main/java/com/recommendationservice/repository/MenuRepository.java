@@ -18,5 +18,7 @@ public interface MenuRepository extends Neo4jRepository<Menu, Long>{
 	@Query("MATCH (m:Menu) WHERE $category IN m.category RETURN m")
 	List<Menu> suggestByCity(String category);
 	
+	@Query("MATCH(m:Menu)<-[rel:MENU]-(o:RelationshipModel{orderId:$id}) RETURN (m)")
+	Menu getByOrder(Long id);
 	
 }
