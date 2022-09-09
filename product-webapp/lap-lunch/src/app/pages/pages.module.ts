@@ -10,6 +10,7 @@ import { filter } from 'rxjs';
 import { FilterPipe } from './shared/filter.pipe';
 import { RegistrationComponent } from './registration/registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 //import { CommonComponentsModule } from '../common-components/common-components.module';
 
@@ -27,6 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CommonComponentsModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule
     
   ],
