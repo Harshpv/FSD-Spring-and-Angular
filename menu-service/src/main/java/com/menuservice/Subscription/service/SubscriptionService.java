@@ -5,7 +5,6 @@ import com.menuservice.Subscription.Model.SubscriptionModel;
 import com.menuservice.Subscription.SubscriptionRepository.SubscriptionRepository;
 import com.menuservice.Subscription.exception.SubscriptionAlreadyExistsException;
 import com.menuservice.Subscription.exception.SubscriptionNotExistsException;
-import com.menuservice.menu.exceptions.MenuNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
