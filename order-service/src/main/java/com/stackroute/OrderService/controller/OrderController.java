@@ -3,6 +3,7 @@ package com.stackroute.OrderService.controller;
 
 import com.stackroute.OrderService.exceptions.OrderAlreadyExistsException;
 import com.stackroute.OrderService.exceptions.OrderNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import com.stackroute.OrderService.model.OrderModel;
 import com.stackroute.OrderService.service.OrderService;
 
 
-
+@Slf4j
 @RestController
 @RequestMapping("/api/v1")
 public class OrderController {
@@ -29,11 +30,14 @@ public class OrderController {
 	public ResponseEntity<Object> postOrder(@RequestBody OrderModel order){
 		try {
 			service.addOrder(order);
+			log.info("Order added");
 			return new ResponseEntity<>("Order added!",HttpStatus.CREATED);
 		} catch (OrderAlreadyExistsException e) {
+			log.error("Order already exists");
 			return new ResponseEntity<>("Order already exists", HttpStatus.CONFLICT);
 		} catch (Exception e){
-			return new ResponseEntity<>("Order not added",HttpStatus.INTERNAL_SERVER_ERROR);
+			log.error(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}
@@ -42,12 +46,14 @@ public class OrderController {
 	public ResponseEntity<Object> getOrders(){
 
 		try {
+			log.info("getting orders");
 			return ResponseEntity.ok(service.getOrders());
 		} catch (OrderNotFoundException e) {
+			log.error("orders not found");
 			return new ResponseEntity<Object>("orders not found",HttpStatus.CONFLICT);
 		} catch (Exception e){
-			e.printStackTrace();
-			return new ResponseEntity<>("Not found",HttpStatus.INTERNAL_SERVER_ERROR);
+			log.error(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
@@ -55,11 +61,14 @@ public class OrderController {
 	public ResponseEntity<Object> getOrderById(@PathVariable("orderId") int orderId){
 
 		try {
+			log.info("getting order by Id");
 			return new ResponseEntity<Object>(service.getOrderById(orderId),HttpStatus.OK);
 		} catch (OrderNotFoundException e) {
+			log.error("Order not found");
 			return new ResponseEntity<>("Order not found",HttpStatus.CONFLICT);
 		} catch(Exception e){
-			return new ResponseEntity<>("Not found", HttpStatus.INTERNAL_SERVER_ERROR);
+			log.error(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
@@ -67,12 +76,14 @@ public class OrderController {
 	public ResponseEntity<Object> updateOrder(@RequestBody OrderModel orderModel){
 		try {
 			service.updateOrder(orderModel);
+			log.info("Order updated!!");
 			return new ResponseEntity<Object>("Order updated!!",HttpStatus.OK);
 		} catch (OrderNotFoundException e) {
+			log.error("Order not exists");
 			return new ResponseEntity<>("Order not exists",HttpStatus.CONFLICT);
 		} catch (Exception e){
-			e.printStackTrace();
-			return new ResponseEntity<>("Not updated",HttpStatus.INTERNAL_SERVER_ERROR);
+			log.error(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}
@@ -82,12 +93,14 @@ public class OrderController {
 	public ResponseEntity<Object> deleteOrderByOrderId(@PathVariable int orderId){
 		try {
 			service.deleteByOrderId(orderId);
+			log.info("Order deleted");
 			return new ResponseEntity<>("Order deleted",HttpStatus.OK);
 		} catch (OrderNotFoundException e) {
+			log.error("Order not found");
 			return new ResponseEntity<>("Order not found",HttpStatus.CONFLICT);
 		} catch (Exception e){
-			e.printStackTrace();
-			return new ResponseEntity<>("Not deleted", HttpStatus.INTERNAL_SERVER_ERROR);
+			log.error(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 	}

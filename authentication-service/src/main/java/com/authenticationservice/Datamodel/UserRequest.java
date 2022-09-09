@@ -5,6 +5,10 @@ import java.io.Serializable;
 public class UserRequest  implements Serializable{
 	
 	
+	/**
+	 * 
+	 */
+//	private static final long serialVersionUID = -8091879091924046844L;
 	private String email;
 	private String password;
 	

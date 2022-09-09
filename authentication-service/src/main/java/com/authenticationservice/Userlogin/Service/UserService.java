@@ -8,7 +8,6 @@ import com.authenticationservice.Exceptions.UserAlreadyExistsException;
 import com.authenticationservice.Exceptions.UserNotFoundException;
 import com.authenticationservice.Userlogin.Repository.UserRepository;
 
-
 @Service
 public class UserService{
 	
@@ -21,12 +20,11 @@ public class UserService{
 
 		UserDao user= userRepo.findById(email).get();
 		if (user == null) {
-			throw new UserNotFoundException("user with"+email+"not found");
+			throw new UserNotFoundException();
 		}
 		return user;
 
 	}
-	
 	//service layer for adding the user details
 	
 	   public UserDao saveUser(UserDao user, String email) throws UserAlreadyExistsException {		
@@ -46,10 +44,8 @@ public class UserService{
 			savedModel.setEmail(update.getEmail());
 			savedModel.setPassword(update.getPassword());
 			return userRepo.save(update);
-
 		}
-
-		throw new UserNotFoundException(null);
+		throw new UserNotFoundException();
 	}
 
 }

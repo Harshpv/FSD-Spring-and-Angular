@@ -17,10 +17,8 @@ public class OrderModel {
 	@Id
 	private int orderId; //unique Id for each order
 
-	@NonNull
 	private int userId;	 //obtain from userservice mongodb
 
-	@NonNull
 	private int payment; //total price for items
 
 	@Setter(AccessLevel.NONE)
