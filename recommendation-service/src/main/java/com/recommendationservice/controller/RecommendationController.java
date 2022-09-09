@@ -3,14 +3,13 @@ package com.recommendationservice.controller;
 import com.recommendationservice.model.Menu;
 import java.util.ArrayList;
 //import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 //import com.recommendationservice.exceptions.UserNotFoundException;
 import com.recommendationservice.model.RelationshipModel;
@@ -18,8 +17,8 @@ import com.recommendationservice.model.User;
 import com.recommendationservice.service.MenuService;
 import com.recommendationservice.service.RelationshipService;
 import com.recommendationservice.service.UserService;
-
 @Slf4j
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v4")
 public class RecommendationController {
@@ -30,12 +29,11 @@ public class RecommendationController {
 	UserService userService;
 	@Autowired
 	MenuService menuService;
-	
 	@GetMapping("/city/{city}")
-	public List<Menu> suggestByCity(@PathVariable String city){
+	public HashSet<Menu> suggestByCity(@PathVariable String city){
 		List<Long> usersIdList = new  ArrayList<Long>();
 		List<Long> ordersIdList = new  ArrayList<Long>();
-		List<Menu> menuList = new ArrayList<Menu>();
+		Set<Menu> menuList = new HashSet<Menu>();
 
 		List<User> usersList = userService.suggestByCity(city);
 		for(int i = 0; i<usersList.size();i++) {
@@ -53,7 +51,7 @@ public class RecommendationController {
 			menuList.add(menuService.getByOrder(ordersIdList.get(i)));
 			
 		}
-		return menuList;
+		return (HashSet<Menu>) menuList;
 		
 	}
 
