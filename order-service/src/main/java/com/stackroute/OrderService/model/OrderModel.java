@@ -14,13 +14,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 @Data
 public class OrderModel {
-	
+
 	@Id
 	private int orderId; //unique Id for each order
 
-	private int userId;	 //obtain from userservice mongodb
+	private String userEmailId;
 
-	private int payment; //total price for items
+	@Setter(AccessLevel.NONE)
+	private int totalPrice = 0; //total price for items, generates logically
 
 	@Setter(AccessLevel.NONE)
 	private LocalDateTime time; //time at which user ordered
@@ -30,18 +31,26 @@ public class OrderModel {
 
 
 	private List<Menu> itemsList; //list of items
-	
+
 	public OrderModel() {
 		super();
-		this.time=LocalDateTime.now();
-		this.orderScheduleTime=this.time.plusMinutes(30);		
+		this.time = LocalDateTime.now();
+		this.orderScheduleTime = this.time.plusMinutes(30);
+
 	}
 
-	public OrderModel(int orderId, @NonNull int userId, @NonNull int payment, List<Menu> itemsList) {
+	public OrderModel(int orderId, String userEmailId, List<Menu> itemsList) {
 		this.orderId = orderId;
-		this.userId = userId;
-		this.payment = payment;
+		this.userEmailId = userEmailId;
 		this.itemsList = itemsList;
 	}
 
+	public int getTotalPrice() {
+		int sum = 0;
+		for (Menu item : this.itemsList) {
+			sum = (int) (sum + item.itemCost*item.qty);
+		}
+		this.totalPrice = sum;
+		return this.totalPrice;
+	}
 }
