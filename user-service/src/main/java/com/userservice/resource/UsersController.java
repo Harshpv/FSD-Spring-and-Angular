@@ -14,23 +14,24 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UsersController {
 
     @Autowired
     private UserRepositoryService repositoryService;
 
     @PostMapping
-    public ResponseEntity<Users> addUser(@RequestBody Users user) {
+    public ResponseEntity<?> addUser(@RequestBody Users user) {
 
 //        return new ResponseEntity<Users>(repositoryService.addUser(user),HttpStatus.ACCEPTED);
         try {
 //            repositoryService.addUser(user);
 //            return new ResponseEntity<>(HttpStatus.CREATED);
-            return new ResponseEntity<Users>(repositoryService.addUser(user),HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(repositoryService.addUser(user),HttpStatus.ACCEPTED);
         } catch (UserAlreadyExistsException e) {
-            return new ResponseEntity("User Already exists", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("User Already exists", HttpStatus.CONFLICT);
         } catch (Exception e) {
-            return new ResponseEntity("User details already exists!!!", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("User details already exists!!!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
@@ -86,9 +87,5 @@ public class UsersController {
 
     }
 
-//    private void ResponseEntity(String string) {
-//        // TODO Auto-generated method stub
-//
-//    }
 
 }

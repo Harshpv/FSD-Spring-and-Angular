@@ -1,153 +1,140 @@
 package com.menuservice.Subscription.controller;
 
+import com.menuservice.Subscription.Model.SubscribedPlansModel;
+import com.menuservice.Subscription.Model.SubscriptionModel;
 import com.menuservice.Subscription.exception.SubscriptionAlreadyExistsException;
-import com.menuservice.Subscription.exception.SubscriptionNotFoundException;
-import com.menuservice.Subscription.model.Subscription;
-import com.menuservice.Subscription.service.SubscriptionServices;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.menuservice.Subscription.exception.SubscriptionNotExistsException;
+import com.menuservice.Subscription.service.SubscribedPlanService;
+import com.menuservice.Subscription.service.SubscriptionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable; 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody; 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-
-@Slf4j
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-
-@RequestMapping("/api/v1/Subscription") 
-
+@RequestMapping("/api/v2")
 public class SubscriptionController {
-	
-	//callig services
-private SubscriptionServices services;
 
-//calling subscriptionmodel class and creating object to use further 
-@Autowired
-public SubscriptionController(SubscriptionServices services) {
-	this.services = services;
-}
+    public SubscriptionService subscriptionService;
 
-//postmapping is used to post data into database
-@PostMapping
-public ResponseEntity<Object> addItemsToSubscription(@RequestBody Subscription subscription) {
-try {
-	services.addSubscription(subscription);
-	return new ResponseEntity<>("subscription added succesfully",HttpStatus.CREATED);
-} catch (SubscriptionAlreadyExistsException e) {
-
-	return new ResponseEntity<>("Subscription  already exists!!",HttpStatus.CONFLICT);
-} catch (Exception e) {
-	return new ResponseEntity<>("Subscription details already exists!!!", HttpStatus.INTERNAL_SERVER_ERROR);
-}
+    public SubscriptionModel subscriptionModel;
 
 
-}
+    public SubscribedPlansModel subscribedPlanModel;
 
-//Putmapping api used to update data which already exists in the mongo database. 
-	@PutMapping //("/{subscriptionId}")
-	public ResponseEntity<Object> saveOrUpdate(@RequestBody Subscription subscription) {
-		try {
+    public SubscribedPlanService subscribedPlanService;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //consists controller mappings for subscriptionplan
 
-			services.updateSubscription(subscription);
-			return new ResponseEntity<>("Update success!!", HttpStatus.OK);
+    public SubscriptionController(SubscriptionService subscriptionService,SubscribedPlanService subscribedPlanService) {
 
-		} catch (SubscriptionNotFoundException e) {
+        this.subscriptionService = subscriptionService;
+        this.subscribedPlanService=subscribedPlanService;
+    }
 
-			return new ResponseEntity<>("Subscription not found!!", HttpStatus.CONFLICT);
-		} catch (Exception e) {
-			return new ResponseEntity<>("Something went wrong we will be back soon !!",HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+    //Method for posting subscriptionplans
+    @PostMapping
+    public ResponseEntity<?> addSubscription(@RequestBody SubscriptionModel subscriptionModel){
 
+        try {
+            subscriptionService.addSubscription(subscriptionModel);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (SubscriptionAlreadyExistsException e) {
 
-	}
-	//Getmapping api used to fetch all the data  present in the mongo database. 
-		@GetMapping
-		public ResponseEntity<Object> getItems() {
-			try {
-				return ResponseEntity.ok(services.getItems());
-			} catch (SubscriptionNotFoundException e) {
-				return new ResponseEntity<Object>("Empty repository!!", HttpStatus.CONFLICT);
-			}
-		}
+            return new ResponseEntity<>("Subscriptiondetails already exists!!", HttpStatus.CONFLICT);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Subscriptiondetails already exists!!!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
-		//Getmapping  api with id used to fetch specific data with it's id, present in the mongo database.
-		@GetMapping("/{subscriptionId}")
-		public org.springframework.http.ResponseEntity<Object> getItemsById(@PathVariable String SubscriptionId) {
+    }
 
-			try {
+    //Method for updating subscriptionplans
+    @PutMapping
+    public ResponseEntity<?>  updateSubscriptionDetails(@RequestBody SubscriptionModel subscriptionModel){
 
-				return new ResponseEntity<Object>(services.getItemsById(SubscriptionId), HttpStatus.OK);
+        try {
 
-			} catch (SubscriptionNotFoundException e) {
+            subscriptionService.updateSubscriptionDetails(subscriptionModel);
+            return new ResponseEntity<>("Update success!!", HttpStatus.OK);
 
-				return new ResponseEntity<Object>("Subscription not found!!", HttpStatus.CONFLICT);
-			} catch (Exception e) {
+        } catch (SubscriptionNotExistsException e) {
 
-				return new ResponseEntity<Object>("Subscription not found!!", HttpStatus.INTERNAL_SERVER_ERROR);
-			}
+            return new ResponseEntity<>("Subscriptiondetails not found!!", HttpStatus.CONFLICT);
+        } catch (Exception e) {
+            return new ResponseEntity<>("Something went wrong we will be back soon !!",
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
-		}
+    }
 
-		//Deletemapping api with id used to delete specific data with it's id, present in the mongo database
-		@SuppressWarnings("unchecked")
-		@DeleteMapping("/{SubscriptionId}")
-		public ResponseEntity<?> deleteItem(@PathVariable String SubscriptionId) {
-			try {
-
-				services.deleteById(SubscriptionId);
-				return new ResponseEntity<>("Deleted successfully!!", HttpStatus.OK);
-
-			} catch (SubscriptionNotFoundException e) { 
-
-				
-
-				return new ResponseEntity<>("Deleted successfully", HttpStatus.OK);
-			} catch (Exception e) {
-
-				return new ResponseEntity<>("Something went wrong!!", HttpStatus.INTERNAL_SERVER_ERROR);
-
-			}
-
-		}
-		
-}
-
-	
-	
-//	
-//	return new ResponseEntity<>
-//("subscribed",
-//HttpStatus.INTERNAL_SERVER_ERROR); } }
+    //Method for deleting subscriptionplans
+    @GetMapping
+    public ResponseEntity<Object> getAllSubscriptionDetails(){
+        try {
+            return ResponseEntity.ok(subscriptionService.getAllSubscriptionDetails());
+        } catch (SubscriptionNotExistsException e) {
+            return new ResponseEntity<Object>("Empty repository!!", HttpStatus.CONFLICT);
+        }
+    }
 //
-//@GetMapping("/{subscriptionid"}) public ResponseEntity <model>
-//getsubscriptionByid(@PathVariable int subscriptionid) { try { return new
-//ResponseEntity<>(services.getSubscriptionByid(subscriptionid),
-//HttpStatus.ok); }catch (NotSubscribedException e) { return new
-//ResponseEntity("not subscribed!!", HttpStatus.CONFLICT); }catch (Exception e)
-//{ return new ResponseEntity("not subscribed!!",
-//HttpStatus.INTERNAL_SERVER_ERROR); }
+//    public getSubscriptionDetailsBtId(){
 //
+//    }
 //
+
 //
-//@DeleteMapping("/{SubscriptionId}") public void
-//deleteSubscription(@Pathvariablle int subscriptionid) { try {
-//this.subscriptionservices.deleteById(subscriptionid); }catch
-//(NotSubscribedException e) {
-//
-//}
-//
-//}
-//
-//
-//
-//
-//
-//}
-//
+    @DeleteMapping("/{subscriptionId}")
+    public ResponseEntity<?>  deleteSubscription(@PathVariable int subscriptionId){
+
+        try {
+
+            subscriptionService.deleteSubscription(subscriptionId);
+            return new ResponseEntity<>("Deleted successfully!!", HttpStatus.OK);
+
+        } catch (SubscriptionNotExistsException e) {
+
+
+
+            return new ResponseEntity<>("Delete unsuccessfull!!", HttpStatus.CONFLICT);
+        } catch (Exception e) {
+
+            return new ResponseEntity<>("Something went wrong!!", HttpStatus.INTERNAL_SERVER_ERROR);
+
+        }
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //this methods contais mappings for subscribedplans
+    @PostMapping("/addPlan")
+    public ResponseEntity<?> addSubscribedPlans(@RequestBody SubscribedPlansModel subscribedPlanModel){
+
+        try {
+            subscribedPlanService.addSubscribedPlans(subscribedPlanModel);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (SubscriptionAlreadyExistsException e) {
+
+            return new ResponseEntity<>("SubscriptionPlanDetails already exists!!", HttpStatus.CONFLICT);}
+//        } catch (Exception e) {
+//            return new ResponseEntity<>("Something went wrong!!!", HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+    }
+
+    @GetMapping("/{emailId}")
+    public ResponseEntity<Object> getSubscribedPlansByEmail(@PathVariable String emailId) {
+
+        try {
+
+            return new ResponseEntity<Object>(subscribedPlanService.getSubscribedPlansByEmail(emailId), HttpStatus.OK);
+
+        } catch (SubscriptionNotExistsException e) {
+
+            return new ResponseEntity<Object>("SubscriptionPlanDetails not found!!", HttpStatus.CONFLICT);
+        } catch (Exception e) {
+
+            return new ResponseEntity<Object>("Something went wrong !!", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+
+    }}

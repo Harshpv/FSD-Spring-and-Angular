@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+<<<<<<< HEAD
 import { MatFormField, matFormFieldAnimations } from '@angular/material/form-field';
 import { AuthServiceService } from './login/Service/auth-service.service';
 import { MatCommonModule } from '@angular/material/core';
@@ -18,11 +19,23 @@ import { MatCommonModule } from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { provideRoutes } from '@angular/router';
+=======
+import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
+import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
+
+>>>>>>> 65d5bb22656b3c9768134d7de5eca1f310d778eb
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+<<<<<<< HEAD
+=======
+    SubscriptionPlansComponent,
+    SubscribedPlanComponent,
+  //  FilterPipe,
+   
+>>>>>>> 65d5bb22656b3c9768134d7de5eca1f310d778eb
     
   ],
   imports: [
