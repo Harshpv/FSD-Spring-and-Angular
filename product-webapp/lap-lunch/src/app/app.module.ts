@@ -13,11 +13,21 @@ import { Allitems } from './pages/Items/allitems';
 //import { MenuComponentComponent } from './menu-component/menu-component.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { OrdersComponent } from './profile/orders/orders.component';
+import { SubscriptionComponent } from './profile/subscription/subscription.component';
+import { AddressComponent } from './profile/address/address.component';
+import { SettingsComponent } from './profile/settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    ProfileComponent,
+    OrdersComponent,
+    SubscriptionComponent,
+    AddressComponent,
+    SettingsComponent,
   //  FilterPipe,
    
     

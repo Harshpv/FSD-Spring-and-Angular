@@ -2,6 +2,7 @@ package com.recommendationservice.controller;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.recommendationservice.exceptions.UserNotFoundException;
-import com.recommendationservice.model.Menu;
 import com.recommendationservice.model.User;
 import com.recommendationservice.service.UserService;
 
 import com.recommendationservice.exceptions.UserAlreadyExistsException;
-
+@Slf4j
 @RestController
 @RequestMapping("/api/v1")
 public class UserController {
@@ -31,8 +31,10 @@ public class UserController {
 	@GetMapping
 	public ResponseEntity<Object> getAll() {
 		try {
+			log.info("All Users were retrieved");
 			return ResponseEntity.ok(userService.getAll());
 		} catch (UserNotFoundException e) {
+			log.error("No Users Found");
 			return new ResponseEntity<Object>("No User found was found in the database!", HttpStatus.CONFLICT);
 		}
 	}
@@ -54,10 +56,13 @@ public class UserController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> getById(@PathVariable Long id) {
 		try {
+			log.info("The requested user was fetched");
 			return new ResponseEntity<Object>(userService.findById(id), HttpStatus.OK);
 		} catch (UserNotFoundException e) {
+			log.error("The requested user could not be fetched");
 			return new ResponseEntity<Object>("The requested User could not be found.", HttpStatus.CONFLICT);
 		} catch (Exception e) {
+			log.error(e.getMessage());
 			return new ResponseEntity<Object>("Oops!Something went wrong !!", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -68,7 +73,7 @@ public class UserController {
 	}
 
 	@GetMapping("/city/{city}")
-	public List<Menu> suggestByCity(@PathVariable String city) {
+	public List<User> suggestByCity(@PathVariable String city) {
 		return userService.suggestByCity(city);
 
 	}
@@ -77,10 +82,13 @@ public class UserController {
 	public ResponseEntity<Object> updateUser(@RequestBody User user) {
 		try {
 			userService.updateUser(user);
+			log.info("User details updates successfully");
 			return new ResponseEntity<Object>("Updated Successfully", HttpStatus.OK);
 		} catch (UserNotFoundException e) {
+			log.error("User not found");
 			return new ResponseEntity<Object>("The requested User could not be found.", HttpStatus.CONFLICT);
 		} catch (Exception e) {
+			log.error(e.getMessage());
 			return new ResponseEntity<Object>("Oops!Something went wrong !!", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
