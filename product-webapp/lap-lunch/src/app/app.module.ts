@@ -11,14 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-<<<<<<< HEAD
+
+//profile components
 import { ProfileComponent } from './profile/profile.component';
-import { OrdersComponent } from './profile/orders/orders.component';
 import { SubscriptionComponent } from './profile/subscription/subscription.component';
 import { AddressComponent } from './profile/address/address.component';
-import { SettingsComponent } from './profile/settings/settings.component';
-=======
-<<<<<<< HEAD
+
 import { MatFormField, matFormFieldAnimations } from '@angular/material/form-field';
 import { AuthServiceService } from './login/Service/auth-service.service';
 import { MatCommonModule } from '@angular/material/core';
@@ -26,33 +24,27 @@ import { MatCommonModule } from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { provideRoutes } from '@angular/router';
-=======
+
 import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
 
->>>>>>> 65d5bb22656b3c9768134d7de5eca1f310d778eb
->>>>>>> 9c62fb28a782f595e0938e9f6326e871b231d827
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-<<<<<<< HEAD
+//profile components:
     ProfileComponent,
-    OrdersComponent,
     SubscriptionComponent,
     AddressComponent,
-    SettingsComponent,
-=======
-<<<<<<< HEAD
-=======
+
     SubscriptionPlansComponent,
     SubscribedPlanComponent,
->>>>>>> 9c62fb28a782f595e0938e9f6326e871b231d827
+
   //  FilterPipe,
-   
->>>>>>> 65d5bb22656b3c9768134d7de5eca1f310d778eb
-    
+
+
+
   ],
   imports: [
     BrowserModule,
