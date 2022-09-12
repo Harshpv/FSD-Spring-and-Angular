@@ -1,6 +1,8 @@
 import { ReturnStatement } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Allitems } from '../Items/allitems';
+import { Cart } from '../Items/cart.model';
+import { Menu } from '../Items/menu.model';
 import { ApiserviceService } from '../menuapiservice/apiservice.service';
 import { CartService } from '../menuapiservice/cart.service';
 
@@ -14,6 +16,7 @@ export class ProductComponent implements OnInit {
   public itemList :any;
   searchKey : string="";
   public filterCategory: any;
+  message:any;
   constructor(private api: ApiserviceService, private cartService: CartService) { }
 
   ngOnInit(): void {
@@ -39,10 +42,37 @@ export class ProductComponent implements OnInit {
     })
   }
 
-  addItemsToCart(item:any){
+  tempdata : Cart={
+    userEmailId : "karthiga@gmail.com",
+    items: []
+    
+  }
+  tempItem: Menu = { 
+    itemId: 1,
+    itemName: "",
+    itemDescription: " ",
+    category: "",
+    itemCost:0,
+    itemImage: "",
 
-    this.cartService.addItemtocart(item);
-
+    quantity : 1,
+  };
+  public additems(menuitem:Allitems){
+    // this.cart.menu.push(newitem)
+    this.tempItem.itemId = menuitem.itemId, 
+    this.tempItem.itemName =menuitem.itemName,
+    this.tempItem.itemDescription =menuitem.itemDescription,
+    this.tempItem.itemCost=menuitem.itemCost,
+    this.tempItem.itemImage=menuitem.itemImage,
+    this.tempItem.category =menuitem.category,
+    this.tempItem.quantity = 1
+ 
+    this.tempdata.items.push(this.tempItem)
+   
+    this.api.updateItems(this.tempdata).subscribe((data) => this.message=data)
+    console.log(this.message);
+    
+    
   }
 
   // ngOnInit(): void {
