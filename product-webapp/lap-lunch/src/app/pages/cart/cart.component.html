@@ -1,4 +1,4 @@
-<app-header></app-header>
+
 
 
 <ng-container *ngIf= "product.length !=0">
@@ -39,7 +39,7 @@
                             <td><button (click)= "emptycart()" class="btn btn-danger">Empty Full Cart</button></td>
                             <td><button routerLink="/menu" class="btn btn-primary">Add More </button></td>
                             <td><button class="btn btn-success">Checkout</button></td>
-                            <td><strong>You Pay : Rs.{{totalAmount}}.00</strong></td>
+                            <td><strong>You Pay Rs.{{totalAmount}}</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -63,4 +63,4 @@
     </div>
 </ng-container>
 
-<app-footer></app-footer>
+

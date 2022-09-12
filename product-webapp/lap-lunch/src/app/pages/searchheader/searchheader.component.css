@@ -1,26 +1,29 @@
 .form-control{
     box-sizing:content-box;
     box-shadow: 25px;
-    width: 600px;
-    margin-left: 20px;
-    top: 100px;
+    width: 500px;
+    
+    top: 50px;
     margin-top: 50px;
-    margin-left: 400px;
+    margin-left: 470px;
+    display: flexbox;
 
 }
 .search-icon{
     position: absolute;
     z-index: 10;
-    left: 65%;
+    left: 62%;
     margin-top:-25px;
     color: black;
-    margin-left: 40px;
+    /* margin-left: 20px; */
 }
 button{
-    position: absolute;
+     position: absolute;
+    display: flex;
     margin-top: -45px;
-    left: 80%;
-    
+    left: 67%;
+    background-color: rgb(220, 125, 17);
     border-radius: 5px;
+   
     
 }

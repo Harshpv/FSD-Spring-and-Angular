@@ -13,6 +13,9 @@ export class CartService {
   getItems(){
    return this.menuList.asObservable();
   }
+  getItemsByName(){
+    return this.menuList.asObservable();
+  }
 
   setItems(newitem : any){
     this.cartList.push(...newitem);

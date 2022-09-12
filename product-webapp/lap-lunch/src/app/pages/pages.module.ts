@@ -8,6 +8,7 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { AppRoutingModule } from '../app-routing.module';
 import { filter } from 'rxjs';
 import { FilterPipe } from './shared/filter.pipe';
+import { TimetableComponent } from './timetable/timetable.component';
 
 //import { CommonComponentsModule } from '../common-components/common-components.module';
 
@@ -17,7 +18,8 @@ import { FilterPipe } from './shared/filter.pipe';
     CartComponent,
     ProductComponent,
     SearchheaderComponent,
-    FilterPipe
+    FilterPipe,
+    TimetableComponent
   ],
   imports: [
     CommonModule,

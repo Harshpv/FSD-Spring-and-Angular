@@ -20,5 +20,8 @@ export class ApiserviceService {
   getItem(): Observable<Allitems[]>{
     return this.http.get<Allitems[]>("http://localhost:8080/api/v1/getall");
   }
+
+  
+
   }    
   
