@@ -13,15 +13,12 @@ import java.util.List;
 @Document(collection = "Users")
 public class Users {
 
-
-
-
     @Id
     private String userEmailId;
+    private String mobileNum;
     private String firstName;
     private String lastName;
     private String password;
     private List<Address> address;
-
 
 }
