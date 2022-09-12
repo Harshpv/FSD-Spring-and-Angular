@@ -103,9 +103,22 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "lap-lunch"
+  "defaultProject": "lap-lunch",
+  "cli": {
+    "analytics": "5ae7a86a-6847-4151-a466-33b7da10562d",
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

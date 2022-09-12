@@ -1,0 +1,60 @@
+<!-- <app-header></app-header> -->
+    <!-- <div class="form-group">
+        <input type="text" class="form-control"  placeholder="search for items">
+        <span class="fas fa-search search-icon"></span>
+    </div>
+    
+    <button class="btn btn-primary">
+        <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
+        <div style="font-size: 10px;" class="badge bg-danger">0</div>
+    </button> -->
+
+<div class="card-top container"> 
+    <h4>Categories</h4>
+    <div class="container d-flex">
+        <div class="All Items">
+            <a (click)= "filter('')">
+                <img style="width: 100px; height: 100px;" src="assets/Allitems.jpg" alt="allitems">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p>All Items</p>
+                
+            </a>
+        </div>
+        
+        <div class="Veg Items"></div>
+            <a (click)= "filter('veg')">
+                <img style="width: 100px; height: 100px;" src="assets/vegitems.jpg"  alt="Veg Items">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p>VegItems</p>
+            </a>
+        <div class="Non-Veg Items">
+            <a (click)= "filter('non veg')">
+               
+             <img style="width: 100px; height: 100px;" src="assets/nonveg.jpg"  alt="Non-Veg Items">
+             <p>NonVegItems</p>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor= "let item of filterCategory | filter:searchKey:'itemName'">
+        <div class="card col-md-3">
+            <img src={{item.itemImage}} alt="Dish Image">
+            <h5>{{item.itemName}}</h5>
+            <p>{{item.itemDescription}}</p> 
+            <p><strong>Price:</strong>{{item.itemCost}}</p>
+            <p>{{item.category}}</p>
+            
+            <button (click)=addItemsToCart(item) >Add +</button>
+        </div>
+    </ng-container> 
+    </div>
+</div>  
+
+
+<app-footer></app-footer>
+<!-- | filter: 'searchKey' :'itemName'  -->  

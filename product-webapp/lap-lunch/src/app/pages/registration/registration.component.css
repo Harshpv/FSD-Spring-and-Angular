@@ -1,0 +1,128 @@
+/* body {
+    margin-top: 100px;
+    padding-top:50px;
+}
+fieldset {
+    border: thin solid #ccc; 
+    border-radius: 4px;
+    padding: 20px;
+    padding-left: 40px;
+    background: #fbfbfb;
+}
+legend {
+   color: #678;
+}
+.form-control {
+    width: 95%;
+}
+label small {
+    color: #678 !important;
+}
+ */
+
+
+
+/* body{
+    background: #fff;
+    font-family: 'PT Sans', sans-serif;
+  }
+  h2{
+    padding-top: 1.5rem;
+  }
+  a{
+    color: #333;
+  }
+  a:hover{
+    color: #da5767;
+    text-decoration: none;
+  }
+  .card{
+    border: 0.40rem solid #f8f9fa;
+    top: 10%;
+  }
+  .form-control{
+    background-color: #f8f9fa;
+    padding: 20px;
+    padding: 25px 15px;
+    margin-bottom: 1.3rem;
+  }
+  
+  .form-control:focus {
+  
+      color: #000000;
+      background-color: #ffffff;
+      border: 3px solid #da5767;
+      outline: 0;
+      box-shadow: none;
+  
+  }
+  
+  .btn{
+    padding: 0.6rem 1.2rem;
+    background: #da5767;
+    border: 2px solid #da5767;
+  }
+  .btn-primary:hover {
+  
+      
+      background-color: #df8c96;
+      border-color: #df8c96;
+    transition: .3s;
+  
+  } */
+
+
+  .container{
+    background-color: rgb(242, 237, 231);
+    padding: 50px;
+    /* background-image: url('https://www.istockphoto.com/photos/nature'); */
+    /* background-image: url('https://www.heartandstroke.ca/healthy-living/healthy-eating/healthy-eating-basics'); */
+    border-radius: 10px;
+    padding-bottom: 60px;
+  }
+  body,
+  html {
+    height: 100%;
+  }
+  h1{
+    font-size: 2.0em;
+  }
+  .bg{
+    padding-top: 80px;
+    background-image: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
+    /* background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).webp"); */
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  h1,h4{
+    text-align: center;
+  }
+  .input-icons i {
+    position: absolute;
+  }
+  .input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .icon {
+    padding: 15px;
+    min-width: 10px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+  .form-control{
+     background-image: linear-gradient(rgb(198, 198, 238));
+  }
+  .bt{
+    text-align: center;
+  }
+  .btn{
+    width: 100%;
+  }

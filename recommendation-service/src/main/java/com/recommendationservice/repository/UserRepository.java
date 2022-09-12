@@ -12,9 +12,11 @@ public interface UserRepository extends Neo4jRepository<User, Long>{
 	@Query("MATCH (n:User) RETURN (n)")
 	List<User> getAllUsers();
 	
-	User findByName(String name);
+	@Query("MATCH (n:User{id:$id}) RETURN (n)")
+	User findByUserId(Long id);
 	
-//	@Query("")
-//	void userOrdered();
+	@Query("MATCH (u:User)-[rel:ADDRESS]->(a:Address{city:$city}) RETURN(u)")
+	List<User> suggestByCity(String city);
 	
+
 }
