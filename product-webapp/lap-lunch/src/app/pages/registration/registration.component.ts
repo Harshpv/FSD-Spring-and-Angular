@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { Address } from './address.model';
 import { User } from './user.model';
 import { UserService } from './user.service';
+import { Router } from '@angular/router';
+import { CustomvalidationService } from './customvalidation.service';
 
 @Component({
   selector: 'app-registration',
@@ -11,27 +13,48 @@ import { UserService } from './user.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  address : Address = new Address(0,'','','','',0)
-  user : User = new User('','','','',[this.address])
-  
 
-  constructor(private service : UserService) { }
+  regForm! : FormGroup;
+
+  addrss : Address = new Address();
+
+  constructor(private service : UserService, private router: Router, private builder: FormBuilder, private customValidator : CustomvalidationService) { }
   message:any;
   ngOnInit(): void {
+    this.regForm = this.builder.group({
+      userEmailId : ['', [Validators.required, Validators.email]],
+      firstName : ['', Validators.required],
+      lastName : ['', Validators.required],
+      password : ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
+      confirmPassword: ['', [Validators.required]],
+      address : [[this.addrss]]
+    },
+
+    {
+      validator: this.customValidator.MatchPassword('password', 'confirmPassword'),
+    }
+    );
   }
-  // registrationForm = new FormGroup({
-  //   userEmailId : new FormControl(''),
-  //   firstName : new FormControl(),
-  //   lastName : new FormControl,
-  //   password : new FormControl
-  // })
-  // addressModel = new address(12, "1-2/3", "2nd line", "Guntur", "Andhra Pradesh", 273818)
-  // userModel = new User("abhishek@gmail.com", "Abhishek", "Pasumarthi", "password", [this.addressModel ])
+  submitted:boolean = false;
+  get f() { return this.regForm.controls; }
+ 
   
+ 
+ 
+  onSubmit(){
+    this.submitted = true;
+    if (this.regForm.valid) {
+      alert('Form Submitted succesfully!!!');
+      console.table(this.regForm.value);
+      this.registerNow();
+    } 
+  }
   
+
   public registerNow(){
-    this.service.addUser(this.user).subscribe((data) => this.message=data)
+    this.service.addUser(this.regForm.value).subscribe((data) => this.message=data)
     console.log(this.message);
+    this.router.navigateByUrl('/menu')
     
   }
 
