@@ -3,18 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 // import { IonInput } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
-
-
-
-
-
-
-=======
 import { CommonComponentsModule } from './common-components/common-components.module';
 import { PagesModule } from './pages/pages.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -39,22 +27,14 @@ import { MatCommonModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { provideRoutes } from '@angular/router';
-
+import { SearchheaderComponent } from './pages/searchheader/searchheader.component';
 import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
->>>>>>> 54245f88de65e47be5d441b26d1ee88de21c7db8
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
-    
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-
-=======
     LoginComponent,
     //profile components:
     ProfileComponent,
@@ -73,6 +53,7 @@ import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.compo
     HttpClientModule,
     BrowserAnimationsModule,
     CommonComponentsModule,
+    // SearchheaderComponent,
     PagesModule,
     ReactiveFormsModule,
     FormsModule,
@@ -80,8 +61,8 @@ import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.compo
     HttpClientModule,
     MatCommonModule,
     MatCardModule,
+    MatInputModule,
     // AuthServiceService
->>>>>>> 54245f88de65e47be5d441b26d1ee88de21c7db8
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
@@ -89,9 +70,4 @@ import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.compo
   ],
   bootstrap: [AppComponent],
 })
-<<<<<<< HEAD
-export class AppModule { }
-    
-=======
 export class AppModule {}
->>>>>>> 54245f88de65e47be5d441b26d1ee88de21c7db8
