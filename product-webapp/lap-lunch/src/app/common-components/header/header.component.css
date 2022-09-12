@@ -157,3 +157,15 @@ a:hover {
       padding-right: 0;
   }
 }
+.input-icons i {
+  position: absolute;
+}
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.icon {
+  padding: 15px;
+  min-width: 10px;
+}

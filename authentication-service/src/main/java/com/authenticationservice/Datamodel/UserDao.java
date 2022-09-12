@@ -31,7 +31,4 @@ public class UserDao{
 //	public void setPassword(String password) {
 //		this.password = password;
 //	}
-
-
-	
 }

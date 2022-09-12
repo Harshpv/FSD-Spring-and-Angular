@@ -12,25 +12,33 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.2.0",
+    "@angular/cdk": "^13.2.0",
     "@angular/common": "~13.2.0",
     "@angular/compiler": "~13.2.0",
     "@angular/core": "~13.2.0",
     "@angular/forms": "~13.2.0",
-    "@angular/material": "^13.2.0",
+    "@angular/material": "^13.3.9",
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "@auth0/angular-jwt": "^5.0.2",
+    "angular-material": "^1.1.24",
+    "auth0-angular2": "^1.0.15",
+    "jwthelper": "^0.0.4",
     "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+<<<<<<< HEAD
+    "@angular-devkit/build-angular": "^13.3.9",
+=======
     "@angular-devkit/build-angular": "~13.2.5",
     "@angular-eslint/builder": "13.5.0",
     "@angular-eslint/eslint-plugin": "13.5.0",
     "@angular-eslint/eslint-plugin-template": "13.5.0",
     "@angular-eslint/schematics": "13.5.0",
     "@angular-eslint/template-parser": "13.5.0",
+>>>>>>> 65d5bb22656b3c9768134d7de5eca1f310d778eb
     "@angular/cli": "^13.2.0",
     "@angular/compiler-cli": "~13.2.0",
     "@types/jasmine": "~3.10.0",
@@ -44,6 +52,11 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "tslib": "^2.4.0",
     "typescript": "~4.5.2"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 65d5bb22656b3c9768134d7de5eca1f310d778eb
