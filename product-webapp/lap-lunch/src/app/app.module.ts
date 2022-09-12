@@ -27,9 +27,10 @@ import { MatCommonModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { provideRoutes } from '@angular/router';
-
+import { SearchheaderComponent } from './pages/searchheader/searchheader.component';
 import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.compo
     HttpClientModule,
     BrowserAnimationsModule,
     CommonComponentsModule,
+    // SearchheaderComponent,
     PagesModule,
     ReactiveFormsModule,
     FormsModule,
@@ -59,6 +61,7 @@ import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.compo
     HttpClientModule,
     MatCommonModule,
     MatCardModule,
+    MatInputModule,
     // AuthServiceService
   ],
   providers: [

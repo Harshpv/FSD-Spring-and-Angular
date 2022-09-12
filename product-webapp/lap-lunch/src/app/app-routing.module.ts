@@ -1,3 +1,4 @@
+import { RecommendationComponent } from './pages/recommendation/recommendation.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './common-components/header/header.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
 
   { path: 'subscriptionplan', component: SubscriptionPlansComponent }, // i have mentioned this lie
+  { path: 'recommendation', component: RecommendationComponent },
 ];
 
 @NgModule({
