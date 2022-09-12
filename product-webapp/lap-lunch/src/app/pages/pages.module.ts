@@ -7,13 +7,10 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { AppRoutingModule } from '../app-routing.module';
 import { filter } from 'rxjs';
 import { FilterPipe } from './shared/filter.pipe';
-<<<<<<< HEAD
 import { RegistrationComponent } from './registration/registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-=======
 import { RecommendationComponent } from './recommendation/recommendation.component';
->>>>>>> 2c483c9a7c9844d09ddacfed2034688de3dad146
 
 
 @NgModule({
@@ -23,12 +20,9 @@ import { RecommendationComponent } from './recommendation/recommendation.compone
     ProductComponent,
     SearchheaderComponent,
     FilterPipe,
-<<<<<<< HEAD
     RegistrationComponent,
     
-=======
     RecommendationComponent
->>>>>>> 2c483c9a7c9844d09ddacfed2034688de3dad146
   ],
   imports: [
     CommonModule,
