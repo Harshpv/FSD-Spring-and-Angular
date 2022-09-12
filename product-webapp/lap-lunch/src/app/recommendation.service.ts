@@ -12,5 +12,9 @@ export class RecommendationService {
     return this.http.get(url);
   }
 
+  getDataByCity(city:any){
+    let url="http://localhost:8282/api/v4/city/"+city;
+    return this.http.get(url);
+  }
 
 }

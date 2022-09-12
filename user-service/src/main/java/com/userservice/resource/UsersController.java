@@ -20,7 +20,7 @@ public class UsersController {
     @Autowired
     private UserRepositoryService repositoryService;
 
-    @PostMapping
+    @PostMapping("/addUser") //change
     public ResponseEntity<?> addUser(@RequestBody Users user) {
 
 //        return new ResponseEntity<Users>(repositoryService.addUser(user),HttpStatus.ACCEPTED);
@@ -36,7 +36,7 @@ public class UsersController {
 
     }
 
-    @GetMapping
+    @GetMapping("/getUsers") //change
     public ResponseEntity<List<Users>> getUsers() {
         try {
             return ResponseEntity.ok(repositoryService.getUsers());

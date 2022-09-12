@@ -20,7 +20,11 @@ public class PaymentModel {
 
     private int orderId;
 
+    //to be added userEmailId
+
     private float totalPrice;
+
+    //to be added status="initiated"
 
     private String razorpayOrderId="ToBeGenerated";
 

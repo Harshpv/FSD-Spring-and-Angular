@@ -8,6 +8,7 @@ import com.stackroute.OrderService.Respository.OrderRepository;
 import com.stackroute.OrderService.model.OrderModel;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -61,5 +62,19 @@ public class OrderService {
 			throw new OrderNotFoundException();
 		}
 		orderRepository.save(orderModel);
+	}
+
+	public List<OrderModel> getOrdersByUserEmail(String userEmailId) throws OrderNotFoundException{
+		List<OrderModel> allOrders=this.orderRepository.findAll();
+		List<OrderModel> userOrders = new ArrayList<OrderModel>();
+		for(OrderModel or:allOrders){
+			if(or.getUserEmailId().equals(userEmailId)){
+				userOrders.add(or);
+			}
+		}
+		if(userOrders.isEmpty()){
+			throw new OrderNotFoundException();
+		}
+		return userOrders;
 	}
 }
