@@ -91,14 +91,14 @@
 /* Carousel */
 
 
-.carousel-caption {
+/* .carousel-caption {
     background-color: rgb(0 0 0 / 46%);
     text-align: left;
     padding: 25px;
     border-radius: 10px;
     margin-top: auto;
     margin-bottom: auto;
-}
+} */
 /* ol.carousel-indicators {
     display: block;
     left: auto;
@@ -127,26 +127,27 @@
     top: 30%;
     left: 50%;
     width:1000px;
+    height:fit-content;
     transform: translate(-50%, -50%);
     border-radius: 10px;
     text-align: center;
 
   }
 
-  .carousel-header-font{
+  /* .carousel-header-font{
     font-size: 30px;
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color:red;
     background-color:yellow;
-  }
+  } */
 
   .h1title{
     font-family:'Courier New', Courier, monospace;
-	font-size: 100px;
-	margin-bottom: 30px;
+	  font-size: 70px;
     color:#e1e1e3;
     background-color: rgb(0 0 0 / 46%);
-    font-weight: 500;
+    font-weight: 300;
+    line-height: 50px; 
   }
 
   .h3title{
@@ -169,6 +170,7 @@
   min-width:500px;
   width:auto;
   border-radius: 10px;
+  margin-top: 100px;
 }
 
 .dropdown {
