@@ -29,7 +29,6 @@ const routes: Routes = [
 
   { path: 'subscriptionplan', component: SubscriptionPlansComponent }, // i have mentioned this lie
   { path: 'recommendation', component: RecommendationComponent },
-
 ];
 
 @NgModule({

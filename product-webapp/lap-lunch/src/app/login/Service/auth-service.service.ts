@@ -21,7 +21,7 @@ export class AuthServiceService {
 logout(){
   sessionStorage.removeItem('emailId');
   sessionStorage.removeItem('token');
-  this.router.navigateByUrl('');
+  this.router.navigateByUrl('/menu');
 }
 // isloggedIn() {
 //   const token = sessionStorage.getItem('token');
