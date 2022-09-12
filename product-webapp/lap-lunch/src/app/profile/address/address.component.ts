@@ -15,6 +15,7 @@ export class AddressComponent implements OnInit {
   userData!: userModel;
   addressList!: addressModel[];
   newAddress: addressModel = new addressModel();
+  indexVal!: number;
 
   constructor(
     private formbuilder: FormBuilder,
@@ -23,7 +24,7 @@ export class AddressComponent implements OnInit {
 
   ngOnInit(): void {
     this.addressformValue = this.formbuilder.group({
-      houseId: [],
+      addressType: [],
       houseNum: [],
       street: [],
       city: [],
@@ -33,7 +34,7 @@ export class AddressComponent implements OnInit {
     this.userformValue = this.formbuilder.group({
       firstName: [],
       lastName: [],
-      emailId: [],
+      mobileNum: [],
     });
     this.getAllByUserEmailId();
   }
@@ -44,8 +45,8 @@ export class AddressComponent implements OnInit {
       this.addressList = this.userData.address;
     });
   }
-  deleteOneAddressForUser(houseId: number) {
-    this.addressList.splice(this.findAddressIndex(houseId), 1);
+  deleteOneAddressForUser(index: number) {
+    this.addressList.splice(index, 1);
     this.userData.address = this.addressList;
     this.api
       .updateAddressById(this.userEmailId, this.userData)
@@ -55,34 +56,38 @@ export class AddressComponent implements OnInit {
       });
   }
 
-  editButtonClickEvent(houseId: number) {
-    const b = this.findAddressIndex(houseId);
-    this.addressformValue.controls['houseId'].setValue(houseId);
-
+  editButtonClickEvent(index: number) {
+    this.indexVal = index;
+    this.addressformValue.controls['addressType'].setValue(
+      this.addressList[index].addressType
+    );
     this.addressformValue.controls['houseNum'].setValue(
-      this.addressList[b].houseNum
+      this.addressList[index].houseNum
     );
     this.addressformValue.controls['street'].setValue(
-      this.addressList[b].street
+      this.addressList[index].street
     );
-    this.addressformValue.controls['city'].setValue(this.addressList[b].city);
-    this.addressformValue.controls['state'].setValue(this.addressList[b].state);
+    this.addressformValue.controls['city'].setValue(
+      this.addressList[index].city
+    );
+    this.addressformValue.controls['state'].setValue(
+      this.addressList[index].state
+    );
     this.addressformValue.controls['pincode'].setValue(
-      this.addressList[b].pincode
+      this.addressList[index].pincode
     );
   }
 
   updateOneAddressForUser() {
-    this.newAddress.houseId = this.addressformValue.value.houseId;
+    this.newAddress.addressType = this.addressformValue.value.addressType;
     this.newAddress.houseNum = this.addressformValue.value.houseNum;
     this.newAddress.street = this.addressformValue.value.street;
     this.newAddress.city = this.addressformValue.value.city;
     this.newAddress.state = this.addressformValue.value.state;
     this.newAddress.pincode = this.addressformValue.value.pincode;
-    const a = this.findAddressIndex(this.newAddress.houseId);
     //console.log(this.newAddress);
-    this.addressList.splice(a, 1);
-    this.addressList.splice(a, 0, this.newAddress);
+    this.addressList.splice(this.indexVal, 1);
+    this.addressList.splice(this.indexVal, 0, this.newAddress);
     //console.log(this.addressList);
     this.userData.address = this.addressList;
     this.api
@@ -95,7 +100,7 @@ export class AddressComponent implements OnInit {
     this.newAddress = new addressModel();
   }
   AddOneAddressForUser() {
-    this.newAddress.houseId = this.addressformValue.value.houseId;
+    this.newAddress.addressType = this.addressformValue.value.addressType;
     this.newAddress.houseNum = this.addressformValue.value.houseNum;
     this.newAddress.street = this.addressformValue.value.street;
     this.newAddress.city = this.addressformValue.value.city;
@@ -113,15 +118,15 @@ export class AddressComponent implements OnInit {
     this.newAddress = new addressModel();
   }
 
-  findAddressIndex(houseId: number): number {
-    let i = 0;
-    for (i = 0; i < this.addressList.length; i++) {
-      if (this.addressList[i].houseId == houseId) {
-        break;
-      }
-    }
-    return i;
-  }
+  // findAddressIndex(houseId: number): number {
+  //   let i = 0;
+  //   for (i = 0; i < this.addressList.length; i++) {
+  //     if (this.addressList[i].houseId == houseId) {
+  //       break;
+  //     }
+  //   }
+  //   return i;
+  // }
   closeButtonAddressPopup() {
     this.addressformValue.reset();
   }
@@ -129,11 +134,11 @@ export class AddressComponent implements OnInit {
   editButtonProfile() {
     this.userformValue.controls['firstName'].setValue(this.userData.firstName);
     this.userformValue.controls['lastName'].setValue(this.userData.lastName);
-    this.userformValue.controls['emailId'].setValue(this.userEmailId);
+    this.userformValue.controls['mobileNum'].setValue(this.userData.mobileNum);
   }
 
   updateUserDetails() {
-    this.userData.userEmailId = this.userformValue.value.emailId;
+    this.userData.mobileNum = this.userformValue.value.mobileNum;
     this.userData.firstName = this.userformValue.value.firstName;
     this.userData.lastName = this.userformValue.value.lastName;
     this.api

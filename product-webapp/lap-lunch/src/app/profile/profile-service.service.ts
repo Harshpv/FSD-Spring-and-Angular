@@ -7,11 +7,13 @@ import { map } from 'rxjs';
 })
 export class ProfileServiceService {
   constructor(private http: HttpClient) {}
-  getOrders() {
-    return this.http.get<any>('http://localhost:8081/api/v1/getOrders').pipe(
-      map((res: any) => {
-        return res;
-      })
-    );
+  getOrdersByemailId(userEmailId: string) {
+    return this.http
+      .get<any>('http://localhost:8081/api/v1/getOrders/' + userEmailId)
+      .pipe(
+        map((res: any) => {
+          return res;
+        })
+      );
   }
 }

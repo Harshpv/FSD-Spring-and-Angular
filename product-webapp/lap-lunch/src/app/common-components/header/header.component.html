@@ -1,11 +1,10 @@
-
-    <!-- <mat-toolbar color="accent"> -->
-      <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/">
+<!-- <mat-toolbar color="accent"> -->
+<!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" routerLink="/">
         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
 
       </button> -->
-      <!-- <span>LapLunch</span> -->
-      <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<!-- <span>LapLunch</span> -->
+<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <button mat-raised-button color="primary" routerLink="/showTask">
         Show Tasks
       </button>
@@ -13,73 +12,33 @@
       <button mat-raised-button color="primary" routerLink="/update">
         Update Tasks
       </button> -->
-      <!-- <span class="example-spacer"></span>
+<!-- <span class="example-spacer"></span>
       <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>favorite</mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
         <mat-icon>share</mat-icon>
       </button> -->
-    <!-- </mat-toolbar> -->
+<!-- </mat-toolbar> -->
 
- <!-- <div class="topnav">
+<!-- <div class="topnav">
   <a class="active" href="#home">Home</a>
   <a href="#about">About</a>
   <a href="#contact">Contact</a>
   <input type="text" placeholder="Search.."> 
 </div>  -->
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="header.component.css">
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-    crossorigin="anonymous"></script>
-    <script>
-    $(function() {
-    $(".toggle").on("click", function() {
-        if ($(".item").hasClass("active")) {
-            $(".item").removeClass("active");
-        } else {
-            $(".item").addClass("active");
-        }
-    });
-});
-    </script>
-</head>
-<body>
-    <nav>
-        <ul class="menu">
-            <li class="logo"><a href="#">Lap-Lunch</a></li>
-            <li class="item"><a href="#">Home</a></li>
-            <li class="item"><a href="/menu">Menu
-              
-            </a></li>
-            <li class="item"><a href="#">Services</a></li>
-<<<<<<< HEAD
 
-            <li class="item button">
-              <a *ngIf="!authService.isloggedIn()" routerLink="./login">Log In</a>
-              <a *ngIf="authService.isloggedIn()" (click)="authService.logout()" routerLink="./menu">Log out</a>
-            </li>
-            <li class="item button secondary">
-              <a *ngIf="!authService.isloggedIn()" href="#">Sign Up</a>
-              <a *ngIf="authService.isloggedIn()" href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
-            </li>
-=======
-            
-            <li class="item button"><a href="#">Log In</a></li>
-            <li class="item button secondary"><a href="/registration">Sign Up</a></li>
->>>>>>> 65d5bb22656b3c9768134d7de5eca1f310d778eb
-            <li class="toggle"><span class="bars"></span></li>
-        </ul>
-    </nav>
-   
-</body>
-</html>
-  
-  
+<nav>
+  <ul class="menu">
+    <li class="logo"><a href="#">Lap-Lunch</a></li>
+    <li class="item"><a href="#">Home</a></li>
+    <li class="item"><a href="/menu">Menu </a></li>
+    <li class="item"><a href="#">Services</a></li>
+
+    <li class="item button"><a href="#">Log In</a></li>
+    <li class="item button secondary">
+      <a href="/registration">Sign Up</a>
+    </li>
+    <li class="toggle"><span class="bars"></span></li>
+  </ul>
+</nav>
