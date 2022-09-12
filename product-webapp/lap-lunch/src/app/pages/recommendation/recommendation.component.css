@@ -1,4 +1,12 @@
 
+#header{
+  position:relative;
+  width: 100%;
+  
+  
+}
+
+
 .form-control{
     box-sizing:content-box;
     box-shadow: 25px;
@@ -71,142 +79,14 @@
 
 .card button{
     box-sizing: 10px;
-    border-color: green;
+    border-color: rgb(0 0 0 / 46%);
     box-shadow: 5px;
     border-radius: .5rem;
     margin-left: 100px;
 }
 
 /* For Recommendation cards */
-body
-{
-  background-color:#f2f2f2;
-  font-family: 'RobotoDraft', 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
 
-*
-{
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-h5
-{
-  margin:0px;
-  font-size:1.4em;
-  font-weight:700;
-}
-
-p
-{
-  font-size:12px;
-}
-
-.center
-{
-  height:100vh;
-  width:100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* End Non-Essential  */
-
-.property-card
-{
-  height:18em;
-  width:14em;
-  display:-webkit-box;
-  display:-ms-flexbox;
-  display:flex;
-  -webkit-box-orient:vertical;
-  -webkit-box-direction:normal;
-  -ms-flex-direction:column;
-  flex-direction:column;
-  position:relative;
-  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  border-radius:16px;
-  overflow:hidden;
-  /* -webkit-box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff; */
-  box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
-  margin-left: 2%;
-}
-/* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
-
-/* Top Half of card, image. */
-
-.property-image
-{
-  height:6em;
-  width:14em;
-  padding:1em 2em;
-  position:Absolute;
-  top:0px;
-  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  background-image:url('https://cdn.photographylife.com/wp-content/uploads/2017/01/What-is-landscape-photography.jpg');
-  background-size:cover;
-  background-repeat:no-repeat;
-}
-
-/* Bottom Card Section */
-
-.property-description
-{
-  background-color: #FAFAFC;
-  height:12em;
-  width:14em;
-  position:absolute;
-  bottom:0em;
-  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  padding: 0.5em 1em;
-  text-align:center;
-}
-
-/* Social Icons */
-
-.property-social-icons
-{
-  width:1em;
-  height:1em;
-  background-color:black;
-  position:absolute;
-  bottom:1em;
-  left:1em;
-  -webkit-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-/* Property Cards Hover States */
-
-.property-card:hover .property-description
-{
-  height:0em;
-  padding:10px 1em;
-}
-.property-card:hover .property-image
-{
-  height:18em;
-}
-
-.property-card:hover .property-social-icons
-{
-  background-color:white;
-}
-
-.property-card:hover .property-social-icons:hover
-{
-  background-color:blue;
-  cursor:pointer;
-}
 
 /* Carousel */
 
@@ -219,7 +99,7 @@ p
     margin-top: auto;
     margin-bottom: auto;
 }
-ol.carousel-indicators {
+/* ol.carousel-indicators {
     display: block;
     left: auto;
     bottom: 50px;
@@ -229,7 +109,7 @@ ol.carousel-indicators {
     height: 5px;
     background-color: #ffeb3b;
     opacity: .6;
-}
+} */
 .carousel-inner {
     width:  100%;
     height:min-content;
@@ -244,9 +124,9 @@ ol.carousel-indicators {
 
 .centered {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
-    width: 1050px;
+    width:1000px;
     transform: translate(-50%, -50%);
     border-radius: 10px;
     text-align: center;
@@ -275,3 +155,67 @@ ol.carousel-indicators {
     text-align: center;
     background-color: rgb(0 0 0 / 46%);
   }
+
+  /* Dropdown Menu */
+ 
+
+  .dropbtn {
+  background-color: rgb(0 0 0 / 46%);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  min-width:500px;
+  width:auto;
+  border-radius: 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:bisque;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width:500px;
+  border-radius: 10px;
+
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 10px;
+
+}
+
+.dropdown-content a:hover {background-color: rgb(0 0 0 / 46%)}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: rgb(0 0 0 / 46%);
+}
+
+#recCard:hover{
+  /* background-color: #4CAF50; */
+  border-color: black;
+}
+
+/*  */
+
+
+
+
+/*  */
