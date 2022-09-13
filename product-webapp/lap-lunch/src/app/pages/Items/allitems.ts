@@ -3,7 +3,7 @@ export class Allitems {
    itemName: String | undefined;
    itemDescription: String | undefined;
    category: String | undefined;
-   itemCost: number|undefined;
+   itemCost!: number;
    itemImage: String | undefined;
 
 }

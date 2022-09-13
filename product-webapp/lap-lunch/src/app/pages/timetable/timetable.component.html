@@ -1,0 +1,191 @@
+  
+  <dialog id="m" >
+    <h2>Add items for monday!!</h2>
+    
+      
+    <div class="container">
+      <div class="card-table">
+          <div class="cart-product">
+              <table class="table table-responsive">
+                  <thead>
+                      <tr>
+                          <th>Sr.No</th>
+                          <th>Item Name</th>
+                          <th>Item Image</th>
+                          <th>Item Description</th>
+                          <th>Item Category</th>
+                          <th>Item Price</th>
+                          
+                          <th>Total</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+
+                      <tr *ngFor = "let item of ListofItems; let i = index">
+                          <td>{{i+1}}</td>
+                          <td>{{item.itemName}}</td>
+                          <td><img style="width: 120px;" src= {{item.itemImage}} alt=""></td>
+                          <td style="width: 25%;">{{item.itemDescription}}</td>
+                          <td style="width: 25%;">{{item.category}}</td>
+                          <th style="width: 12%;">{{item.itemCost}}</th>
+                          
+                          <td style="width: 12%;">{{item.itemCost}}</td>
+                          <td>
+                              <button  class="btn btn-success">Add</button>
+                          </td>
+                      </tr>
+                    
+                      
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+
+    <button onclick= "m.close()" class="btn btn-primary">close</button>
+  </dialog>
+  <div class="container">
+
+    
+    <div class="row justifiy-content-center">
+   
+        <div class="col-md-4">
+          <br><br>
+          <div class="card shadow" style="width: 18rem;">
+            <div class="inner">
+              <img src="assets/monday.jpg" class="card-img-top" alt="...">
+
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Monday</h5>
+                  <p class="card-text">Add items for monday</p>
+                 
+                  <!-- <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#m"> Add</button> -->
+                  
+                  
+   
+                  <button onclick= "m.show()" class="btn btn-primary">Add</button>
+                  <!-- <div class="popup">
+                    <div class="center">
+                      <button class="btn btn-primary" id="open">Add</button>
+                    </div>
+                  </div> -->
+              
+
+                </div>
+              </div>
+         </div>
+
+        </div>
+        <div class="col-md-4">
+          <br><br>
+          <div class="card shadow" style="width: 18rem;">
+            <div class="inner">
+              <img src="assets/tuesday.jpg" class="card-img-top" alt="...">
+
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Tuesday</h5>
+                  <p class="card-text">Add items for tuesday</p>
+                  <a href="#" class="btn btn-primary">Add</a>
+                </div>
+              </div>
+        </div>
+        </div>
+    
+        <div class="col-md-4">
+          <br><br>
+          <div class="card shadow" style="width: 18rem;">
+            <div class="inner">
+              <img src="assets/wedensday.jpg" class="card-img-top" alt="...">
+
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Wednesday</h5>
+                  <p class="card-text">Add items for wedensday</p>
+                  <a href="#" class="btn btn-primary">Add</a>
+                </div>
+              </div>
+        </div>
+      </div>
+        <div class="col-md-4">
+          <br><br>
+          <div class="card shadow" style="width: 18rem;">
+            <div class="inner">
+              <img src="assets/thursday.jpg" class="card-img-top" alt="...">
+
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Thursday</h5>
+                  <p class="card-text">Add items for thursdasy</p>
+                  <a href="#" class="btn btn-primary">Add</a>
+                </div>
+              </div>
+            </div>    
+        </div>
+    
+        <div class="col-md-4">
+          <br><br>
+          <div class="card shadow" style="width: 18rem;">
+            <div class="inner">
+              <img src="assets/friday.jpg" class="card-img-top" alt="...">
+
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Friday</h5>
+                  <p class="card-text">Add items for friday</p>
+                  <a href="#" class="btn btn-primary">Add</a>
+                </div>
+              </div>
+          </div>    
+        </div>
+       
+        <div class="col-md-4">
+          <br><br>
+          <div class="card shadow" style="width: 18rem;">
+            <div class="inner">
+              <img src="assets/saturday.jpg" class="card-img-top" alt="...">
+
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Saturday</h5>
+                  <p class="card-text">Add items for saturday</p>
+                  <a href="#" class="btn btn-primary">Add</a>
+                </div>
+              </div>
+        </div>    
+        </div>
+   
+        <div class="col-md-4">
+          <br><br>
+          <div class="card shadow" style="width: 18rem;">
+            <div class="inner">
+              <img src="assets/sunday.jpg" class="card-img-top" alt="...">
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Sunday</h5>
+                  <p class="card-text">Add items for sunday</p>
+                  <a href="#" class="btn btn-primary">Add</a>
+                </div>
+              </div>
+            </div>  
+        </div>
+
+    </div>
+    <br><br>
+
+ 
+
+ 
+
+
+
+

@@ -4,6 +4,7 @@ import com.userservice.Services.UserRepositoryService;
 import com.userservice.exceptiions.UserAlreadyExistsException;
 import com.userservice.exceptiions.UserNotFoundException;
 import com.userservice.model.Users;
+import com.userservice.model.UsersDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ public class UsersController {
 
     @Autowired
     private UserRepositoryService repositoryService;
+    private Users userDemo;
 
     @PostMapping("/addUser") //change
     public ResponseEntity<?> addUser(@RequestBody Users user) {
@@ -31,7 +33,7 @@ public class UsersController {
         } catch (UserAlreadyExistsException e) {
             return new ResponseEntity<>("User Already exists", HttpStatus.CONFLICT);
         } catch (Exception e) {
-            return new ResponseEntity<>("User details already exists!!!", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
@@ -75,7 +77,7 @@ public class UsersController {
     }
 
     @PutMapping("/updateUser/{email}")
-    public ResponseEntity<Object> updateUser(@RequestBody Users user) {
+    public ResponseEntity<Object> updateUser(@RequestBody UsersDTO user) {
         try {
             repositoryService.updateUser(user);
             return new ResponseEntity<>("User updated successfully!!!", HttpStatus.OK);

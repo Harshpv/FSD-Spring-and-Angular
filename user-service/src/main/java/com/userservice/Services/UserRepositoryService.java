@@ -3,9 +3,12 @@ package com.userservice.Services;
 import com.userservice.exceptiions.UserAlreadyExistsException;
 import com.userservice.exceptiions.UserNotFoundException;
 import com.userservice.model.Users;
+import com.userservice.model.UserModel;
+import com.userservice.model.UsersDTO;
 import com.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -13,14 +16,24 @@ import java.util.List;
 public class UserRepositoryService {
     @Autowired
     private UserRepository repository;
+    private Users userDemo;
 
+
+    public String publishMessage(@RequestBody UserModel credentials) {
+                return "Message Published";
+    }
 
     // this method is used to add new users to the database
     public Users addUser(Users user) throws UserAlreadyExistsException {
         if (repository.existsById(user.getUserEmailId())) {
             throw new UserAlreadyExistsException();
         }
-        return repository.save(user);
+        userDemo = new Users(user.getUserEmailId(), user.getMobileNum(), user.getFirstName(), user.getLastName(), user.getAddress());
+//        userDemo.setUserEmailId(user.getUserEmailId());
+//        userDemo.setFirstName(user.getFirstName());
+//        userDemo.setLastName(user.getLastName());
+//        userDemo.setAddress(user.getAddress());
+        return repository.save(userDemo);
     }
 
     // this method returns all the users from the database
@@ -48,7 +61,7 @@ public class UserRepositoryService {
     }
 
     // this method is used to update user details
-    public Users updateUser(Users user) throws UserNotFoundException {
+    public Users updateUser(UsersDTO user) throws UserNotFoundException {
 
 
         if (repository.existsById(user.getUserEmailId())) {
@@ -57,10 +70,10 @@ public class UserRepositoryService {
 
             users.setFirstName(user.getFirstName());
             users.setLastName(user.getLastName());
-            users.setPassword(user.getPassword());
+
             users.setAddress(user.getAddress());
 
-            return repository.save(user);
+            return repository.save(users);
         }
         throw new UserNotFoundException();
 

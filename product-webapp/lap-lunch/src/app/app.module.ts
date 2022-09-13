@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import { IonInput } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonComponentsModule } from './common-components/common-components.module';
@@ -32,11 +31,8 @@ import { ProfilepageModule } from './profilepage/profilepage.module';
   declarations: [
     AppComponent,
     LoginComponent,
-
     SubscriptionPlansComponent,
     SubscribedPlanComponent,
-
-    //  FilterPipe,
   ],
   imports: [
     BrowserModule,
