@@ -12,9 +12,9 @@ import { AuthServiceService } from './Service/auth-service.service';
 export class LoginComponent {
 
   decodedToken:any;
-  submitted:any;
-  touched:any;
-  invalid:any;
+  // submitted:any;
+  // touched:any;
+  // invalid:any;
 
   helper= new JwtHelperService();
 
@@ -25,12 +25,12 @@ loginform =this.fb.group({
   password:[null,[Validators.required,Validators.minLength(8)]],
 })
 ngonit(){
-  
+
 }
   
 login() {
     const val = this.loginform.value;
-
+    
     if (val.email && val.password) {
         this.authService.login(val.email, val.password)
             .subscribe(
@@ -49,5 +49,11 @@ login() {
       alert("enter correct details");
       this.loginform.reset();
     }
+}
+addUser(){
+  // this.authService.addUser(this.loginform.value).subscribe((data) => this.message=data)
+  // console.log(this.message);
+  this.router.navigateByUrl('/menu')
+  
 }
 }

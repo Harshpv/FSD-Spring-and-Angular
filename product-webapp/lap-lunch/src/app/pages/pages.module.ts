@@ -11,10 +11,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RecommendationComponent } from './recommendation/recommendation.component';
-<<<<<<< HEAD
+import { LoginComponent } from '../login/login.component';
 
-=======
->>>>>>> 9e5fba09bf45273597e363e8cabb9b6c908c93c3
 
 @NgModule({
   declarations: [
@@ -22,14 +20,9 @@ import { RecommendationComponent } from './recommendation/recommendation.compone
     ProductComponent,
     SearchheaderComponent,
     FilterPipe,
-    RegistrationComponent,
-<<<<<<< HEAD
-    
-    RecommendationComponent
-=======
-
+    RegistrationComponent, 
     RecommendationComponent,
->>>>>>> 9e5fba09bf45273597e363e8cabb9b6c908c93c3
+    RecommendationComponent
   ],
   imports: [
     CommonModule,

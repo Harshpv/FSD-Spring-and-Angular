@@ -6,6 +6,7 @@ import { User } from './user.model';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { CustomvalidationService } from './customvalidation.service';
+import { AuthServiceService } from 'src/app/login/Service/auth-service.service';
 
 @Component({
   selector: 'app-registration',
@@ -15,10 +16,10 @@ import { CustomvalidationService } from './customvalidation.service';
 export class RegistrationComponent implements OnInit {
 
   regForm! : FormGroup;
-
   addrss : Address = new Address();
 
-  constructor(private service : UserService, private router: Router, private builder: FormBuilder, private customValidator : CustomvalidationService) { }
+  constructor(private service : UserService, private router: Router,
+    private authService:AuthServiceService, private builder: FormBuilder, private customValidator : CustomvalidationService) { }
   message:any;
   ngOnInit(): void {
     this.regForm = this.builder.group({
@@ -44,7 +45,6 @@ export class RegistrationComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
     if (this.regForm.valid) {
-      alert('Form Submitted succesfully!!!');
       console.table(this.regForm.value);
       this.registerNow();
     } 
@@ -52,10 +52,16 @@ export class RegistrationComponent implements OnInit {
   
 
   public registerNow(){
-    this.service.addUser(this.regForm.value).subscribe((data) => this.message=data)
+    this.service.addUser(this.regForm.value).subscribe(
+      (data) =>{ this.message=data
+      this.authService.addUser(this.regForm.controls['userEmailId'].value,this.regForm.controls['password'].value)
+      .subscribe()
+      }
+      )
+  
     console.log(this.message);
-    this.router.navigateByUrl('/menu')
-    
+    this.router.navigateByUrl('/login')
+      
   }
 
 }
