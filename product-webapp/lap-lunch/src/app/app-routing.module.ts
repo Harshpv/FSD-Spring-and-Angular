@@ -8,11 +8,7 @@ import { ProductComponent } from './pages/product/product.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { SearchheaderComponent } from './pages/searchheader/searchheader.component';
 import { TimetableComponent } from './pages/timetable/timetable.component';
-import { AddressComponent } from './profile/address/address.component';
 
-import { ProfileComponent } from './profile/profile.component';
-
-import { SubscriptionComponent } from './profile/subscription/subscription.component';
 import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
 
 
@@ -22,9 +18,8 @@ const routes: Routes = [
   { path: 'menu', component: SearchheaderComponent },
   { path: 'cart', component: CartComponent },
   { path: 'product', component: ProductComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'profile-address', component: AddressComponent },
-  { path: 'profile-subscription', component: SubscriptionComponent },
+ 
+  
   {path:"search/:searchItem",component: SearchheaderComponent},
   {path:"timetable", component:TimetableComponent},
 

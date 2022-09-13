@@ -19,16 +19,20 @@ public class UserRepositoryService {
     private Users userDemo;
 
 
-    public String publishMessage(@RequestBody UserModel credentials) {
-                return "Message Published";
-    }
+
+
+//    public String publishMessage(@RequestBody UserModel credentials) {
+//                return "Message Published";
+//    }
 
     // this method is used to add new users to the database
-    public Users addUser(Users user) throws UserAlreadyExistsException {
+    public Users addUser(UsersDTO user) throws UserAlreadyExistsException {
         if (repository.existsById(user.getUserEmailId())) {
             throw new UserAlreadyExistsException();
         }
-        userDemo = new Users(user.getUserEmailId(), user.getMobileNum(), user.getFirstName(), user.getLastName(), user.getAddress());
+        //userDemo = new Users(user.getUserEmailId(), user.getFirstName(), user.getLastName(), user.getAddress());
+
+        userDemo=new Users(user.getUserEmailId(),user.getFirstName(),user.getLastName(),user.getAddress());
 //        userDemo.setUserEmailId(user.getUserEmailId());
 //        userDemo.setFirstName(user.getFirstName());
 //        userDemo.setLastName(user.getLastName());

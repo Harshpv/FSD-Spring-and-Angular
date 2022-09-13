@@ -12,10 +12,10 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUser(): Observable<User[]>{
-    return this.http.get<User[]>("http://localhost:8080/api/v1");
+    return this.http.get<User[]>("http://localhost:8086/api/v3");
   }
 
   addUser(user : any): Observable<User> {
-    return this.http.post<User>("http://localhost:8080/api/v1", user);
+    return this.http.post<User>("http://localhost:8086/api/v3", user);
   }
 }

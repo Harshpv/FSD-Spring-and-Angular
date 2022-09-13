@@ -17,11 +17,11 @@ export class AuthServiceService {
   constructor(private http:HttpClient,private jwtHelper :JwtHelperService, private router:Router) { }
   
   login(email:string, password:string )  {
-    return this.http.post<Login>('http://localhost:8080/api/v1/auth/login', {email, password})
+    return this.http.post<Login>('http://localhost:8088/api/v1/auth/login', {email, password})
   }
   
   addUser(email:String, password:String){
-    return this.http.post<Login>("http://localhost:8080/api/v1/post",{email,password});
+    return this.http.post<Login>("http://localhost:8088/api/v1/post",{email,password});
   }
 
 logout(){

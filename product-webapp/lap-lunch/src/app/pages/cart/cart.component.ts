@@ -40,16 +40,16 @@ message : boolean =false;
 
 
   removeItem(index: any){
-    this.product.items = index.pop();
-    this.api.updateItems(this.product).subscribe((data) => this.product=data)
-    console.log(this.product);
+    this.menuproduct.items.splice(index,1)
+    this.api.updateItems(this.menuproduct).subscribe((data) => this.product=data)
+    console.log(this.menuproduct);
 
   }
 
   emptycart(){
-    this.product.items = [];
-    this.api.updateItems(this.product).subscribe((data) => this.product=data)
-    console.log(this.product);
+    this.menuproduct.items = [];
+    this.api.updateItems(this.menuproduct).subscribe((data) => this.menuproduct=data)
+    console.log(this.menuproduct);
   }
   getTotalAmount(): number{
     let total = 0;
@@ -64,12 +64,12 @@ message : boolean =false;
 
 
 inc(index:number){
-  if(this.product.items[index].quantity+1 < 1){
-    this.product.items[index].quantity = 1;
+  if(this.menuproduct.items[index].quantity+1 < 1){
+    this.menuproduct.items[index].quantity = 1;
     console.log('item_1-> ' + this.product.items[index].quantity)
   }
   else{
-    this.product.items[index].quantity += 1;
+    this.menuproduct.items[index].quantity += 1;
     console.log('item_2-> ' + index +  '  '+this.product.items[index].quantity);
   }
 }
@@ -77,13 +77,13 @@ inc(index:number){
 desc(index:number){
   
     /*. if item passed then item.qty. */
-      if(this.product.items[index].quantity-1 < 1){
-        this.product.items[index].quantity = 1;
-        console.log('item_1-> ' + this.product.items[index].quantity)
+      if(this.menuproduct.items[index].quantity-1 < 1){
+        this.menuproduct.items[index].quantity = 1;
+        console.log('item_1-> ' + this.menuproduct.items[index].quantity)
       }
       else{
-        this.product.items[index].quantity -= 1;
-        console.log('item_2-> ' + index +  '  '+this.product.items[index].quantity);
+        this.menuproduct.items[index].quantity -= 1;
+        console.log('item_2-> ' + index +  '  '+this.menuproduct.items[index].quantity);
       }
       }
 
