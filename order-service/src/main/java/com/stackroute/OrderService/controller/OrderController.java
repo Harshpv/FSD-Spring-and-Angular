@@ -104,5 +104,19 @@ public class OrderController {
 		}
 
 	}
+	@GetMapping("/getOrders/{userEmailId}")
+	public ResponseEntity<Object> getOrderByUserEmailId(@PathVariable("userEmailId") String emailId){
+
+		try {
+			log.info("getting order by userEmailId");
+			return new ResponseEntity<Object>(service.getOrdersByUserEmail(emailId),HttpStatus.OK);
+		} catch (OrderNotFoundException e) {
+			log.error("Orders not found for this user");
+			return new ResponseEntity<>("Orders not found for this user",HttpStatus.CONFLICT);
+		} catch(Exception e){
+			log.error(e.getMessage());
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 
 }

@@ -15,7 +15,7 @@ public class Menu {
 	String itemDescription;
 	List<String> category;
 	long itemCost;
-	byte[] image;
+	String image;
 	boolean silver;
 	boolean gold;
 	boolean platinum;

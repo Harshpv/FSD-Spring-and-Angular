@@ -5,11 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonComponentsModule } from './common-components/common-components.module';
 import { PagesModule } from './pages/pages.module';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import { HttpClientModule } from "@angular/common/http";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 
 //profile components
@@ -17,23 +17,26 @@ import { ProfileComponent } from './profile/profile.component';
 import { SubscriptionComponent } from './profile/subscription/subscription.component';
 import { AddressComponent } from './profile/address/address.component';
 
-import { MatFormField, matFormFieldAnimations } from '@angular/material/form-field';
+import {
+  MatFormField,
+  matFormFieldAnimations,
+} from '@angular/material/form-field';
 import { AuthServiceService } from './login/Service/auth-service.service';
 import { MatCommonModule } from '@angular/material/core';
 // import { ServiceComponent } from './service/service.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { provideRoutes } from '@angular/router';
-
+import { SearchheaderComponent } from './pages/searchheader/searchheader.component';
 import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
-
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-//profile components:
+    //profile components:
     ProfileComponent,
     SubscriptionComponent,
     AddressComponent,
@@ -41,10 +44,7 @@ import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.compo
     SubscriptionPlansComponent,
     SubscribedPlanComponent,
 
-  //  FilterPipe,
-
-
-
+    //  FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +53,7 @@ import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.compo
     HttpClientModule,
     BrowserAnimationsModule,
     CommonComponentsModule,
+    // SearchheaderComponent,
     PagesModule,
     ReactiveFormsModule,
     FormsModule,
@@ -60,10 +61,13 @@ import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.compo
     HttpClientModule,
     MatCommonModule,
     MatCardModule,
+    MatInputModule,
     // AuthServiceService
-
   ],
-  providers: [{ provide: JWT_OPTIONS, useValue: JWT_OPTIONS },JwtHelperService],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -22,8 +22,13 @@ public class UsersController {
     private UserRepositoryService repositoryService;
     private User userDemo;
 
+<<<<<<< HEAD
     @PostMapping
     public ResponseEntity<?> addUser(@RequestBody UsersDTO user) {
+=======
+    @PostMapping("/addUser") //change
+    public ResponseEntity<?> addUser(@RequestBody Users user) {
+>>>>>>> 6dda1f72c6dd5f04566ff19056c12e38211b6400
 
 //        return new ResponseEntity<Users>(repositoryService.addUser(user),HttpStatus.ACCEPTED);
         try {
@@ -38,8 +43,13 @@ public class UsersController {
 
     }
 
+<<<<<<< HEAD
     @GetMapping
     public ResponseEntity<List<User>> getUsers() {
+=======
+    @GetMapping("/getUsers") //change
+    public ResponseEntity<List<Users>> getUsers() {
+>>>>>>> 6dda1f72c6dd5f04566ff19056c12e38211b6400
         try {
             return ResponseEntity.ok(repositoryService.getUsers());
         } catch (UserNotFoundException e) {

@@ -12,30 +12,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RecommendationComponent } from './recommendation/recommendation.component';
 
-
 @NgModule({
   declarations: [
- 
     CartComponent,
     ProductComponent,
     SearchheaderComponent,
     FilterPipe,
     RegistrationComponent,
-    
+
+    RecommendationComponent,
   ],
   imports: [
     CommonModule,
     CommonComponentsModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
   ],
-  exports:[
-    SearchheaderComponent,
-    CartComponent,
-    ProductComponent
-  ]
-
+  exports: [SearchheaderComponent, CartComponent, ProductComponent],
 })
-export class PagesModule { }
+export class PagesModule {}

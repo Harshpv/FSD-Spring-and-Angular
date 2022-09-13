@@ -17,10 +17,10 @@ export class SearchheaderComponent implements OnInit {
    , private cartService: CartService ) { }
 
    ngOnInit(): void {
-    this.cartService.getItems()
-    .subscribe(res=>{
-      this.itemscount = res.length;
-    })
+    // this.cartService.getItems()
+    // .subscribe(res=>{
+    //   this.itemscount = res.length;
+    // })
   }
    search(event:any){
      this.searchvalue=(event.target as HTMLInputElement).value;
