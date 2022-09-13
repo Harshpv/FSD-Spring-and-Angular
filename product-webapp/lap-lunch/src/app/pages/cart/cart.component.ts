@@ -51,9 +51,9 @@ message : boolean =false;
   }
   getTotalAmount(): number{
     let total = 0;
-    for (var i = 0; i < this.product.items.length; i++) {
+    for (var i = 0; i < this.menuproduct.items.length; i++) {
         if (this.menuproduct.items[i].itemCost) {
-          total += this.menuproduct.items[i].itemCost * this.product.items[i].quantity;
+          total += this.menuproduct.items[i].itemCost * this.menuproduct.items[i].quantity;
             this.totalAmount = total;
         }
     }
