@@ -21,9 +21,9 @@
       <h3>Enter password</h3>
       <div class="input-icons">
       <i class="fa fa-key icon"></i>
-       <input id="password" type="password" required minlenght="3" class="form-control" formControlName="password" 
+       <input id="password" type="password" required class="form-control" formControlName="password" 
        placeholder="Enter Password" minlength="8">
-       <div *ngIf="loginform.controls['password'].hasError('password')">invalid password</div>
+       <div *ngIf="loginform.controls['password'].hasError('minlength')">invalid password</div>
       </div>
     </div>
     <br>

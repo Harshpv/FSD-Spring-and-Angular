@@ -117,25 +117,35 @@ export class ProductComponent implements OnInit {
  
     this.tempdata.items.push(this.tempItem)
    
-    this.api.updateItems(this.tempdata).subscribe((data) => this.message=data)
-    console.log(this.message);
-    
-    
-  }
+ }
+ 
+ 
+ 
 
-  // ngOnInit(): void {
-  //     this.api.getItem().subscribe((data: Allitems[])=>{
-  //       console.log(data);
-  // //      this.filterCategory=data;
-  //       this.items=data;
-  //     });
-  // }
 
-  filter(category:string){
-    this.filterCategory=this.itemList
-    .filter((a:any)=>{
-      if(a.category==category||category==''){
-        return a;
-      }
-    })}
+//   addItemsToCart(newitem:any){
+// this.tempdata.menu.push(newitem)
+
+//     this.api.updateItems(this.tempdata).subscribe((data)=>{
+//       console.log(data)
+//     })
+   // this.tempdata.menu.push(newitem)
+
+ // }
+
+ // ngOnInit(): void {
+ //     this.api.getItem().subscribe((data: Allitems[])=>{
+ //       console.log(data);
+ // //      this.filterCategory=data;
+ //       this.items=data;
+ //     });
+ // }
+
+ filter(category:string){
+   this.filterCategory=this.itemList
+   .filter((a:any)=>{
+     if(a.category==category||category==''){
+       return a;
+     }
+   })}
 }

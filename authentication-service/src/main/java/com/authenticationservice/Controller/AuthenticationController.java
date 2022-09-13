@@ -55,7 +55,7 @@ public class AuthenticationController {
 	
 	// Api for posting user details
 	@PostMapping("/post")
-	public ResponseEntity<?> saveUser(@RequestBody UserDao user,String email) throws Exception {
+	public ResponseEntity<?> saveUser(@RequestBody UserDao user) throws Exception {
 		try {
 			return ResponseEntity.ok(userService.saveUser(user,user.getEmail()));
 		}catch (UserAlreadyExistsException e){

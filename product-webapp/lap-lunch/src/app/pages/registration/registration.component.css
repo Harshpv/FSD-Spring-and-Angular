@@ -11,6 +11,20 @@ html
  background-size:cover;
 }
 
+
+html
+{
+ margin:0px;
+ height:100%;
+ width:100%;
+ background-image: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
+ -webkit-background-size:cover;
+ -o-background-size:cover;
+ -moz-background-size:cover;
+ background-size:cover;
+}
+
+
   .container{
     background-color: rgb(242, 237, 231);
 

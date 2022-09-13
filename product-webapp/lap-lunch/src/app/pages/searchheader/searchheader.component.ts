@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cart } from '../Items/cart.model';
 import { ApiserviceService } from '../menuapiservice/apiservice.service';
 import { CartService } from '../menuapiservice/cart.service';
 import { Allitems } from '../Items/allitems';
@@ -20,29 +21,14 @@ export class SearchheaderComponent implements OnInit {
    , private cartService: CartService, private route : ActivatedRoute ) { }
 
    ngOnInit(): void {
-    // this.cartService.getItems()
-    // .subscribe((res: string | any[])=>{
-    //   this.itemscount = res.length;
-    // })
 
-    // this.route.params.subscribe(params=>{
-    //   if(params['searchItem'])
-
-    //   this.allitems=this.cartService.getItems().filter((allitem: { itemName: string; })=>allitem.itemName.toLowerCase().includes(params['searchItem'].toLowerCase()));
- 
-    //   else
-    //   this.allitems =this.cartService.getItems();
-
-    // })
+    // this.itemscount = this.apisearchservice.getallitems.items.length;
 
     this.route.params.subscribe(params=>{
       if(params['searchItem'])
       this.searchItem=params['searchItem'];
     })
 
-    // .subscribe(res=>{
-    //   this.itemscount = res.length;
-    // })
   }
   
    search(event:any){
@@ -51,9 +37,6 @@ export class SearchheaderComponent implements OnInit {
      this.apisearchservice.search.next(this.searchvalue);
     
     }
-
-
-
 
 }
 
