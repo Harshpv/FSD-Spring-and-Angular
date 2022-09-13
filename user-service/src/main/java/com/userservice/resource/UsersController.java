@@ -3,7 +3,7 @@ package com.userservice.resource;
 import com.userservice.Services.UserRepositoryService;
 import com.userservice.exceptiions.UserAlreadyExistsException;
 import com.userservice.exceptiions.UserNotFoundException;
-import com.userservice.model.User;
+import com.userservice.model.Users;
 import com.userservice.model.UsersDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,15 +20,10 @@ public class UsersController {
 
     @Autowired
     private UserRepositoryService repositoryService;
-    private User userDemo;
+    private Users userDemo;
 
-<<<<<<< HEAD
-    @PostMapping
-    public ResponseEntity<?> addUser(@RequestBody UsersDTO user) {
-=======
     @PostMapping("/addUser") //change
     public ResponseEntity<?> addUser(@RequestBody Users user) {
->>>>>>> 6dda1f72c6dd5f04566ff19056c12e38211b6400
 
 //        return new ResponseEntity<Users>(repositoryService.addUser(user),HttpStatus.ACCEPTED);
         try {
@@ -43,13 +38,8 @@ public class UsersController {
 
     }
 
-<<<<<<< HEAD
-    @GetMapping
-    public ResponseEntity<List<User>> getUsers() {
-=======
     @GetMapping("/getUsers") //change
     public ResponseEntity<List<Users>> getUsers() {
->>>>>>> 6dda1f72c6dd5f04566ff19056c12e38211b6400
         try {
             return ResponseEntity.ok(repositoryService.getUsers());
         } catch (UserNotFoundException e) {
@@ -61,7 +51,7 @@ public class UsersController {
     }
 
     @GetMapping("/getUser/{email}")
-    public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
+    public ResponseEntity<Users> getUserByEmail(@PathVariable String email) {
         try {
             return new ResponseEntity<>(repositoryService.getUserByEmail(email), HttpStatus.OK);
         } catch (UserNotFoundException e) {

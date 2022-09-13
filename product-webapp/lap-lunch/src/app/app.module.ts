@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import { IonInput } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonComponentsModule } from './common-components/common-components.module';
@@ -16,12 +15,6 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SubscriptionComponent } from './profile/subscription/subscription.component';
 import { AddressComponent } from './profile/address/address.component';
-
-import {
-  MatFormField,
-  matFormFieldAnimations,
-} from '@angular/material/form-field';
-import { AuthServiceService } from './login/Service/auth-service.service';
 import { MatCommonModule } from '@angular/material/core';
 // import { ServiceComponent } from './service/service.component';
 import { MatCardModule } from '@angular/material/card';
@@ -38,15 +31,13 @@ import { CommonModule } from '@angular/common';
   declarations: [
     AppComponent,
     LoginComponent,
-    //profile components:
+    SubscriptionPlansComponent,
+    SubscribedPlanComponent,
     ProfileComponent,
     SubscriptionComponent,
     AddressComponent,
-
     SubscriptionPlansComponent,
     SubscribedPlanComponent,
-
-    //  FilterPipe,
   ],
   imports: [
     BrowserModule,

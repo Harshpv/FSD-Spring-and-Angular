@@ -14,9 +14,6 @@ import java.util.List;
 public class UsersDTO {
 
 
-
-
-
     private String userEmailId;
     private String firstName;
     private String lastName;

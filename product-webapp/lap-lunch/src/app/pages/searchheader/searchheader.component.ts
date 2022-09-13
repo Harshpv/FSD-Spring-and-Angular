@@ -21,13 +21,15 @@ export class SearchheaderComponent implements OnInit {
    , private cartService: CartService, private route : ActivatedRoute ) { }
 
    ngOnInit(): void {
-    // this.apisearchservice.getallitems()
 
-    // .subscribe(res=>{
-      // this.itemscount =this.apisearchservice.getallitems();
-    }
+    // this.itemscount = this.apisearchservice.getallitems.items.length;
 
-  
+    this.route.params.subscribe(params=>{
+      if(params['searchItem'])
+      this.searchItem=params['searchItem'];
+    })
+
+  }
   
    search(event:any){
      this.searchvalue=(event.target as HTMLInputElement).value;
@@ -35,9 +37,6 @@ export class SearchheaderComponent implements OnInit {
      this.apisearchservice.search.next(this.searchvalue);
     
     }
-
-
-
 
 }
 
