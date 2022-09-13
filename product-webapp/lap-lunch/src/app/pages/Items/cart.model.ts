@@ -1,9 +1,9 @@
 import { Menu } from "./menu.model";
 
-export class Cart {
+export interface Cart {
    
-    constructor(
-    public userEmailId : string,
-    public items:Menu[] ){}
+    
+     userEmailId : string,
+    items:Menu[] 
     
 }

@@ -32,6 +32,8 @@ message : boolean =false;
       this.api.getallitems().subscribe((data) => 
       {
       this.menuproduct=data
+      console.log(this.menuproduct);
+      
       })}
 
 
@@ -49,12 +51,12 @@ message : boolean =false;
   }
   getTotalAmount(): number{
     let total = 0;
-    for (var i = 0; i < this.product.items.length; i++) {
-        if (this.product.items[i].itemCost) {
-          total += this.product.items[i].itemCost * this.product.items[i].quantity;
-            this.totalAmount = total;
-        }
-    }
+    // for (var i = 0; i < this.product.items.length; i++) {
+    //     if (this.product.items[i].itemCost) {
+    //       total += this.product.items[i].itemCost * this.product.items[i].quantity;
+    //         this.totalAmount = total;
+    //     }
+    // }
     return total;
 }
 
