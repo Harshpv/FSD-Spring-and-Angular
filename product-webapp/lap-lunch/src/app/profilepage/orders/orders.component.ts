@@ -9,7 +9,7 @@ import { OrdersService } from './ordersService';
   styleUrls: ['./orders.component.css'],
 })
 export class OrdersComponent implements OnInit {
-  userEmailId: string = 'example@gmail.com';
+  userEmailId: any = sessionStorage.getItem('emailId');
   orderData!: OrderModel[];
 
   constructor(private api: OrdersService, private formbuilder: FormBuilder) {}

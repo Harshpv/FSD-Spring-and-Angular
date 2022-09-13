@@ -10,7 +10,7 @@ import { userModel } from './usermodel';
   styleUrls: ['./profilepage.component.css'],
 })
 export class ProfilepageComponent implements OnInit {
-  userEmailId: string = 'example@gmail.com';
+  userEmailId: any = sessionStorage.getItem('emailId');
   userData!: userModel;
   userformValue: any;
 

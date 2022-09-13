@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v3")
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class UsersController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class UsersController {
     private Users userDemo;
 
     @PostMapping //change
-    public ResponseEntity<?> addUser(@RequestBody UsersDTO user) {
+    public ResponseEntity<?> addUser(@RequestBody Users user) {
 
 //        return new ResponseEntity<Users>(repositoryService.addUser(user),HttpStatus.ACCEPTED);
         try {
@@ -77,7 +77,7 @@ public class UsersController {
     }
 
     @PutMapping("/updateUser/{email}")
-    public ResponseEntity<Object> updateUser(@RequestBody UsersDTO user) {
+    public ResponseEntity<Object> updateUser(@RequestBody Users user) {
         try {
             repositoryService.updateUser(user);
             return new ResponseEntity<>("User updated successfully!!!", HttpStatus.OK);

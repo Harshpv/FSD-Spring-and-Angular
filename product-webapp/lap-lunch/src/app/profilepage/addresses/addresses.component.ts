@@ -12,7 +12,7 @@ import { addressModel, userModel } from '../usermodel';
 export class AddressesComponent implements OnInit {
   addressformValue!: FormGroup;
 
-  userEmailId: string = 'example@gmail.com';
+  userEmailId: any = sessionStorage.getItem('emailId');
   userData!: userModel;
   addressList!: addressModel[];
   newAddress: addressModel = new addressModel();
