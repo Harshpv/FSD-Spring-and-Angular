@@ -31,6 +31,8 @@ import { SearchheaderComponent } from './pages/searchheader/searchheader.compone
 import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
 import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { MatInputModule } from '@angular/material/input';
     MatCommonModule,
     MatCardModule,
     MatInputModule,
+    CommonModule
     // AuthServiceService
   ],
   providers: [

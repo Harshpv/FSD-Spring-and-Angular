@@ -9,9 +9,9 @@ public class Menu {
 	int itemId;
 	String itemName;
 	String itemDescription;
-	String  category;
-	long ItemCost;
-	String ItemImage;
-	String quantity;
+	String category;
+	long itemCost;
+	String itemImage;
+	int Quantity;
 
 }

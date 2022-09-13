@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Cart } from '../Items/cart.model';
 import { ApiserviceService } from '../menuapiservice/apiservice.service';
 import { CartService } from '../menuapiservice/cart.service';
-
+import { Allitems } from '../Items/allitems';
+import { filter } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-searchheader',
   templateUrl: './searchheader.component.html',
@@ -11,28 +13,33 @@ import { CartService } from '../menuapiservice/cart.service';
 export class SearchheaderComponent implements OnInit {
   
   public searchvalue: string='';
-   itemscount : number =0;
-   items ! : Cart;
+  public itemscount : number =0;
+  allitems!: Allitems[];
+ searchItem:string='';
   
   constructor(private apisearchservice : ApiserviceService
-   , private cartService: CartService ) { }
+   , private cartService: CartService, private route : ActivatedRoute ) { }
 
    ngOnInit(): void {
-    
-    
-      this.apisearchservice.getallitems().
-      subscribe((data) =>
-      { this.items=data;})
-      // this.itemscount = this.items.length;
+    // this.apisearchservice.getallitems()
 
-       };
-    
+    // .subscribe(res=>{
+      // this.itemscount =this.apisearchservice.getallitems();
+    }
+
+  
   
    search(event:any){
      this.searchvalue=(event.target as HTMLInputElement).value;
-     console.log(this.searchvalue);
+    //  console.log(this.searchvalue);
      this.apisearchservice.search.next(this.searchvalue);
     
     }
+
+
+
+
 }
+
+
  

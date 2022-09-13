@@ -1,4 +1,5 @@
 import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Allitems } from '../Items/allitems';
 
 import { Cart } from '../Items/cart.model';
 import { Menu } from '../Items/menu.model';
@@ -13,7 +14,8 @@ import { CartService } from '../menuapiservice/cart.service';
 })
 export class CartComponent implements OnInit {
   
-   product ! : Cart;
+  menuproduct !: Cart;
+  product ! : Cart;
   public totalAmount !:number;
   Quantity:number =1;
   menu: any;
@@ -29,22 +31,8 @@ message : boolean =false;
      
       this.api.getallitems().subscribe((data) => 
       {
-      this.product=data
-    if(this.product.items.length==0){
-      this.message=true;
-    }
-    },
-      error =>{
-        this.message=true;
-
-      }
-      
-      
-      )
-    console.log(this.product);
-  }
-  
-
+      this.menuproduct=data
+      })}
 
 
   removeItem(index: any){

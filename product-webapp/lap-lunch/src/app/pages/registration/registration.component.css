@@ -1,4 +1,5 @@
-/* body {
+<<<<<<< HEAD
+/* /* body {
     margin-top: 100px;
     padding-top:50px;
 }
@@ -70,20 +71,33 @@ label small {
     transition: .3s;
   
   } */
+=======
+>>>>>>> 2818fb1720af0d275995d7b47ca9b05e38fe3128
 
+html
+{
+ margin:0px;
+ height:100%;
+ width:100%;
+ background-image: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
+ -webkit-background-size:cover;
+ -o-background-size:cover;
+ -moz-background-size:cover;
+ background-size:cover;
+}
 
   .container{
     background-color: rgb(242, 237, 231);
-    padding: 50px;
+
+    padding: 30px;
     /* background-image: url('https://www.istockphoto.com/photos/nature'); */
     /* background-image: url('https://www.heartandstroke.ca/healthy-living/healthy-eating/healthy-eating-basics'); */
     border-radius: 10px;
-    padding-bottom: 60px;
+    padding-bottom: 40px;
+    margin-bottom: 100px;
   }
-  body,
-  html {
-    height: 100%;
-  }
+
+ 
   h1{
     font-size: 2.0em;
   }
@@ -92,9 +106,15 @@ label small {
     background-image: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
     /* background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).webp"); */
     height: 100%;
+    width: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    -webkit-background-size:cover;
+    -o-background-size:cover;
+    -moz-background-size:cover;
+    background-size:cover;
+    position: center;
+    
   }
   h1,h4{
     text-align: center;
@@ -125,4 +145,15 @@ label small {
   }
   .btn{
     width: 100%;
+<<<<<<< HEAD
+  } 
+=======
   }
+  
+  .col-md-4 {
+    background-image: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
+    margin: auto;
+    justify-content: center;
+    margin-bottom: 100px;
+  }
+>>>>>>> 2818fb1720af0d275995d7b47ca9b05e38fe3128

@@ -9,6 +9,7 @@ export class CartService {
 
   public cartList : Menu[]=[];
   public menuList : Menu[]=[];
+  tempItem!: Menu;
   constructor() { }
 
   getItems(){
@@ -78,16 +79,16 @@ export class CartService {
 
   //   })
   // }ng
-  CartItemDecrement (item:any) {
-    item.qty = item.qty - 1;
-    return this.menuList.concat(this.cartList);
-}
+//   CartItemDecrement (item:any) {
+//     item.qty = item.qty - 1;
+//     return this.menuList.concat(this.cartList);
+// }
 
 
-IncrementItemQuantity (item:any) {
+// IncrementItemQuantity (item:any) {
 
-  item.qty = item.qty + 1;
+//   item.qty = item.qty + 1;
   
-  return this.menuList.concat(this.cartList);
-} 
+//   return this.menuList.concat(this.cartList);
+// } 
 }

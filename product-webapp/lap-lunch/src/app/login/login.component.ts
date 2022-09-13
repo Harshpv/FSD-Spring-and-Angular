@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ɵNgNoValidate } from '@angular/forms';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
+// import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthServiceService } from './Service/auth-service.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent {
   touched:any;
   invalid:any;
 
-  helper= new JwtHelperService();
+  // helper= new JwtHelperService();
 
   constructor( private fb:FormBuilder, private authService:AuthServiceService, private router: Router) {}
 
@@ -36,7 +36,7 @@ login() {
             .subscribe(
                 (result) => {
                     console.log(result);
-                    this.decodedToken= this.helper.decodeToken(result.token);
+                    // this.decodedToken= this.helper.decodeToken(result.token);
                     sessionStorage.setItem("emailId",this.decodedToken.sub);
                     sessionStorage.setItem('token',result.token);
                     this.loginform.reset();

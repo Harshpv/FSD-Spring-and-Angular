@@ -21,6 +21,10 @@ export class ApiserviceService {
   getItem(): Observable<Allitems[]>{
     return this.http.get<Allitems[]>("http://localhost:8085/api/v1/getall");
   }
+
+  
+
+     
   updateItems(cart:Cart): Observable<Cart>{
     return this.http.post<Cart>("http://localhost:8083/api/v1/cart/create",cart);
   }
