@@ -36,6 +36,8 @@ message : boolean =false;
       
       })}
 
+      
+
 
   removeItem(index: any){
     this.product.items = index.pop();
