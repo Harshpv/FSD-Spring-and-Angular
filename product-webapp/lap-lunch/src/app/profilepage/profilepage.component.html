@@ -1,44 +1,6 @@
+<!-- header -->
 <app-header></app-header>
-<!-- sidebar-->
-<div class="container-fluid">
-  <div class="row">
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-      <div class="position-sticky">
-        <div class="list-group list-group-flush mx-3 mt-4">
-          <a
-            href="/profile"
-            class="list-group-item list-group-item-action py-2 ripple active"
-            aria-current="true"
-          >
-            <span>Orders</span>
-          </a>
-          <a
-            href="/profile-subscription"
-            class="list-group-item list-group-item-action py-2 ripple"
-            aria-current="true"
-          >
-            <span>Subscription plan</span>
-          </a>
-
-          <a
-            href="/profile-address"
-            class="list-group-item list-group-item-action py-2 ripple"
-          >
-            <span>Addresses</span></a
-          >
-        </div>
-      </div>
-    </nav>
-  </div>
-</div>
-
-<!-- <div class="sidebar">
-      <a class="active" href="#home">Home</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
-    </div> -->
-
+<!-- profile top -->
 <!--Profile Top-->
 <div
   class="container-fluid"
@@ -61,7 +23,7 @@
     <div class="col-9" style="padding-top: 60px">
       <div class="row">
         <div>
-          <h5 style="font-size: 50px">
+          <h5 style="font-size: 35px">
             {{ userData.firstName }} {{ userData.lastName }}
           </h5>
         </div>
@@ -182,53 +144,57 @@
   </div>
 </div>
 
-<!--Order details-->
-<div class="pos-details">
-  <div>
-    <div>
-      <div style="font-size: 24px; font-weight: 600">Past Orders</div>
-      <div class="order-card" *ngFor="let order of orderData">
-        <div class="item-card" *ngFor="let item of order.itemsList">
-          <div class="image-card">
-            <img
-              src="https://is4-ssl.mzstatic.com/image/thumb/Purple71/v4/3b/e2/8a/3be28a88-e783-8074-77a3-11c5cdae302f/source/512x512bb.jpg"
-              alt=""
-              style="aspect-ratio: auto 300/200; width: 100px"
-            />
-          </div>
-          <div class="item-card-details">
-            <h5>{{ item.itemName }}</h5>
-            <h6>{{ item.qty }}</h6>
-            <h6>Price: {{ item.itemCost }}</h6>
-          </div>
-        </div>
-        <h6 style="font-size: 17px; color: #686b78">
-          Order Id: {{ order.orderId }}
-        </h6>
-        <h6 style="font-size: 13px; color: #686b78">{{ order.time }}</h6>
-        <div class="float-right">
-          <h5 style="font-size: 18px">Total Paid: {{ order.totalPrice }}</h5>
-        </div>
+<!-- below profile -->
+<div class="container-fluid" style="background-color: floralwhite">
+  <div class="row">
+    <div class="col-md-4">
+      <!-- sidebar -->
+      <div
+        class="d-flex flex-column flex-shrink-0 p-3"
+        style="
+          width: 60%;
+          margin-left: 40%;
+          height: 800px;
+          background-color: lavender;
+        "
+      >
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li>
+            <a
+              routerLinkActive="active"
+              routerLink="/profilepage/orders"
+              class="nav-link link-dark"
+            >
+              Orders
+            </a>
+          </li>
+          <hr />
+          <li>
+            <a
+              routerLinkActive="active"
+              routerLink="/profilepage/subscription"
+              class="nav-link link-dark"
+            >
+              Subscription
+            </a>
+          </li>
+          <hr />
+          <li class="nav-item">
+            <a
+              routerLinkActive="active"
+              routerLink="/profilepage/addresses"
+              class="nav-link link-dark"
+            >
+              Addresses
+            </a>
+          </li>
+        </ul>
       </div>
+    </div>
+    <div class="col-md-8">
+      <!-- Content -->
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
-
-<!-- <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4">
-          <div
-            style="
-              width: 80%;
-              background-color: aqua;
-              margin-left: 20%;
-              height: 100vh;
-              z-index: 9;
-            "
-          >
-            <h1>Testing</h1>
-          </div>
-        </div>
-        <div class="col-md-8"></div>
-      </div>
-    </div> -->
+<!-- content -->

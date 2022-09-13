@@ -5,7 +5,7 @@ import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ProfileServiceService {
+export class OrdersService {
   constructor(private http: HttpClient) {}
   getOrdersByemailId(userEmailId: string) {
     return this.http

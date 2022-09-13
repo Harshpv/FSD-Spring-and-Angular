@@ -5,7 +5,7 @@ import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AddressServiceService {
+export class ProfilepageService {
   constructor(private http: HttpClient) {}
 
   getAddressesById(id: string) {

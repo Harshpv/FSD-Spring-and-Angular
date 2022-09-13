@@ -12,11 +12,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 
-//profile components
-import { ProfileComponent } from './profile/profile.component';
-import { SubscriptionComponent } from './profile/subscription/subscription.component';
-import { AddressComponent } from './profile/address/address.component';
-
 import {
   MatFormField,
   matFormFieldAnimations,
@@ -31,15 +26,12 @@ import { SearchheaderComponent } from './pages/searchheader/searchheader.compone
 import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
 import { MatInputModule } from '@angular/material/input';
+import { ProfilepageModule } from './profilepage/profilepage.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    //profile components:
-    ProfileComponent,
-    SubscriptionComponent,
-    AddressComponent,
 
     SubscriptionPlansComponent,
     SubscribedPlanComponent,
@@ -62,6 +54,10 @@ import { MatInputModule } from '@angular/material/input';
     MatCommonModule,
     MatCardModule,
     MatInputModule,
+
+    //profilepage module added
+    ProfilepageModule,
+
     // AuthServiceService
   ],
   providers: [

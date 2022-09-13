@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { AddressServiceService } from './address-service.service';
-import { addressModel, userModel } from './address.model';
+import { FormGroup, FormBuilder } from '@angular/forms';
+
+import { ProfilepageService } from '../profilepageService';
+import { addressModel, userModel } from '../usermodel';
 
 @Component({
-  selector: 'app-address',
-  templateUrl: './address.component.html',
-  styleUrls: ['./address.component.css'],
+  selector: 'app-addresses',
+  templateUrl: './addresses.component.html',
+  styleUrls: ['./addresses.component.css'],
 })
-export class AddressComponent implements OnInit {
+export class AddressesComponent implements OnInit {
   addressformValue!: FormGroup;
-  userformValue!: FormGroup;
+
   userEmailId: string = 'example@gmail.com';
   userData!: userModel;
   addressList!: addressModel[];
@@ -19,7 +20,7 @@ export class AddressComponent implements OnInit {
 
   constructor(
     private formbuilder: FormBuilder,
-    private api: AddressServiceService
+    private profileApi: ProfilepageService
   ) {}
 
   ngOnInit(): void {
@@ -31,16 +32,12 @@ export class AddressComponent implements OnInit {
       state: [],
       pincode: [],
     });
-    this.userformValue = this.formbuilder.group({
-      firstName: [],
-      lastName: [],
-      mobileNum: [],
-    });
+
     this.getAllByUserEmailId();
   }
 
   getAllByUserEmailId() {
-    this.api.getAddressesById(this.userEmailId).subscribe((res) => {
+    this.profileApi.getAddressesById(this.userEmailId).subscribe((res) => {
       this.userData = res;
       this.addressList = this.userData.address;
     });
@@ -48,7 +45,7 @@ export class AddressComponent implements OnInit {
   deleteOneAddressForUser(index: number) {
     this.addressList.splice(index, 1);
     this.userData.address = this.addressList;
-    this.api
+    this.profileApi
       .updateAddressById(this.userEmailId, this.userData)
       .subscribe((res) => {
         console.log('updated');
@@ -90,7 +87,7 @@ export class AddressComponent implements OnInit {
     this.addressList.splice(this.indexVal, 0, this.newAddress);
     //console.log(this.addressList);
     this.userData.address = this.addressList;
-    this.api
+    this.profileApi
       .updateAddressById(this.userEmailId, this.userData)
       .subscribe((res) => {
         console.log('updated');
@@ -108,7 +105,7 @@ export class AddressComponent implements OnInit {
     this.newAddress.pincode = this.addressformValue.value.pincode;
     this.addressList.push(this.newAddress);
     this.userData.address = this.addressList;
-    this.api
+    this.profileApi
       .updateAddressById(this.userEmailId, this.userData)
       .subscribe((res) => {
         console.log('updated');
@@ -129,24 +126,5 @@ export class AddressComponent implements OnInit {
   // }
   closeButtonAddressPopup() {
     this.addressformValue.reset();
-  }
-
-  editButtonProfile() {
-    this.userformValue.controls['firstName'].setValue(this.userData.firstName);
-    this.userformValue.controls['lastName'].setValue(this.userData.lastName);
-    this.userformValue.controls['mobileNum'].setValue(this.userData.mobileNum);
-  }
-
-  updateUserDetails() {
-    this.userData.mobileNum = this.userformValue.value.mobileNum;
-    this.userData.firstName = this.userformValue.value.firstName;
-    this.userData.lastName = this.userformValue.value.lastName;
-    this.api
-      .updateAddressById(this.userEmailId, this.userData)
-      .subscribe((res) => {
-        console.log('updated');
-        this.getAllByUserEmailId();
-      });
-    this.userformValue.reset();
   }
 }
