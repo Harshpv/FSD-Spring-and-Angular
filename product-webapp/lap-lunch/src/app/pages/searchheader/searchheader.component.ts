@@ -5,6 +5,7 @@ import { CartService } from '../menuapiservice/cart.service';
 import { Allitems } from '../Items/allitems';
 import { filter } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { Menu } from '../Items/menu.model';
 @Component({
   selector: 'app-searchheader',
   templateUrl: './searchheader.component.html',
@@ -15,14 +16,20 @@ export class SearchheaderComponent implements OnInit {
   public searchvalue: string='';
   public itemscount : number =0;
   allitems!: Allitems[];
+  items ! :Menu;
  searchItem:string='';
   
   constructor(private apisearchservice : ApiserviceService
    , private cartService: CartService, private route : ActivatedRoute ) { }
 
    ngOnInit(): void {
+    this.apisearchservice.getallitems()
 
-    // this.itemscount = this.apisearchservice.getallitems.items.length;
+    .subscribe(res=>{
+      this.itemscount =res.items.length;});
+    
+
+  
 
     this.route.params.subscribe(params=>{
       if(params['searchItem'])
