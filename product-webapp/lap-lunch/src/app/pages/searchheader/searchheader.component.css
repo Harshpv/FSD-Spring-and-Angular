@@ -12,7 +12,7 @@
 .search-icon{
     position: absolute;
     z-index: 10;
-    left: 62%;
+    left: 70%;
     margin-top:-25px;
     color: black;
     /* margin-left: 20px; */
@@ -21,7 +21,7 @@ button{
      position: absolute;
     display: flex;
     margin-top: -45px;
-    left: 67%;
+    left: 73%;
     background-color: rgb(220, 125, 17);
     border-radius: 5px;
    

@@ -51,9 +51,7 @@
 </div>
 
 
-
-
-<div class="container" *ngIf= "searchedItems.length>0">
+<div class="container">
     <div class="row">
        <h4 style="color: darkblue;">Search Results</h4>
         <ng-container *ngFor =  "let item of searchedItems">
@@ -66,7 +64,7 @@
             
             <p>{{item.category}}</p>
             <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
-            <button (click)=addItemsToCart(item) >Add +</button>
+            <button (click)=additems(item) >Add +</button>
         </div> 
     </ng-container>
     <!-- </ng-container>  -->
@@ -89,7 +87,7 @@
 
             <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
             
-            <button (click)=addItemsToCart(item) >Add +</button>
+            <button (click)=additems(item) >Add +</button>
         </div>
     </ng-container> 
     </div> 
@@ -108,7 +106,7 @@
             <p>{{item.category}}</p>
             <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
             
-            <button (click)=addItemsToCart(item) >Add +</button>
+            <button (click)=additems(item) >Add +</button>
         </div>
     </ng-container> 
     
@@ -152,7 +150,7 @@
             
             <p>{{item.category}}</p>
             <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
-            <button (click)=addItemsToCart(item) >Add +</button>
+            <button (click)=additems(item) >Add +</button>
         </div>
     </ng-container> 
     </div> 
@@ -169,7 +167,7 @@
             
             <p>{{item.category}}</p>
             <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
-            <button (click)=addItemsToCart(item) >Add +</button>
+            <button (click)=additems(item) >Add +</button>
         </div>
     </ng-container> 
     </div> 
@@ -186,12 +184,13 @@
            
             <p>{{item.category}}</p>
             <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
-            <button (click)=addItemsToCart(item) >Add +</button>
+            <button (click)=additems(item) >Add +</button>
         </div>
     </ng-container> 
     </div> 
 </div> 
 
 
+<!-- <app-footer></app-footer> -->
 <!-- <app-footer></app-footer> -->
 <!-- | filter: 'searchKey' :'itemName'  -->  

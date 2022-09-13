@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-//import { MenuComponentComponent } from './menu-component/menu-component.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductComponent } from './product/product.component';
 import { SearchheaderComponent } from './searchheader/searchheader.component';
@@ -8,30 +7,31 @@ import { CommonComponentsModule } from '../common-components/common-components.m
 import { AppRoutingModule } from '../app-routing.module';
 import { filter } from 'rxjs';
 import { FilterPipe } from './shared/filter.pipe';
+import { RegistrationComponent } from './registration/registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { RecommendationComponent } from './recommendation/recommendation.component';
 import { TimetableComponent } from './timetable/timetable.component';
 
-//import { CommonComponentsModule } from '../common-components/common-components.module';
 
 @NgModule({
   declarations: [
- 
     CartComponent,
     ProductComponent,
     SearchheaderComponent,
     FilterPipe,
+    RegistrationComponent,
+
+    RecommendationComponent,
     TimetableComponent
   ],
   imports: [
     CommonModule,
     CommonComponentsModule,
-    AppRoutingModule
-    
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  exports:[
-    SearchheaderComponent,
-    CartComponent,
-    ProductComponent
-  ]
-
+  exports: [SearchheaderComponent, CartComponent, ProductComponent],
 })
-export class PagesModule { }
+export class PagesModule {}

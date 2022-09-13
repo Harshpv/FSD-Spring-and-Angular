@@ -12,7 +12,7 @@ public class ErrorDetails {
 		this.message=message;
 		this.details=description;
 	}
-	
+
 	public Date getTimestamp() {
 		return timestamp;
 	}

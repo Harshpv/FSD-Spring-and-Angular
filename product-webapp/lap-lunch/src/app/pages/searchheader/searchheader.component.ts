@@ -20,10 +20,10 @@ export class SearchheaderComponent implements OnInit {
    , private cartService: CartService, private route : ActivatedRoute ) { }
 
    ngOnInit(): void {
-    this.cartService.getItems()
-    .subscribe(res=>{
-      this.itemscount = res.length;
-    })
+    // this.cartService.getItems()
+    // .subscribe((res: string | any[])=>{
+    //   this.itemscount = res.length;
+    // })
 
     // this.route.params.subscribe(params=>{
     //   if(params['searchItem'])
@@ -53,4 +53,6 @@ export class SearchheaderComponent implements OnInit {
 
 
 }
+
+
  

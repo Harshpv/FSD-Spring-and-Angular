@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.recommendationservice.exceptions.UserNotFoundException;
-import com.recommendationservice.model.Menu;
+//import com.recommendationservice.model.Menu;
 import com.recommendationservice.model.User;
 import com.recommendationservice.repository.UserRepository;
 
@@ -54,7 +54,7 @@ public class UserService {
 		userRepository.deleteById(userId);
 	}
 
-	public List<Menu> suggestByCity(String city) {
+	public List<User> suggestByCity(String city) {
 		return userRepository.suggestByCity(city);
 	}
 }

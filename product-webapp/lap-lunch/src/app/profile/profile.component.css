@@ -1,0 +1,204 @@
+/* .sidebar {
+  margin: 11.5% 0 0 8%;
+  padding: 0 0 0 0%;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+
+.sidebar a.active {
+  background-color: #04aa6d;
+  color: white;
+}
+
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {
+    float: left;
+  }
+  div.content {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+} */
+
+.sidebar {
+  position: fixed;
+  top: 15rem;
+  bottom: 0;
+  left: 6.5rem;
+  padding: 0rem 0 0;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 240px;
+  z-index: 600;
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.pos-details {
+  margin-top: 1rem;
+  margin-left: 25rem;
+  display: flex;
+}
+
+.order-card {
+  border: 1px solid #d4d5d9;
+  padding: 30px;
+  margin: 24px 0 37px;
+  width: 800px;
+}
+
+.item-card {
+  padding-bottom: 20px;
+  background-image: linear-gradient(90deg, #a9abb2 25%, hsla(0, 0%, 100%, 0) 0);
+  background-position: bottom;
+  background-size: 4px 1px;
+  background-repeat: repeat-x;
+  display: flex;
+}
+
+.image-card {
+  background: rgba(40, 44, 63, 0.05);
+  width: 150px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.item-card-details {
+  font-size: 17px;
+  font-weight: 500;
+  color: #3d4152;
+  display: inline-block;
+  cursor: pointer;
+  padding-left: 18px;
+}
+
+.float-right {
+  text-align: right;
+}
+/* 
+.pos-details {
+  margin-top: 0rem;
+  padding-left: 8rem;
+  padding-top: 2rem;
+}
+
+.profile-card {
+  margin-top: 0rem;
+  padding-left: 12rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+} */
+/* <!-- <div class="row pos-details">
+      <div>
+        <div class="row d-flex">
+          <div class="col col-lg-6 mb-4 mb-lg-0">
+            <div class="card mb-3" style="border-radius: 0.5rem">
+              <div class="row g-0">
+                <div
+                  class="col-md-4 text-center text-white"
+                  style="
+                    border-top-left-radius: 0.5rem;
+                    border-bottom-left-radius: 0.5rem;
+                  "
+                >
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                    alt="Avatar"
+                    class="img-fluid my-5"
+                    style="width: 100px; border-radius: 0.5rem"
+                  />
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body p-4">
+                    <h5>Harsha Vardhan</h5>
+                    <div class="row pt-1">
+                      <div class="row mt-3 mb-1">
+                        <h6>Email</h6>
+                        <p class="text-muted">info@example.com</p>
+                      </div>
+                      <div class="row mb-1">
+                        <h6>Mobile</h6>
+                        <p class="text-muted">123 456 789</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <div
+      class="profile-card d-flex container-fluid align-items-start"
+      style="height: 200px; background-color: floralwhite"
+    >
+      <div class="image-container">
+        <img
+          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+          alt="Avatar"
+          class=""
+          style="width: 100px; border-radius: 0.5rem"
+        />
+      </div>
+      <div class="details-container col-4" style="padding-left: 30px">
+        <div class="details row">
+          <h4>Harsha Vardhan</h4>
+          <div class="d-flex">
+            <h6 class="col-8">Email: info@example.com</h6>
+            <h6 class="col-8">Mobile: 123 456 789</h6>
+          </div>
+          <button class="btn btn-primary align-items-end">Edit profile</button>
+        </div>
+      </div>
+    </div> --> */

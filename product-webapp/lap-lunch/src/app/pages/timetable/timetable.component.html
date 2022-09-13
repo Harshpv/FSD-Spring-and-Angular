@@ -21,7 +21,8 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr *ngFor= "let item of ListofItems; let i = index">
+
+                      <tr *ngFor = "let item of ListofItems; let i = index">
                           <td>{{i+1}}</td>
                           <td>{{item.itemName}}</td>
                           <td><img style="width: 120px;" src= {{item.itemImage}} alt=""></td>
@@ -34,6 +35,7 @@
                               <button  class="btn btn-success">Add</button>
                           </td>
                       </tr>
+                    
                       
                   </tbody>
               </table>

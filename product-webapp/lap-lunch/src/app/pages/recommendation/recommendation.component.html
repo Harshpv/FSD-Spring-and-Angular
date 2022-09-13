@@ -1,0 +1,129 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<!-- Banner Section -->
+<!-- <section id="banner"> -->
+    <div id="header">
+        
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+            <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="assets/recCarousel.jpg" class="carousel-image" alt="...">
+                <div class="centered">
+                    <h1 class = "h1title">HEALTHY FOOD MADE EASY</h1>
+                    <!-- <h3 class = "h3title">Reasons for Choosing US</h3> -->
+                    <!-- DropDown -->
+                    
+                    <!-- DropDown -->
+                   
+                    <div class="dropdown">
+                        <button class="dropbtn">SELECT YOUR CITY</button>
+                        <div class="dropdown-content">
+                        <a (click)="suggestByCity('Banglore')"href="menu#recmenu">Banglore</a>
+                        <a (click)="suggestByCity('Chennai')"href="menu#recmenu">Chennai</a>
+                        <a (click)="suggestByCity('Mumbai')"href="menu#recmenu">Mumbai</a>
+                        </div>
+                      </div>
+
+
+    <!-- EndDropDown -->
+                    
+                    <!-- EndDropDown -->
+                </div>
+                    <!-- <div class="carousel-caption d-none d-md-block">
+                    <h3>Web Development</h3>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                    
+                </div> -->
+            </div>
+            <div class="carousel-item">
+                <img src="assets/recCarousel2.jpg" class="carousel-image" alt="..." >
+                <div class="centered">
+                    <h1 class = "h1title">WE DELIVER TO YOUR DOOR STEP</h1>
+                    <!-- DropDown -->
+                   
+                    <div class="dropdown">
+                        <button class="dropbtn">SELECT YOUR CITY</button>
+                        <div class="dropdown-content">
+                        <a (click)="suggestByCity('Banglore')"href="menu#recmenu">Banglore</a>
+                        <a (click)="suggestByCity('Chennai')"href="menu#recmenu">Chennai</a>
+                        <a (click)="suggestByCity('Mumbai')"href="menu#recmenu">Mumbai</a>
+                        </div>
+                      </div>
+
+
+                </div>
+               
+            </div>
+            <div class="carousel-item">
+                <img src="assets/recCarousel3.jpg" class="carousel-image" alt="...">
+                <div class="centered">
+                    <h1 class = "h1title">HAVE AN APETITE FOR LIFE</h1>
+                    <!-- <h3 class = "h3title">Reasons for Choosing US</h3> -->
+                    <!-- DropDown -->
+                   
+                    <div class="dropdown">
+                        <button class="dropbtn">SELECT YOUR CITY</button>
+                        <div class="dropdown-content">
+                        <a (click)="suggestByCity('Banglore')" href="menu#recmenu">Banglore</a>
+                        <a (click)="suggestByCity('Chennai')" href="menu#recmenu">Chennai</a>
+                        <a (click)="suggestByCity('Mumbai')" href="menu#recmenu">Mumbai</a>
+                        </div>
+                      </div>
+
+
+    <!-- EndDropDown -->
+
+   
+                </div>
+                
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+</div>
+<!-- </section> -->
+<!-- End Banner Section -->
+
+
+
+<div class="card-top container d-flex" id="recmenu"> 
+    <div style="margin-top: 10px;margin-bottom: 10px;">
+    <h4 style="margin-left: 25px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Popular Food Items In {{city}}:</h4>
+    <div>
+    <div class="container d-flex" >
+        <ng-container *ngFor= "let item of data">
+            <!-- <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <div class="card rounded shadow-sm border-0" style="background-color:cornsilk;margin-left: 0px;">
+                  <div class="card-body p-4"><img src="assets/recCarousel10.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
+                    <h5>{{item.itemName}}</h5>
+                    <p class="small text-muted font-italic">{{item.itemDescription}}<br>Rs.{{item.itemCost}}</p>
+
+                  </div>
+                </div>
+              </div> -->
+              <div class="card" style="width:200px;height:270px;background-color: white;"  id="recCard">
+                <img class="card-img-top" src= "{{item.image}}" alt="Card image" style="width:100%;">
+                <div class="card-body" style = "margin-top: 0%;" >
+                  <p class="card-title">{{item.itemName}}</p>
+                  <p style="margin-bottom: 10%;">र{{item.itemCost}}</p>
+                  <button id="addButton">Add +</button>
+                  <!-- <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                  <a href="#" class="btn btn-primary">See Profile</a> -->
+                </div>
+              </div>
+        </ng-container>
+    </div>
+</div>

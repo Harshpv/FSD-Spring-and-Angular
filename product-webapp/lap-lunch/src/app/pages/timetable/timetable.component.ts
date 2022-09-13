@@ -14,6 +14,7 @@ export class TimetableComponent implements OnInit {
     this.serviceapi.getItem()
     .subscribe(res=>{
       this.ListofItems =res
+      console.log(this.ListofItems);
 
   })
 
