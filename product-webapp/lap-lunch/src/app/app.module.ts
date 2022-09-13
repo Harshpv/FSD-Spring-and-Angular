@@ -24,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 //import { ProfilepageModule } from 'src/profilepage/profilepage.module';
 
+import { ProfilepageModule } from './profilepage/profilepage.module';
 
 @NgModule({
   declarations: [
@@ -31,10 +32,6 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     SubscriptionPlansComponent,
     SubscribedPlanComponent,
-    
-    SubscriptionPlansComponent,
-    SubscribedPlanComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -54,6 +51,10 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     CommonModule,
     
+
+    //profilepage module added
+    ProfilepageModule,
+
     // AuthServiceService
   ],
   providers: [
