@@ -22,9 +22,7 @@ public class UserRepositoryService {
     private User userDemo;
 
 
-    public String publishMessage(@RequestBody UserModel credentials) {
-                return "Message Published";
-    }
+
 
     // this method is used to add new users to the database
     public User addUser(UsersDTO user) throws UserAlreadyExistsException {

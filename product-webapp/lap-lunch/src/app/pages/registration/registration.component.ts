@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { Address } from './address.model';
 import { User } from './user.model';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { CustomvalidationService } from './customvalidation.service';
-
+import { MatFormField } from '@angular/material/form-field';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -27,7 +27,11 @@ export class RegistrationComponent implements OnInit {
 
   
 
-  constructor(private service : UserService, private router: Router, private builder: FormBuilder, private customValidator : CustomvalidationService) { }
+  constructor(private service : UserService, 
+    private router: Router,
+     private builder: FormBuilder, 
+     private customValidator : CustomvalidationService,
+     private _snackBar: MatSnackBar) { }
   message:any;
   ngOnInit(): void {
     this.regForm = this.builder.group({
@@ -53,9 +57,14 @@ export class RegistrationComponent implements OnInit {
   onSubmit(){
     this.submitted = true;
     if (this.regForm.valid) {
-      alert('Form Submitted succesfully!!!');
+      // alert('Form Submitted succesfully!!!');
+      this.router.navigateByUrl('/menu').then(()=>{
+        this._snackBar.open("Registered successfully", "ok");
+      });
+      
       console.table(this.regForm.value);
-      this.registerNow();
+      // this.registerNow();
+      
     } 
   }
   
@@ -71,5 +80,5 @@ export class RegistrationComponent implements OnInit {
     this.router.navigateByUrl('/menu')
     
   }
-
+  
 }

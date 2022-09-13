@@ -8,10 +8,10 @@ import { PagesModule } from './pages/pages.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 //profile components
 import { ProfileComponent } from './profile/profile.component';
 import { SubscriptionComponent } from './profile/subscription/subscription.component';
@@ -62,6 +62,8 @@ import { MatInputModule } from '@angular/material/input';
     MatCommonModule,
     MatCardModule,
     MatInputModule,
+    MatSnackBarModule,
+    
     // AuthServiceService
   ],
   providers: [
