@@ -21,7 +21,6 @@ export class SearchheaderComponent implements OnInit {
 
    ngOnInit(): void {
     // this.cartService.getItems()
-<<<<<<< HEAD
     // .subscribe((res: string | any[])=>{
     //   this.itemscount = res.length;
     // })
@@ -30,7 +29,7 @@ export class SearchheaderComponent implements OnInit {
     //   if(params['searchItem'])
 
     //   this.allitems=this.cartService.getItems().filter((allitem: { itemName: string; })=>allitem.itemName.toLowerCase().includes(params['searchItem'].toLowerCase()));
-
+ 
     //   else
     //   this.allitems =this.cartService.getItems();
 
@@ -41,11 +40,9 @@ export class SearchheaderComponent implements OnInit {
       this.searchItem=params['searchItem'];
     })
 
-=======
     // .subscribe(res=>{
     //   this.itemscount = res.length;
     // })
->>>>>>> 2818fb1720af0d275995d7b47ca9b05e38fe3128
   }
   
    search(event:any){
