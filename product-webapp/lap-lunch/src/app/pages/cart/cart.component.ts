@@ -34,6 +34,8 @@ message : boolean =false;
       this.menuproduct=data
       })}
 
+      
+
 
   removeItem(index: any){
     this.menuproduct.items.splice(index, 1);
