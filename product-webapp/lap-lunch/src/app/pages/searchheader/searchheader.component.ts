@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cart } from '../Items/cart.model';
 import { ApiserviceService } from '../menuapiservice/apiservice.service';
 import { CartService } from '../menuapiservice/cart.service';
 
@@ -10,18 +11,23 @@ import { CartService } from '../menuapiservice/cart.service';
 export class SearchheaderComponent implements OnInit {
   
   public searchvalue: string='';
-  public itemscount : number =0;
- 
+   itemscount : number =0;
+   items ! : Cart;
   
   constructor(private apisearchservice : ApiserviceService
    , private cartService: CartService ) { }
 
    ngOnInit(): void {
-    this.cartService.getItems()
-    .subscribe(res=>{
-      this.itemscount = res.length;
-    })
-  }
+    
+    
+      this.apisearchservice.getallitems().
+      subscribe((data) =>
+      { this.items=data;})
+      // this.itemscount = this.items.length;
+
+       };
+    
+  
    search(event:any){
      this.searchvalue=(event.target as HTMLInputElement).value;
      console.log(this.searchvalue);

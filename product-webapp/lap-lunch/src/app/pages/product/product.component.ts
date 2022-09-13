@@ -1,4 +1,3 @@
-import { ReturnStatement } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Allitems } from '../Items/allitems';
 import { Cart } from '../Items/cart.model';
@@ -13,81 +12,95 @@ import { CartService } from '../menuapiservice/cart.service';
 })
 export class ProductComponent implements OnInit {
 
-  public itemList :any;
-  searchKey : string="";
-  public filterCategory: any;
   message:any;
-  constructor(private api: ApiserviceService, private cartService: CartService) { }
 
-  ngOnInit(): void {
-    this.api.getItem()
-    .subscribe(res=>{
-      this.itemList =res;
-      this.filterCategory=res;
 
-      this.itemList.forEach((a:any)=>{
-        // if(a.category==="veg"){
-        //   a.category="Veg Items"
-      
-        // }
+  itemList ! :any;
+ searchKey : string="";
+ public filterCategory: any;
+ constructor(private api: ApiserviceService, private cartService: CartService) { }
 
-        Object.assign(a,{quantity:1,total:a.itemCost});
-      });
-      // console.log(this.itemList);
-      
-    })
-    
-    this.api.search.subscribe((val:any)=>{
-      this.searchKey=val;
-    })
-  }
+ ngOnInit(): void {
+   this.api.getItem()
+   .subscribe(res=>{
+     this.itemList =res;
+     this.filterCategory=res;
 
-  tempdata : Cart={
-    userEmailId : "karthiga@gmail.com",
-    items: []
-    
-  }
-  tempItem: Menu = { 
-    itemId: 1,
-    itemName: "",
-    itemDescription: " ",
-    category: "",
-    itemCost:0,
-    itemImage: "",
+     this.itemList.forEach((a:any)=>{
+       // if(a.category==="veg"){
+       //   a.category="Veg Items"
+     
+       // }
 
-    quantity : 1,
-  };
-  public additems(menuitem:Allitems){
-    // this.cart.menu.push(newitem)
-    this.tempItem.itemId = menuitem.itemId, 
-    this.tempItem.itemName =menuitem.itemName,
-    this.tempItem.itemDescription =menuitem.itemDescription,
-    this.tempItem.itemCost=menuitem.itemCost,
-    this.tempItem.itemImage=menuitem.itemImage,
-    this.tempItem.category =menuitem.category,
-    this.tempItem.quantity = 1
- 
-    this.tempdata.items.push(this.tempItem)
+       Object.assign(a,{quantity:1,total:a.itemCost});
+     });
+     console.log(this.itemList);
+     
+   })
    
-    this.api.updateItems(this.tempdata).subscribe((data) => this.message=data)
-    console.log(this.message);
-    
-    
-  }
+   
 
-  // ngOnInit(): void {
-  //     this.api.getItem().subscribe((data: Allitems[])=>{
-  //       console.log(data);
-  // //      this.filterCategory=data;
-  //       this.items=data;
-  //     });
-  // }
+ }
+ tempdata : Cart={
+   userEmailId : "karthiga@gmail.com",
+   items: []
+   
+ }
+ tempItem: Menu = { 
+   itemId: 1,
+   itemName: "",
+   itemDescription: " ",
+   category: "",
+   itemCost:0,
+   itemImage: "",
 
-  filter(category:string){
-    this.filterCategory=this.itemList
-    .filter((a:any)=>{
-      if(a.category==category||category==''){
-        return a;
-      }
-    })}
+   quantity : 1,
+ };
+ public additems(menuitem:Allitems){
+   // this.cart.menu.push(newitem)
+   this.tempItem.itemId = menuitem.itemId, 
+   this.tempItem.itemName =menuitem.itemName,
+   this.tempItem.itemDescription =menuitem.itemDescription,
+   this.tempItem.itemCost=menuitem.itemCost,
+   this.tempItem.itemImage=menuitem.itemImage,
+   this.tempItem.category =menuitem.category,
+   this.tempItem.quantity = 1
+
+   this.tempdata.items.push(this.tempItem)
+  
+   this.api.updateItems(this.tempdata).subscribe((data) => this.message=data)
+   console.log(this.message);
+   
+   
+ }
+ 
+ 
+ 
+
+
+//   addItemsToCart(newitem:any){
+// this.tempdata.menu.push(newitem)
+
+//     this.api.updateItems(this.tempdata).subscribe((data)=>{
+//       console.log(data)
+//     })
+   // this.tempdata.menu.push(newitem)
+
+ // }
+
+ // ngOnInit(): void {
+ //     this.api.getItem().subscribe((data: Allitems[])=>{
+ //       console.log(data);
+ // //      this.filterCategory=data;
+ //       this.items=data;
+ //     });
+ // }
+
+ filter(category:string){
+   this.filterCategory=this.itemList
+   .filter((a:any)=>{
+     if(a.category==category||category==''){
+       return a;
+     }
+   })}
 }
