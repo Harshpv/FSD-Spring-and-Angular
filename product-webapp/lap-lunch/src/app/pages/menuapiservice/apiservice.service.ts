@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {map} from "rxjs/operators"
 import { Allitems } from '../Items/allitems';
+import { Cart } from '../Items/cart.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,5 +21,19 @@ export class ApiserviceService {
   getItem(): Observable<Allitems[]>{
     return this.http.get<Allitems[]>("http://localhost:8080/api/v1/getall");
   }
-  }    
+
+  
+
+     
+  updateItems(cart:Cart): Observable<Cart>{
+    return this.http.post<Cart>("http://localhost:8083/api/v1/cart/create",cart);
+  }
+  getallitems():Observable<Cart>{
+    return this.http.get<Cart>("http://localhost:8083/api/v1/cart/karthiga@gmail.com");
+  }
+  emptyCart():Observable<Cart>{
+    return this.http.delete<Cart>("http://localhost:8083/api/v1/cart/karthiga@gmail.com");
+  }
+  }
+     
   

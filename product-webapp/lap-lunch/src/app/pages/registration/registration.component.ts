@@ -16,7 +16,17 @@ import { AuthServiceService } from 'src/app/login/Service/auth-service.service';
 export class RegistrationComponent implements OnInit {
 
   regForm! : FormGroup;
-  addrss : Address = new Address();
+
+   user: User =  {
+    userEmailId: '',
+    firstName : '',
+    lastName : '',
+    password : '',
+    address : []
+
+  };
+
+  
 
   constructor(private service : UserService, private router: Router,
     private authService:AuthServiceService, private builder: FormBuilder, private customValidator : CustomvalidationService) { }
@@ -28,7 +38,7 @@ export class RegistrationComponent implements OnInit {
       lastName : ['', Validators.required],
       password : ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
       confirmPassword: ['', [Validators.required]],
-      address : [[this.addrss]]
+      address : [[]]
     },
 
     {
@@ -52,13 +62,16 @@ export class RegistrationComponent implements OnInit {
   
 
   public registerNow(){
-    this.service.addUser(this.regForm.value).subscribe(
-      (data) =>{ this.message=data
+    this.user.userEmailId = this.regForm.value.userEmailId;
+    this.user.firstName = this.regForm.value.firstName;
+    this.user.lastName = this.regForm.value.lastName;
+    this.user.password = this.regForm.value.password;
+    this.user.address = this.regForm.value.address;
+    this.service.addUser(this.user).subscribe((data) => {this.message=data
       this.authService.addUser(this.regForm.controls['userEmailId'].value,this.regForm.controls['password'].value)
       .subscribe()
-      }
-      )
-  
+    },
+    )
     console.log(this.message);
     this.router.navigateByUrl('/login')
       

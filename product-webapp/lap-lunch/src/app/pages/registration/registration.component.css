@@ -1,3 +1,4 @@
+
 html
 {
  margin:0px;
@@ -10,18 +11,32 @@ html
  background-size:cover;
 }
 
+
+html
+{
+ margin:0px;
+ height:100%;
+ width:100%;
+ background-image: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
+ -webkit-background-size:cover;
+ -o-background-size:cover;
+ -moz-background-size:cover;
+ background-size:cover;
+}
+
+
   .container{
     background-color: rgb(242, 237, 231);
-    padding: 50px;
+
+    padding: 30px;
     /* background-image: url('https://www.istockphoto.com/photos/nature'); */
     /* background-image: url('https://www.heartandstroke.ca/healthy-living/healthy-eating/healthy-eating-basics'); */
     border-radius: 10px;
-    padding-bottom: 60px;
+    padding-bottom: 40px;
+    margin-bottom: 100px;
   }
-  body,
-  html {
-    height: 100%;
-  }
+
+ 
   h1{
     font-size: 2.0em;
   }
@@ -37,6 +52,8 @@ html
     -o-background-size:cover;
     -moz-background-size:cover;
     background-size:cover;
+    position: center;
+    
   }
   h1,h4{
     text-align: center;
@@ -67,20 +84,13 @@ html
   }
   .btn{
     width: 100%;
+
   }
   
   .col-md-4 {
     background-image: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
-    margin : auto ;
+    margin: auto;
     justify-content: center;
     margin-bottom: 100px;
   }
-  /* body{
-    background-color: linear-gradient(blue, green);
-    background-image:url('/Images/cat2.webp');
-    background-image: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100%;
-    background-size: 100% 100%;
-} */
+

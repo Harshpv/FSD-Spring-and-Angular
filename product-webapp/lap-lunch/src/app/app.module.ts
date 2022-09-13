@@ -19,9 +19,12 @@ import { MatCommonModule } from '@angular/material/core';
 // import { ServiceComponent } from './service/service.component';
 import { MatCardModule } from '@angular/material/card';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { provideRoutes } from '@angular/router';
+import { SearchheaderComponent } from './pages/searchheader/searchheader.component';
 import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
 import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -30,18 +33,11 @@ import { MatInputModule } from '@angular/material/input';
     LoginComponent,
     SubscriptionPlansComponent,
     SubscribedPlanComponent,
-  //  FilterPipe,
-   
-    
-    //profile components:
     ProfileComponent,
     SubscriptionComponent,
     AddressComponent,
-
     SubscriptionPlansComponent,
     SubscribedPlanComponent,
-
-    //  FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +54,9 @@ import { MatInputModule } from '@angular/material/input';
     HttpClientModule,
     MatCommonModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    CommonModule
+    // AuthServiceService
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
