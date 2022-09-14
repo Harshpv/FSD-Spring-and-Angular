@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Login } from '../login';
 import { User } from 'src/app/pages/registration/user.model';
 import { Observable } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 // import{router} from '.angular/router';
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthServiceService {
   decodedToken:any;
 
   helper= new JwtHelperService();
-  constructor(private http:HttpClient,private jwtHelper :JwtHelperService, private router:Router) { }
+  constructor(private http:HttpClient,private jwtHelper :JwtHelperService, private router:Router,private snackbar:MatSnackBar) { }
   
   login(email:string, password:string )  {
     return this.http.post<Login>('http://localhost:8080/api/v1/auth/login', {email, password})
@@ -27,7 +28,11 @@ export class AuthServiceService {
 logout(){
   sessionStorage.removeItem('emailId');
   sessionStorage.removeItem('token');
-  this.router.navigateByUrl('/menu');
+  this.router.navigateByUrl('/menu').then(()=>{
+    this.snackbar.open("You have been logged out successfully!","Dismiss", {
+    duration:2500,
+  });
+  });
 }
 isloggedIn() {
   return !!sessionStorage.getItem('token');;

@@ -7,6 +7,7 @@ import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { CustomvalidationService } from './customvalidation.service';
 import { AuthServiceService } from 'src/app/login/Service/auth-service.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-registration',
@@ -26,10 +27,10 @@ export class RegistrationComponent implements OnInit {
 
   };
 
-  
 
   constructor(private service : UserService, private router: Router,
-    private authService:AuthServiceService, private builder: FormBuilder, private customValidator : CustomvalidationService) { }
+    private authService:AuthServiceService, private builder: FormBuilder,
+    private matTooltip:MatTooltipModule, private customValidator : CustomvalidationService) { }
   message:any;
   ngOnInit(): void {
     this.regForm = this.builder.group({

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ɵNgNoValidate } from '@angular/forms';
+import { MatSnackBar} from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
-// import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthServiceService } from './Service/auth-service.service';
 
 @Component({
@@ -12,13 +14,11 @@ import { AuthServiceService } from './Service/auth-service.service';
 export class LoginComponent {
 
   decodedToken:any;
-  // submitted:any;
-  // touched:any;
-  // invalid:any;
+  message:any;
+  action:any;
+  helper= new JwtHelperService();
 
-  // helper= new JwtHelperService();
-
-  constructor( private fb:FormBuilder, private authService:AuthServiceService, private router: Router) {}
+  constructor( private fb:FormBuilder, private authService:AuthServiceService,private mattooltip:MatTooltipModule, private router: Router,private snackbar:MatSnackBar) {}
 
 loginform =this.fb.group({
   email: [null,[Validators.email,Validators.required]],
@@ -27,6 +27,9 @@ loginform =this.fb.group({
 ngonit(){
 
 }
+// openSnackBar(message: string, action: string) {
+//   this.snackbar.open(message, action);
+// }
   
 login() {
     const val = this.loginform.value;
@@ -36,24 +39,23 @@ login() {
             .subscribe(
                 (result) => {
                     console.log(result);
-                    // this.decodedToken= this.helper.decodeToken(result.token);
+                    this.decodedToken= this.helper.decodeToken(result.token);
                     sessionStorage.setItem("emailId",this.decodedToken.sub);
                     sessionStorage.setItem('token',result.token);
                     this.loginform.reset();
-                    this.router.navigateByUrl('/menu');
+                    this.router.navigateByUrl('/menu').then(()=>{
+                      this.snackbar.open("You are logged in!","OK",{
+                        duration:2500,
+                      });
+                    });
                 }
             )
     }
     else{
-      console.log("enter correct details");
+      this.snackbar.open("please enter correct details","OK");
+      console.log("enter correct details")
       alert("enter correct details");
       this.loginform.reset();
     }
-}
-addUser(){
-  // this.authService.addUser(this.loginform.value).subscribe((data) => this.message=data)
-  // console.log(this.message);
-  this.router.navigateByUrl('/menu')
-  
 }
 }

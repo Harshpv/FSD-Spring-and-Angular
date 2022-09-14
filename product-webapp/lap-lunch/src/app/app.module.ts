@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 //profile components
 import { ProfileComponent } from './profile/profile.component';
 import { SubscriptionComponent } from './profile/subscription/subscription.component';
@@ -25,6 +25,8 @@ import { SubscriptionPlansComponent } from './subscription-plans/subscription-pl
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { AuthGuard } from './login/Service/auth.guard';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     BrowserAnimationsModule,
     CommonComponentsModule,
+    MatSnackBarModule,
     // SearchheaderComponent,
     PagesModule,
     ReactiveFormsModule,
@@ -55,12 +58,13 @@ import { CommonModule } from '@angular/common';
     MatCommonModule,
     MatCardModule,
     MatInputModule,
-    CommonModule
+    CommonModule,
+    MatTooltipModule
     // AuthServiceService
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService,
+    JwtHelperService,AuthGuard
   ],
   bootstrap: [AppComponent],
 })

@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { RecommendationComponent } from './recommendation/recommendation.component';
 import { LoginComponent } from '../login/login.component';
 import { TimetableComponent } from './timetable/timetable.component';
+import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -25,7 +26,6 @@ import { TimetableComponent } from './timetable/timetable.component';
     RecommendationComponent,
     RecommendationComponent,
     RegistrationComponent,
-
     RecommendationComponent,
     TimetableComponent
   ],
@@ -35,6 +35,7 @@ import { TimetableComponent } from './timetable/timetable.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatTooltipModule
   ],
   exports: [SearchheaderComponent, CartComponent, ProductComponent],
 })
