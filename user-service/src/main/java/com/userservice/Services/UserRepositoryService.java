@@ -19,16 +19,20 @@ public class UserRepositoryService {
     private Users userDemo;
 
 
-    public String publishMessage(@RequestBody UserModel credentials) {
-                return "Message Published";
-    }
+
+
+//    public String publishMessage(@RequestBody UserModel credentials) {
+//                return "Message Published";
+//    }
 
     // this method is used to add new users to the database
     public Users addUser(Users user) throws UserAlreadyExistsException {
         if (repository.existsById(user.getUserEmailId())) {
             throw new UserAlreadyExistsException();
         }
-        userDemo = new Users(user.getUserEmailId(), user.getMobileNum(), user.getFirstName(), user.getLastName(), user.getAddress());
+        //userDemo = new Users(user.getUserEmailId(), user.getFirstName(), user.getLastName(), user.getAddress());
+
+        userDemo=new Users(user.getUserEmailId(),user.getMobileNum(),user.getFirstName(),user.getLastName(),user.getAddress());
 //        userDemo.setUserEmailId(user.getUserEmailId());
 //        userDemo.setFirstName(user.getFirstName());
 //        userDemo.setLastName(user.getLastName());
@@ -61,19 +65,19 @@ public class UserRepositoryService {
     }
 
     // this method is used to update user details
-    public Users updateUser(UsersDTO user) throws UserNotFoundException {
+    public Users updateUser(Users user) throws UserNotFoundException {
 
 
         if (repository.existsById(user.getUserEmailId())) {
             Users users = repository.findById(user.getUserEmailId()).get();
-            users.setUserEmailId(user.getUserEmailId());
+//            users.setUserEmailId(user.getUserEmailId());
+//
+//            users.setFirstName(user.getFirstName());
+//            users.setLastName(user.getLastName());
+//
+//            users.setAddress(user.getAddress());
 
-            users.setFirstName(user.getFirstName());
-            users.setLastName(user.getLastName());
-
-            users.setAddress(user.getAddress());
-
-            return repository.save(users);
+            return repository.save(user);
         }
         throw new UserNotFoundException();
 

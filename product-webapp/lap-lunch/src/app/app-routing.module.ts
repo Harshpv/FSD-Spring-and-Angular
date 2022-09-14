@@ -8,9 +8,6 @@ import { ProductComponent } from './pages/product/product.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { SearchheaderComponent } from './pages/searchheader/searchheader.component';
 import { TimetableComponent } from './pages/timetable/timetable.component';
-import { AddressComponent } from './profile/address/address.component';
-import { ProfileComponent } from './profile/profile.component';
-import { SubscriptionComponent } from './profile/subscription/subscription.component';
 import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
 import { AuthGuard } from './login/Service/auth.guard';
 
@@ -19,13 +16,10 @@ const routes: Routes = [
 
   // { path: '', component: HeaderComponent },
   { path: 'menu', component: SearchheaderComponent},
-  { path: 'cart', component: CartComponent ,canActivate:[AuthGuard]},
+  { path: 'cart', component: CartComponent},
   { path: 'product', component: ProductComponent },
-  { path: 'profile', component: ProfileComponent,canActivate:[AuthGuard]},
-  { path: 'profile-address', component: AddressComponent },
-  { path: 'profile-subscription', component: SubscriptionComponent },
-  {path:"search/:searchItem",component: SearchheaderComponent},
-  {path:"timetable", component:TimetableComponent,canActivate:[AuthGuard]},
+  { path: "search/:searchItem",component: SearchheaderComponent},
+  { path: "timetable", component:TimetableComponent,canActivate:[AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'subscriptionplan', component: SubscriptionPlansComponent,canActivate:[AuthGuard]}, // i have mentioned this lie

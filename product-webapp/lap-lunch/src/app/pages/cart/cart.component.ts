@@ -14,7 +14,7 @@ import { CartService } from '../menuapiservice/cart.service';
 })
 export class CartComponent implements OnInit {
   
-  menuproduct : any=[];
+  menuproduct !: Cart;
   product ! : Cart;
   public totalAmount !:number;
   Quantity:number =1;
@@ -29,48 +29,62 @@ message : boolean =false;
    
    
      
-      this.api.getItem().subscribe((data) => 
+      this.api.getallitems().subscribe((data) => 
       {
       this.menuproduct=data
-    if(this.product.items.length==0){
-      this.message=true;
-    }
-    },
-      error =>{
-        this.message=true;
-
-      }
+      console.log(this.menuproduct);
       
+      })}
+
       
-      )
-    console.log(this.product);
-    
-    
-     
-   
-
-  }
-  
 
 
-
-  removeItem(item: any){
-    this.cartService.removeCartItem(item);
+  removeItem(index: any){
+    this.menuproduct.items.splice(index,1)
+    this.api.updateItems(this.menuproduct).subscribe((data) => this.product=data)
+    console.log(this.menuproduct);
 
   }
 
   emptycart(){
-    this.product.items = [];
-    // this.api.updateItems(this.product).subscribe((data) => this.product=data)
-    console.log(this.product);
+    this.menuproduct.items = [];
+    this.api.updateItems(this.menuproduct).subscribe((data) => this.menuproduct=data)
+    console.log(this.menuproduct);
   }
-
-
-inc(item:any){
-this.cartService.IncrementItemQuantity(item);
+  getTotalAmount(): number{
+    let total = 0;
+    for (var i = 0; i < this.menuproduct.items.length; i++) {
+        if (this.menuproduct.items[i].itemCost) {
+          total += this.menuproduct.items[i].itemCost * this.menuproduct.items[i].quantity;
+            this.totalAmount = total;
+        }
+    }
+    return total;
 }
 
-desc(item:any){
-  this.cartService.CartItemDecrement(item);
 
-}}
+inc(index:number){
+  if(this.menuproduct.items[index].quantity+1 < 1){
+    this.menuproduct.items[index].quantity = 1;
+    console.log('item_1-> ' + this.product.items[index].quantity)
+  }
+  else{
+    this.menuproduct.items[index].quantity += 1;
+    console.log('item_2-> ' + index +  '  '+this.product.items[index].quantity);
+  }
+}
+
+desc(index:number){
+  
+    /*. if item passed then item.qty. */
+      if(this.menuproduct.items[index].quantity-1 < 1){
+        this.menuproduct.items[index].quantity = 1;
+        console.log('item_1-> ' + this.menuproduct.items[index].quantity)
+      }
+      else{
+        this.menuproduct.items[index].quantity -= 1;
+        console.log('item_2-> ' + index +  '  '+this.menuproduct.items[index].quantity);
+      }
+      }
+
+}

@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/v3")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class UsersController {
 
     @Autowired
     private UserRepositoryService repositoryService;
     private Users userDemo;
 
-    @PostMapping("/addUser") //change
+    @PostMapping //change
     public ResponseEntity<?> addUser(@RequestBody Users user) {
 
 //        return new ResponseEntity<Users>(repositoryService.addUser(user),HttpStatus.ACCEPTED);
@@ -77,7 +77,7 @@ public class UsersController {
     }
 
     @PutMapping("/updateUser/{email}")
-    public ResponseEntity<Object> updateUser(@RequestBody UsersDTO user) {
+    public ResponseEntity<Object> updateUser(@RequestBody Users user) {
         try {
             repositoryService.updateUser(user);
             return new ResponseEntity<>("User updated successfully!!!", HttpStatus.OK);

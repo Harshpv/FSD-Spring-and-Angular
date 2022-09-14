@@ -4,10 +4,10 @@ export interface Menu {
       itemName: String | undefined,
         itemDescription: String| undefined ,
        category: String| undefined ,
-        itemCost: number | undefined,
+        itemCost: number,
        itemImage: String | undefined,
    
-       quantity : number| undefined
+       quantity : number
    
    
    }

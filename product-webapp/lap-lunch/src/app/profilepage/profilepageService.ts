@@ -5,12 +5,12 @@ import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AddressServiceService {
+export class ProfilepageService {
   constructor(private http: HttpClient) {}
 
   getAddressesById(id: string) {
     return this.http
-      .get<any>('http://localhost:8080/api/v1/getUser/' + id)
+      .get<any>('http://localhost:8086/api/v3/getUser/' + id)
       .pipe(
         map((res: any) => {
           return res;
@@ -20,7 +20,7 @@ export class AddressServiceService {
 
   updateAddressById(id: string, userData: any) {
     return this.http
-      .put<any>('http://localhost:8080/api/v1/updateUser/' + id, userData)
+      .put<any>('http://localhost:8086/api/v3/updateUser/' + id, userData)
       .pipe(
         map((res: any) => {
           return res;

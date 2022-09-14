@@ -12,11 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 //profile components
-import { ProfileComponent } from './profile/profile.component';
-import { SubscriptionComponent } from './profile/subscription/subscription.component';
-import { AddressComponent } from './profile/address/address.component';
 import { MatCommonModule } from '@angular/material/core';
-// import { ServiceComponent } from './service/service.component';
 import { MatCardModule } from '@angular/material/card';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { provideRoutes } from '@angular/router';
@@ -27,19 +23,14 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthGuard } from './login/Service/auth.guard';
-
+import { ProfilepageModule } from './profilepage/profilepage.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SubscriptionPlansComponent,
-    SubscribedPlanComponent,
-    ProfileComponent,
-    SubscriptionComponent,
-    AddressComponent,
-    SubscriptionPlansComponent,
-    SubscribedPlanComponent,
+    SubscribedPlanComponent
   ],
   imports: [
     BrowserModule,
@@ -59,8 +50,8 @@ import { AuthGuard } from './login/Service/auth.guard';
     MatCardModule,
     MatInputModule,
     CommonModule,
-    MatTooltipModule
-    // AuthServiceService
+    MatTooltipModule,
+    ProfilepageModule,
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
