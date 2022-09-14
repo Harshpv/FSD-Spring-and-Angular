@@ -1,5 +1,6 @@
 import { ReturnStatement } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AuthServiceService } from 'src/app/login/Service/auth-service.service';
@@ -30,7 +31,8 @@ export class ProductComponent implements OnInit {
     private cartService: CartService,
     private route: AppRoutingModule,
     private routes:Router,
-    private authService:AuthServiceService
+    private authService:AuthServiceService,
+    private snackbar:MatSnackBar
   ) {}
 
   message: any;
@@ -131,6 +133,9 @@ export class ProductComponent implements OnInit {
         (this.tempItem.category = menuitem.category),
         (this.tempItem.quantity = 1);
       this.tempdata.items.push(this.tempItem);
+      this.snackbar.open("You have successfully added the item!","OK",{
+        duration:2500,
+      });
     } else {
       this.tempdata.items[
         this.tempdata.items.findIndex((item) => item.itemId === menuitem.itemId)
