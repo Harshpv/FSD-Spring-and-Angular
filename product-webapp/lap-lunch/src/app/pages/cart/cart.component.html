@@ -42,14 +42,14 @@
        
        
        
-                                <button class="btn"><i class="fa fa-plus"(click)="inc(i)"></i></button>
+                                <button style="width: 30px;" class="btn-block"><i class="fa fa-plus"(click)="inc(i)"></i></button>
                             <!-- <span {{item.Quantity}}></span> -->
-                            <input  value=" {{item.quantity}}">
-                                <button class="btn-block "><i class="fa fa-minus"(click)="desc(i)"></i></button>
+                            <input style="width: 30px;" value=" {{item.quantity}}">
+                                <button style="width: 30px;"class="btn-block "><i class="fa fa-minus"(click)="desc(i)"></i></button>
                             </td> 
-                            <td scope="col" class="  text-center" style="width: 12%;">{{item.itemCost}}</td>
+                            <td scope="col" class="  text-center" style="width: 12%;" >{{item.itemCost*item.quantity}}</td>
                             <td>
-                                <button (click)= "removeItem(i)" class="btn btn-danger text-center" ><i class="fas fa-trash-alt"></i></button>
+                                <button style=" position:relative;left: 25%;" (click)= "removeItem(i)" class="btn btn-danger align-right" ><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                     </tbody>
@@ -57,7 +57,8 @@
                   
           <tr style="float:right"> 
             <!-- <div  style=" float:center;"><strong>You Pay : Rs.{{totalAmount}}.00</strong></div>                      -->
-          <button routerLink="/menu" class="btn btn-primary rounded-pill py-2 btn-block " >Add More </button>
+          <button  style=" position: relative;
+          right: 150px;" routerLink="/menu" class="btn btn-primary rounded-pill py-2 btn-block " >Add More </button>
         </tr> 
                         
                     
@@ -92,7 +93,8 @@
                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
                   <h5 class="font-weight-bold width: 12%"><strong> Rs.{{totalAmount+(totalAmount*0.02) +50}}.00</strong></h5>
                 </li>
-              </ul><a href="#" class="btn btn-primary rounded-pill py-2 btn-block">Procceed to checkout</a>
+              </ul><a href="#" style="position:absolute;
+              padding: 20px;right: 100px;" class="btn btn-primary rounded-pill py-2 btn-block align-right ">Procceed to checkout</a>
               
             </div>
     </div>
