@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
   searchKey: string = '';
   public filterCategory: any;
   allitems: any;
+  tempdata!: Cart;
 
   @Input()
   searchString: string = '';
@@ -37,6 +38,9 @@ export class ProductComponent implements OnInit {
       this.filterCategory = res;
 
       console.log(this.searchKey);
+      this.api.getallitems().subscribe((res) => {
+        this.tempdata = res;
+      });
 
       this.itemList.forEach((a: any) => {
         // if(a.category==="veg"){
@@ -87,10 +91,10 @@ export class ProductComponent implements OnInit {
   //   this.cartService.addItemtocart(item);
   // }
 
-  tempdata: Cart = {
-    userEmailId: 'karthiga@gmail.com',
-    items: [],
-  };
+  // tempdata: Cart = {
+  //   userEmailId: 'karthiga@gmail.com',
+  //   items: [],
+  // };
   tempItem: Menu = {
     itemId: 1,
     itemName: '',
@@ -103,7 +107,7 @@ export class ProductComponent implements OnInit {
   };
   public additems(menuitem: Allitems) {
     // this.cart.menu.push(newitem)
-    //this.tempdata = this.api.getallitems;
+
     if (
       this.tempdata.items.findIndex(
         (item) => item.itemId === menuitem.itemId
