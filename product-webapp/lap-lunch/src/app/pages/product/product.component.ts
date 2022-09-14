@@ -1,5 +1,6 @@
 import { ReturnStatement } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { Allitems } from '../Items/allitems';
 import { Cart } from '../Items/cart.model';
 import { Menu } from '../Items/menu.model';
@@ -13,17 +14,31 @@ import { CartService } from '../menuapiservice/cart.service';
 })
 export class ProductComponent implements OnInit {
 
-  public itemList :any;
+  itemList :any[] =[];
+  searchedItems: Allitems[]=[];
   searchKey : string="";
   public filterCategory: any;
+  allitems: any;
+
+  @Input()
+  searchString: string="";
+
+  constructor(private api: ApiserviceService, private cartService: CartService, private route: AppRoutingModule) { }
+
   message:any;
-  constructor(private api: ApiserviceService, private cartService: CartService) { }
+ 
 
   ngOnInit(): void {
+    console.log(this.searchKey);
     this.api.getItem()
     .subscribe(res=>{
       this.itemList =res;
       this.filterCategory=res;
+      
+  
+      console.log(this.searchKey);
+      
+      
 
       this.itemList.forEach((a:any)=>{
         // if(a.category==="veg"){
@@ -36,11 +51,44 @@ export class ProductComponent implements OnInit {
       // console.log(this.itemList);
       
     })
+    // this.route.params.subscribe((params: { [x: string]: string; })=>{
+    //   if(params['searchItem'])
+
+    //  this.allitems=this.cartService.getItems().filter(allitem=>allitem.itemName.toLowerCase().includes(params['searchItem'].toLowerCase()));
+
+    //   else
+    //    this.allitems =this.cartService.getItems();
+
+    //  })
     
+  
+    
+
     this.api.search.subscribe((val:any)=>{
+    //  console.log(this.searchKey);
+
+      this.searchedItems=[];
       this.searchKey=val;
+      for (let i = 0; i < this.itemList.length; i++) {
+      //  console.log(this.searchKey);
+        
+        if (this.itemList[i].itemName.toLowerCase().includes(this.searchKey.toLowerCase())&& this.searchKey!="") {
+          console.log(this.itemList[i]);
+          
+          this.searchedItems.push(this.itemList[i]);
+          
+        }
+  
+      }
     })
   }
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({behavior: 'smooth'});
+  }
+  // addItemsToCart(item:any){
+
+  //   this.cartService.addItemtocart(item);
+  // }
 
   tempdata : Cart={
     userEmailId : "karthiga@gmail.com",
@@ -69,25 +117,35 @@ export class ProductComponent implements OnInit {
  
     this.tempdata.items.push(this.tempItem)
    
-    this.api.updateItems(this.tempdata).subscribe((data) => this.message=data)
-    console.log(this.message);
-    
-    
-  }
+ }
+ 
+ 
+ 
 
-  // ngOnInit(): void {
-  //     this.api.getItem().subscribe((data: Allitems[])=>{
-  //       console.log(data);
-  // //      this.filterCategory=data;
-  //       this.items=data;
-  //     });
-  // }
 
-  filter(category:string){
-    this.filterCategory=this.itemList
-    .filter((a:any)=>{
-      if(a.category==category||category==''){
-        return a;
-      }
-    })}
+//   addItemsToCart(newitem:any){
+// this.tempdata.menu.push(newitem)
+
+//     this.api.updateItems(this.tempdata).subscribe((data)=>{
+//       console.log(data)
+//     })
+   // this.tempdata.menu.push(newitem)
+
+ // }
+
+ // ngOnInit(): void {
+ //     this.api.getItem().subscribe((data: Allitems[])=>{
+ //       console.log(data);
+ // //      this.filterCategory=data;
+ //       this.items=data;
+ //     });
+ // }
+
+ filter(category:string){
+   this.filterCategory=this.itemList
+   .filter((a:any)=>{
+     if(a.category==category||category==''){
+       return a;
+     }
+   })}
 }

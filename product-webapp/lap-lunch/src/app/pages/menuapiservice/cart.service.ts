@@ -9,6 +9,7 @@ export class CartService {
 
   public cartList : Menu[]=[];
   public menuList : Menu[]=[];
+  tempItem!: Menu;
   constructor() { }
 
   getItems(){
@@ -46,23 +47,23 @@ export class CartService {
   //   console.log(this.cartList);
   // }
 
-  getTotalAmount(): number{
-    let totalAmount=0;
-    this.cartList.map((a:any)=>{
-      totalAmount +=a.total;
-    })
+  // getTotalAmount(): number{
+  //   let totalAmount=0;
+  //   this.cartList.map((a:any)=>{
+  //     totalAmount +=a.total;
+  //   })
 
-    return totalAmount;
-  }
+  //   return totalAmount;
+  // }
 
-  removeCartItem(newitem:any){
-    this.cartList.map((a:any,index:any)=>{
-      if(newitem.id === a.id){
-        this.cartList.splice(index,1);
-      }
-    })
-    this.menuList.concat(this.cartList);
-  }
+  // removeCartItem(newitem:any){
+  //   this.cartList.map((a:any,index:any)=>{
+  //     if(newitem.id === a.id){
+  //       this.cartList.splice(index,1);
+  //     }
+  //   })
+  //   this.menuList.concat(this.cartList);
+  // }
 
   // removeFUllCartItems(){
   //   this.cartList=[];
@@ -78,16 +79,16 @@ export class CartService {
 
   //   })
   // }ng
-  CartItemDecrement (item:any) {
-    item.qty = item.qty - 1;
-    return this.menuList.concat(this.cartList);
-}
+//   CartItemDecrement (item:any) {
+//     item.qty = item.qty - 1;
+//     return this.menuList.concat(this.cartList);
+// }
 
 
-IncrementItemQuantity (item:any) {
+// IncrementItemQuantity (item:any) {
 
-  item.qty = item.qty + 1;
+//   item.qty = item.qty + 1;
   
-  return this.menuList.concat(this.cartList);
-} 
+//   return this.menuList.concat(this.cartList);
+// } 
 }

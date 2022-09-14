@@ -11,6 +11,9 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RecommendationComponent } from './recommendation/recommendation.component';
+import { LoginComponent } from '../login/login.component';
+import { TimetableComponent } from './timetable/timetable.component';
+
 
 @NgModule({
   declarations: [
@@ -18,9 +21,13 @@ import { RecommendationComponent } from './recommendation/recommendation.compone
     ProductComponent,
     SearchheaderComponent,
     FilterPipe,
+    RegistrationComponent, 
+    RecommendationComponent,
+    RecommendationComponent,
     RegistrationComponent,
 
     RecommendationComponent,
+    TimetableComponent
   ],
   imports: [
     CommonModule,

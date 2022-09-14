@@ -1,5 +1,5 @@
-<app-header></app-header>
-<ng-container *ngIf= "product.items.length !=0">
+
+<ng-container *ngIf= "menuproduct.items.length !=0">
     <div class="container">
         <div class="card-table">
             <div class="cart-product">
@@ -31,22 +31,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor= "let item of product.items; let i = index">
+                        <tr *ngFor= "let item of menuproduct.items; let i = index">
                             <td scope="col" class="  text-center" >{{i+1}}</td>
                             <td  scope="col" class="  text-center">{{item.itemName}}</td>
                             <td><img scope="col" class="  text-center"style="width: 120px;" src= {{item.itemImage}} alt=""></td>
                             <td scope="col" class="  text-center" style="width: 16%;">{{item.itemDescription}}</td>
                             <td scope="col" class="  text-center" style="width: 12%;">{{item.category}}</td>
                             <th scope="col" class="  text-center" style="width: 12%;">{{item.itemCost}}</th>
-                             <td scope="col" class="  text-center" >
-                                <button class="btn"><i class="fa fa-plus"(click)="inc(item.quantity)"></i></button>
+                             <td scope="col" class="  text-center" style="width: 12%;">
+       
+       
+       
+                                <button class="btn"><i class="fa fa-plus"(click)="inc(i)"></i></button>
                             <!-- <span {{item.Quantity}}></span> -->
-                            <input value=" {{item.quantity}}">
-                                <button class="btn-block "><i class="fa fa-minus"(click)="desc(item.quantity)"></i></button>
+                            <input  value=" {{item.quantity}}">
+                                <button class="btn-block "><i class="fa fa-minus"(click)="desc(i)"></i></button>
                             </td> 
                             <td scope="col" class="  text-center" style="width: 12%;">{{item.itemCost}}</td>
                             <td>
-                                <button (click)= "removeItem(item)" class="btn btn-danger text-center" ><i class="fas fa-trash-alt"></i></button>
+                                <button (click)= "removeItem(i)" class="btn btn-danger text-center" ><i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                     </tbody>
@@ -83,7 +86,7 @@
             <div class="p-4">
               <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
               <ul class="list-unstyled mb-4">
-                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>Rs.{{totalAmount}}.00</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>Rs.{{getTotalAmount()}}.00</strong></li>
                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>Rs.50.00</strong></li>
                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>Rs.{{totalAmount*0.02}}.00</strong></li>
                 <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
@@ -106,7 +109,7 @@
 </ng-container>
 
 
-<ng-container *ngIf= "message">
+<div *ngIf= "menuproduct.items.length ==0">
     <div class="container">
         <div class="card">
             <h5 class="card-title">My Cart</h5>
@@ -118,6 +121,7 @@
             <button routerLink="/menu" class="btn btn-primary">Order Now</button>
         </div>
     </div>
-</ng-container>
+</div>
 
-<app-footer></app-footer>
+
+

@@ -1,60 +1,196 @@
-<!-- <app-header></app-header> -->
-    <!-- <div class="form-group">
-        <input type="text" class="form-control"  placeholder="search for items">
-        <span class="fas fa-search search-icon"></span>
-    </div>
+
     
-    <button class="btn btn-primary">
-        <i style="font-size: 30px;" class="fas fa-cart-plus"></i>
-        <div style="font-size: 10px;" class="badge bg-danger">0</div>
-    </button> -->
+
 
 <div class="card-top container"> 
-    <h4>Categories</h4>
+    <h4 style="color: darkblue;">Categories</h4>
     <div class="container d-flex">
         <div class="All Items">
             <a (click)= "filter('')">
-                <img style="width: 100px; height: 100px;" src="assets/Allitems.jpg" alt="allitems">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p>All Items</p>
-                
+                <img  style="width: 130px; height: 130px "  src="assets/Allitems.jpg" alt="allitems">
+                <p><strong style="color: black;">Allitems</strong></p>
+               
             </a>
         </div>
         
-        <div class="Veg Items"></div>
-            <a (click)= "filter('veg')">
-                <img style="width: 100px; height: 100px;" src="assets/vegitems.jpg"  alt="Veg Items">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <p>VegItems</p>
+        <div class="Veg Items">
+            <a (click)= "scroll(veg)">
+            
+                <img  style="width: 130px; height: 130px "  src="assets/vegcat.jpg"  alt="Veg Items">
+                <p><strong style="color: black;">Veg Items</strong></p>
             </a>
+    </div>    
         <div class="Non-Veg Items">
-            <a (click)= "filter('non veg')">
-               
-             <img style="width: 100px; height: 100px;" src="assets/nonveg.jpg"  alt="Non-Veg Items">
-             <p>NonVegItems</p>
+            <a (click)="scroll(nonveg)">
+             <img style="width: 130px; height: 130px "  src="assets/nonveg.jpg"  alt="Non-Veg Items">
+            </a>
+            <p><strong style="color: black;">Non-Veg Items</strong></p>
+        </div>
+        <div class="milk shakes">
+            <a (click)= "scroll(milkshake)">
+             <img style="width: 130px; height: 130px "  src="assets/milkshake-cate.jpg"  alt="Milk Shakes">
+             &nbsp;
+             <p><strong style="color: black;">Milk Shakes</strong></p>
+            </a>
+        </div>
+        <div class="Ice Creams">
+            <a (click)= "scroll(icecream)">
+             <img style="width: 130px; height: 130px "  src="assets/ice-cream.jpg"  alt="Ice Creams">
+             <p><strong style="color: black;">Ice Creams</strong></p>
+            </a>
+        </div>
+        <div class="SoftDrinks">
+            <a (click)= "scroll(softdrink)">
+             <img style="width: 130px; height: 130px "  src="assets/soft-drink.jpg"  alt="Soft Drinks">
+             <p><strong style="color: black;">Soft Drinks</strong></p>
             </a>
         </div>
 
+ 
     </div>
 </div>
 
 
 <div class="container">
     <div class="row">
-        <ng-container *ngFor= "let item of filterCategory | filter:searchKey:'itemName'">
+       <h4 style="color: darkblue;">Search Results</h4>
+        <ng-container *ngFor =  "let item of searchedItems">
+        <!-- <ng-container *ngIf= " filter:searchKey:'itemName' ">
+             -->
         <div class="card col-md-3">
             <img src={{item.itemImage}} alt="Dish Image">
             <h5>{{item.itemName}}</h5>
             <p>{{item.itemDescription}}</p> 
-            <p><strong>Price:</strong>{{item.itemCost}}</p>
-            <p>{{item.category}}</p>
             
+            <p>{{item.category}}</p>
+            <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
             <button (click)=additems(item) >Add +</button>
-        </div>
-    </ng-container> 
+        </div> 
+    </ng-container>
+    <!-- </ng-container>  -->
     </div>
 </div>  
 
 
-<app-footer></app-footer>
+<br><br>
+
+<div #veg class="container">
+    <div class="row">
+        <h4 style="color: darkblue;">Veg Items</h4>
+        <ng-container *ngFor= "let item of filterCategory | filter: 'Vegetarian' :'category'">
+        <div  class="card col-md-3">
+            <img src={{item.itemImage}} alt="Dish Image">
+            <h5>{{item.itemName}}</h5>
+            <p>{{item.itemDescription}}</p> 
+            
+            <p>{{item.category}}</p>
+
+            <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
+            
+            <button (click)=additems(item) >Add +</button>
+        </div>
+    </ng-container> 
+    </div> 
+</div> 
+<br><br>
+ <div #nonveg class="container">
+    <div class="row">
+        <h4 style="color: darkblue;">Non Veg Items</h4>
+        
+        <ng-container *ngFor= "let item of filterCategory | filter: 'non veg' :'category'">
+        <div class="card col-md-3">
+            <img src={{item.itemImage}} alt="Dish Image">
+            <h5>{{item.itemName}}</h5>
+            <p>{{item.itemDescription}}</p> 
+           
+            <p>{{item.category}}</p>
+            <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
+            
+            <button (click)=additems(item) >Add +</button>
+        </div>
+    </ng-container> 
+    
+    </div> 
+</div> 
+
+
+<!-- <div class="card">
+    <div class="image">
+        <ng-container *ngFor= "let item of filterCategory | filter: 'Vegetarian' :'category'"> 
+        <img width="500" height="195"
+        src={{item.itemImage}} alt="Dish Image">
+    
+    <div class="info">
+        <div class="title">
+           <h3>{{item.itemName}}</h3> 
+           <p>{{item.itemDescription}}</p>
+           <p>{{item.category}}</p>
+        </div>
+        <div class="price">
+            <p><strong>Price:</strong>{{item.itemCost}}</p>
+        </div>
+
+        <div class="btn">
+            <button (click)=addItemsToCart(item) >Add +</button>
+        </div> 
+    
+    </div>
+</ng-container>
+</div>  
+</div>-->
+<br><br>
+<div #milkshake class="container">
+    <div class="row">
+        <h4 style="color: darkblue;">Milk Shakes</h4>
+        <ng-container *ngFor= "let item of filterCategory | filter: 'milk shake' :'category'">
+        <div class="card col-md-3">
+            <img src={{item.itemImage}} alt="Dish Image">
+            <h5>{{item.itemName}}</h5>
+            <p>{{item.itemDescription}}</p> 
+            
+            <p>{{item.category}}</p>
+            <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
+            <button (click)=additems(item) >Add +</button>
+        </div>
+    </ng-container> 
+    </div> 
+</div> 
+<br><br>
+<div #icecream class="container">
+    <div class="row">
+        <h4 style="color: darkblue;">Ice Creams</h4>
+        <ng-container *ngFor= "let item of filterCategory | filter: 'ice cream' :'category'">
+        <div class="card col-md-3">
+            <img src={{item.itemImage}} alt="Dish Image">
+            <h5>{{item.itemName}}</h5>
+            <p>{{item.itemDescription}}</p> 
+            
+            <p>{{item.category}}</p>
+            <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
+            <button (click)=additems(item) >Add +</button>
+        </div>
+    </ng-container> 
+    </div> 
+</div> 
+<br><br>
+<div #softdrink class="container">
+    <div class="row">
+        <h4 style="color: darkblue;">Soft Drinks</h4>
+        <ng-container *ngFor= "let item of filterCategory | filter: 'soft drink' :'category' ">
+        <div class="card col-md-3">
+            <img src={{item.itemImage}} alt="Dish Image">
+            <h5>{{item.itemName}}</h5>
+            <p>{{item.itemDescription}}</p> 
+           
+            <p>{{item.category}}</p>
+            <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
+            <button (click)=additems(item) >Add +</button>
+        </div>
+    </ng-container> 
+    </div> 
+</div> 
+
+
+<!-- <app-footer></app-footer> -->
+<!-- <app-footer></app-footer> -->
 <!-- | filter: 'searchKey' :'itemName'  -->  
