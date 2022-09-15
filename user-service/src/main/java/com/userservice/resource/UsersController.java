@@ -4,6 +4,7 @@ import com.userservice.Services.UserRepositoryService;
 import com.userservice.exceptiions.UserAlreadyExistsException;
 import com.userservice.exceptiions.UserNotFoundException;
 import com.userservice.model.Users;
+import com.userservice.model.UsersDTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,14 +14,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/v3")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class UsersController {
 
     @Autowired
     private UserRepositoryService repositoryService;
+    private Users userDemo;
 
-    @PostMapping("/addUser") //change
+    @PostMapping //change
     public ResponseEntity<?> addUser(@RequestBody Users user) {
 
 //        return new ResponseEntity<Users>(repositoryService.addUser(user),HttpStatus.ACCEPTED);
@@ -31,7 +33,7 @@ public class UsersController {
         } catch (UserAlreadyExistsException e) {
             return new ResponseEntity<>("User Already exists", HttpStatus.CONFLICT);
         } catch (Exception e) {
-            return new ResponseEntity<>("User details already exists!!!", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }

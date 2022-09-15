@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import { IonInput } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonComponentsModule } from './common-components/common-components.module';
@@ -13,37 +12,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 
 //profile components
-import { ProfileComponent } from './profile/profile.component';
-import { SubscriptionComponent } from './profile/subscription/subscription.component';
-import { AddressComponent } from './profile/address/address.component';
-
-import {
-  MatFormField,
-  matFormFieldAnimations,
-} from '@angular/material/form-field';
-import { AuthServiceService } from './login/Service/auth-service.service';
 import { MatCommonModule } from '@angular/material/core';
 // import { ServiceComponent } from './service/service.component';
 import { MatCardModule } from '@angular/material/card';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { provideRoutes } from '@angular/router';
-
+import { SearchheaderComponent } from './pages/searchheader/searchheader.component';
 import { SubscriptionPlansComponent } from './subscription-plans/subscription-plans.component';
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
+//import { ProfilepageModule } from 'src/profilepage/profilepage.module';
+
+import { ProfilepageModule } from './profilepage/profilepage.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    //profile components:
-    ProfileComponent,
-    SubscriptionComponent,
-    AddressComponent,
-
     SubscriptionPlansComponent,
     SubscribedPlanComponent,
-
-    //  FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +40,7 @@ import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.compo
     HttpClientModule,
     BrowserAnimationsModule,
     CommonComponentsModule,
+    // SearchheaderComponent,
     PagesModule,
     ReactiveFormsModule,
     FormsModule,
@@ -59,6 +48,13 @@ import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.compo
     HttpClientModule,
     MatCommonModule,
     MatCardModule,
+    MatInputModule,
+    CommonModule,
+    
+
+    //profilepage module added
+    ProfilepageModule,
+
     // AuthServiceService
   ],
   providers: [

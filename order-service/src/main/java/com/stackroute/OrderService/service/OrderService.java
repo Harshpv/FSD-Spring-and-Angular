@@ -58,7 +58,7 @@ public class OrderService {
 
 
 	public void updateOrder(OrderModel orderModel) throws OrderNotFoundException {
-		if(orderRepository.findById(orderModel.getOrderId()).isEmpty()){
+		if(orderRepository.findById(orderModel.getOrderId()).isPresent()){
 			throw new OrderNotFoundException();
 		}
 		orderRepository.save(orderModel);

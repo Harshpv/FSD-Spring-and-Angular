@@ -1,5 +1,6 @@
 package com.stackroute.cartservice.service;
 
+import com.stackroute.OrderService.model.Menu;
 import com.stackroute.cartservice.Respository.CartRepository;
 import com.stackroute.cartservice.exceptions.CartAlreadyExistsException;
 import com.stackroute.cartservice.exceptions.CartNotFoundException;
@@ -8,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,17 +25,46 @@ public class cartServices {
 
 	}
 	 //addItemsToCart method consists of business logic to add new data to database
-	public void addItemsToCart(Cart cart) throws CartAlreadyExistsException  {
+	public void addItemsToCart(Cart cart)   {
 
-		
+		List<Menu> listitems =new ArrayList<>();
 		if (cartRepository.existsById(cart.getUserEmailId()))  {
-			throw new CartAlreadyExistsException();
+			Cart items = cartRepository.findById(cart.getUserEmailId()).get();
+//			listitems.addAll(items.getItems());
 		}
 		cartRepository.save(cart);
 		log.info(" inside addItemsToCart");
 
 
 	}
+//		List<Menu> listitems =new ArrayList<>();
+//
+//		if (cartRepository.existsById(cart.getUserEmailId())) {
+//
+//
+//			Cart items = cartRepository.findById(cart.getUserEmailId()).get();
+////			listitems.addAll(items.getItems());
+//		items.getItems().add(cart.getItems().get(0));
+//			for (int i=0;i< items.getItems().size();i++){
+//				Menu menu = new Menu();
+//				menu.setItemId(items.getItems().get(i).getItemId());
+//				menu.setItemName(items.getItems().get(i).getItemName());
+//				menu.setItemDescription(items.getItems().get(i).getItemDescription());
+//				menu.setItemName(items.getItems().get(i).getItemImage());
+//				menu.setItemCost(items.getItems().get(i).getItemCost());
+////				menu.setVeg(items.getItems().get(i).getCategory());
+////				menu.setQty(items.getItems().get(i).getQuantity());
+//				listitems.add(menu);
+//			}
+////			listitems.add(cart.getItems().get(0));
+//		}
+//		cartRepository.save(cart);
+//		System.out.println(cart.toString());
+//
+//		log.info(" inside addItemsToCart");
+//
+//
+//	}
 	//findAllCarts method consists of business logic to fetch all the data present in the database
 
 	public List<Cart> findAllCarts() throws CartNotFoundException {
@@ -75,6 +106,18 @@ public class cartServices {
 			throw new CartNotFoundException();
 
 		}
+	public void emptyCart(String userEmailId)  {
+		if (!cartRepository.existsById(userEmailId)) {
+
+//
+
+		}
+
+//
+		cartRepository.deleteById(userEmailId);
+	}
+
+
 	 
 
 }

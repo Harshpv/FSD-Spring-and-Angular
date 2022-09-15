@@ -1,12 +1,11 @@
-.container{
+.container{ 
   background-color: rgb(242, 237, 231);
   padding: 50px;
   /* background-image: url('https://www.istockphoto.com/photos/nature'); */
-  /* background-image: url('https://www.heartandstroke.ca/healthy-living/healthy-eating/healthy-eating-basics'); */
-  border-radius: 10px;
-  padding-bottom: 60px;
-  /* margin: auto;
-  justify-content: center; */
+  border-radius: 10px; 
+ padding-bottom: 60px;
+  margin: auto;
+  justify-content: center; 
 }
 body,
 html {
@@ -15,7 +14,7 @@ html {
 h1{
   font-size: 2.0em;
 }
-.bg{
+.login-body{
   padding-top: 80px;
   background-image: linear-gradient(45deg,rgb(164, 239, 164) , rgb(129, 129, 245));
   /* background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).webp"); */
@@ -26,7 +25,7 @@ h1{
   margin: auto;
   justify-content: center;
 }
-h1,h4{
+ h1,h4{
   text-align: center;
 }
 .input-icons i {
@@ -57,7 +56,7 @@ h1,h4{
 }
 .btn{
   width: 100%;
-}
+} 
 /* @media all and (max-width: 600px) {
   .container{
     /* display: block; */
@@ -65,10 +64,12 @@ h1,h4{
     /* width: 70%; */
   /* } */
 /* } */
-/* @media all and (max-width: 500px) {
-  .container{
-    display: block;
-    width: auto;
-    width: 70%;
-  } */
-/* }  */
+.error{
+  color: red;
+}
+input.ng-invalid{
+  border-right: 5px solid red;
+}
+input.ng-valid{
+  border-right: 5px solid green;
+}

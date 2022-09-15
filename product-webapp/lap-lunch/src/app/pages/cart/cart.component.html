@@ -1,55 +1,115 @@
-<app-header></app-header>
 
-
-<ng-container *ngIf= "product.length !=0">
-
+<ng-container *ngIf= "menuproduct.items.length !=0">
     <div class="container">
         <div class="card-table">
             <div class="cart-product">
+                <button (click)= "emptycart()" class="btn button-addon3   " style="float:right;color: #808080;">Empty Full Cart</button>
                 <table class="table table-responsive">
-                    <thead>
+
+                    <thead> 
                         <tr>
-                            <th>Sr.No</th>
-                            <th>Item Name</th>
-                            <th>Item Image</th>
-                            <th>Item Description</th>
-                            <th>Item Category</th>
-                            <th>Item Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Action</th>
+                            <th scope="col" class="border-0 bg-light text-center">
+                                <div class="p-2 px-3 ">S.No</div></th>
+                            <th scope="col" class="border-0 bg-light  text-center">
+                                <div class=" px-3;">Item Name</div></th>
+                            <th scope="col" class="border-0 bg-light  text-center">
+                                <div class="px-2  ">Item Image</div></th>
+                            <th scope="col" class="border-0 bg-light  text-center">
+                                <div class="p-2 px-3 ">Item Description</div></th>
+                            <th scope="col" class="border-0 bg-light  text-center">
+                                <div class="p-2 px-3 ">Item Category</div></th>  
+                           <th scope="col" class="border-0 bg-light  text-center">
+                                <div class="p-2 px-3 ">Item Price</div></th>  
+                            <th scope="col" class="border-0 bg-light  text-center">
+                                <div class="p-2 px-3 ">Quantity</div></th>
+                            <th scope="col" class="border-0 bg-light  text-center">
+                                <div class="p-2 px-3 ">Total</div></th>  
+                            <th scope="col" class="border-0 bg-light  text-center">
+                                <div class="p-2 px-3 ">Action</div></th>    
+                            
+                            
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor= "let item of product; let i = index">
-                            <td>{{i+1}}</td>
-                            <td>{{item.itemName}}</td>
-                            <td><img style="width: 120px;" src= {{item.itemImage}} alt=""></td>
-                            <td style="width: 25%;">{{item.itemDescription}}</td>
-                            <td style="width: 25%;">{{item.category}}</td>
-                            <th style="width: 12%;">{{item.itemCost}}</th>
-                            <td style="width: 12%;">{{item.quantity}}</td>
-                            <td style="width: 12%;">{{item.itemCost}}</td>
+                        <tr *ngFor= "let item of menuproduct.items; let i = index">
+                            <td scope="col" class="  text-center" >{{i+1}}</td>
+                            <td  scope="col" class="  text-center">{{item.itemName}}</td>
+                            <td><img scope="col" class="  text-center"style="width: 120px;" src= {{item.itemImage}} alt=""></td>
+                            <td scope="col" class="  text-center" style="width: 16%;">{{item.itemDescription}}</td>
+                            <td scope="col" class="  text-center" style="width: 12%;">{{item.category}}</td>
+                            <th scope="col" class="  text-center" style="width: 12%;">{{item.itemCost}}</th>
+                             <td scope="col" class="  text-center" style="width: 12%;">
+       
+       
+       
+                                <button class="btn"><i class="fa fa-plus"(click)="inc(i)"></i></button>
+                            <!-- <span {{item.Quantity}}></span> -->
+                            <input  value=" {{item.quantity}}">
+                                <button class="btn-block "><i class="fa fa-minus"(click)="desc(i)"></i></button>
+                            </td> 
+                            <td scope="col" class="  text-center" style="width: 12%;">{{item.itemCost}}</td>
                             <td>
-                                <button (click)= "removeItem(item)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                <button (click)= "removeItem(i)" class="btn btn-danger text-center" ><i class="fas fa-trash-alt"></i></button>
                             </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4"></td>
-                            <td><button (click)= "emptycart()" class="btn btn-danger">Empty Full Cart</button></td>
-                            <td><button routerLink="/menu" class="btn btn-primary">Add More </button></td>
-                            <td><button class="btn btn-success">Checkout</button></td>
-                            <td><strong>You Pay : Rs.{{totalAmount}}.00</strong></td>
                         </tr>
                     </tbody>
                 </table>
+                  
+          <tr style="float:right"> 
+            <!-- <div  style=" float:center;"><strong>You Pay : Rs.{{totalAmount}}.00</strong></div>                      -->
+          <button routerLink="/menu" class="btn btn-primary rounded-pill py-2 btn-block " >Add More </button>
+        </tr> 
+                        
+                    
+               
+            
+    <div class="row py-5 p-4 bg-white rounded shadow-sm">
+        <div class="col-lg-6">
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold border-0 mb-4">Coupon code</div>
+          <div class="p-4">
+            <p class="font-italic mb-4">If you have a coupon code, please enter it in the box below</p>
+            <div class="input-group mb-4 border rounded-pill p-2">
+              <input type="text" placeholder="Apply coupon" aria-describedby="button-addon3" class="form-control border-0">
+              <div class="input-group-append border-0">
+                <button id="button-addon3" type="button" class="btn btn-primary px-4 rounded-pill"><i class="fa fa-gift mr-2"></i>Apply coupon</button>
+              </div>
             </div>
+          </div>
+          <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Instructions for seller</div>
+          <div class="p-4">
+            <p class="font-italic mb-4">If you have some information for the seller you can leave them in the box below</p>
+            <textarea name="" cols="30" rows="2" class="form-control"></textarea>
+          </div>
         </div>
+        <div class="col-lg-6" style="position: 0;right: 2px;">
+            <div class="bg-light rounded-pill px-4 py-3 text-center-UPPERCASE font-weight-bold align-middle">Order summary </div>
+            <div class="p-4">
+              <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you have entered.</p>
+              <ul class="list-unstyled mb-4">
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Order Subtotal </strong><strong>Rs.{{getTotalAmount()}}.00</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Shipping and handling</strong><strong>Rs.50.00</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tax</strong><strong>Rs.{{totalAmount*0.02}}.00</strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Total</strong>
+                  <h5 class="font-weight-bold width: 12%"><strong> Rs.{{totalAmount+(totalAmount*0.02) +50}}.00</strong></h5>
+                </li>
+              </ul><a href="#" class="btn btn-primary rounded-pill py-2 btn-block">Procceed to checkout</a>
+              
+            </div>
     </div>
+    
+        
+  
+      </div>
+    
+
+</div>
+</div>
+</div>
+    
 </ng-container>
 
 
-<ng-container *ngIf= "product.length==0">
+<div *ngIf= "menuproduct.items.length ==0">
     <div class="container">
         <div class="card">
             <h5 class="card-title">My Cart</h5>
@@ -61,6 +121,7 @@
             <button routerLink="/menu" class="btn btn-primary">Order Now</button>
         </div>
     </div>
-</ng-container>
+</div>
 
-<app-footer></app-footer>
+
+
