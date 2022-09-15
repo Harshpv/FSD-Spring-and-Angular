@@ -51,6 +51,7 @@ public class NotificationService {
         model.put("arr2",order.getItemsList());
         model.put("totalPrice",order.getTotalPrice());
 
+
         MimeMessage mimeMessage = mailSender.createMimeMessage(); //Creating instance of MimeMessage
         //Crating instance of MimeMessageHelper
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,
@@ -59,7 +60,7 @@ public class NotificationService {
         //Converting the flth template to string
         String templateContent = FreeMarkerTemplateUtils
                 .processTemplateIntoString(freemarkerConfig.getConfiguration()
-                        .getTemplate("email.flth"),model);
+                        .getTemplate("email.ftl"),model);
 
         helper.setTo(order.getUserEmailId()); //Setting receiver emailID
         helper.setSubject("Order Confirmation"); //Setting email subject

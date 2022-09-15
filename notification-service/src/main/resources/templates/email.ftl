@@ -16,11 +16,7 @@
         img{
             border-radius: 10px;
         }
-        #pay td{
-            background-color: rgb(224, 224, 224);
-            border: 1px solid black;
-            border-radius: 5px;
-        }
+
     </style>
 </head>
 <body>
@@ -94,13 +90,13 @@
             <tr style="background-color:rgb(208, 208, 208)">
 
                 <td>
-                    <h2 style="font-weight: bold;margin-top: 10px;">${a.itemName}</h2>
+                    <h3 style="font-weight: normal;margin-top: 10px;">${a.itemName}</h3>
                 </td>
                 <td>
-                    <h2 style="font-weight: bold;margin-top: 10px;">Qty ${a.qty}</h2>
+                    <h3 style="font-weight: normal;margin-top: 10px;">Qty ${a.qty}</h3>
                 </td>
                 <td>
-                    <h2 style="font-weight: bold;margin-top: 10px;">₹${a.itemCost}</h2>
+                    <h3 style="font-weight: normal;margin-top: 10px;">₹${a.itemCost}</h3>
                 </td>
             </tr>
             </#list>
@@ -108,11 +104,27 @@
         <hr>
         <table>
             <tr id="pay">
+                            <td>
+                                <h3 style="margin-left:30px;">Sub Total</h3>
+                            </td>
+                            <td>
+                                <h3 style="text-align: center;font-weight:normal">₹${totalPrice}</h3>
+                            </td>
+                        </tr>
+                        <tr id="pay">
+                            <td>
+                                <h3 style="margin-left:30px;">Delivery Charge</h3>
+                            </td>
+                            <td>
+                                <h3 style="text-align: center;font-weight:normal">₹50</h3>
+                            </td>
+                        </tr>
+            <tr id="pay">
                 <td>
                     <h3 style="margin-left:30px;">Total</h3>
                 </td>
                 <td>
-                    <h3 style="color:green;text-align: center;">₹${totalPrice}</h3>
+                    <h3 style="color:green;text-align: center;">₹${totalPrice+50}</h3>
                 </td>
             </tr>
         </table>
