@@ -1,6 +1,9 @@
 import { ReturnStatement } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AuthServiceService } from 'src/app/login/Service/auth-service.service';
 import { Allitems } from '../Items/allitems';
 import { Cart } from '../Items/cart.model';
 import { Menu } from '../Items/menu.model';
@@ -26,7 +29,10 @@ export class ProductComponent implements OnInit {
   constructor(
     private api: ApiserviceService,
     private cartService: CartService,
-    private route: AppRoutingModule
+    private route: AppRoutingModule,
+    private routes:Router,
+    private authService:AuthServiceService,
+    private snackbar:MatSnackBar
   ) {}
 
   message: any;
@@ -107,6 +113,12 @@ export class ProductComponent implements OnInit {
   };
   public additems(menuitem: Allitems) {
     // this.cart.menu.push(newitem)
+    // if(this.authService.isloggedIn()){
+    //   return true
+    // }else{
+    //   this.routes.navigateByUrl('/login')
+    //   return false
+    // };
 
     if (
       this.tempdata.items.findIndex(
@@ -121,6 +133,9 @@ export class ProductComponent implements OnInit {
         (this.tempItem.category = menuitem.category),
         (this.tempItem.quantity = 1);
       this.tempdata.items.push(this.tempItem);
+      this.snackbar.open("You have successfully added the item!","OK",{
+        duration:2500,
+      });
     } else {
       this.tempdata.items[
         this.tempdata.items.findIndex((item) => item.itemId === menuitem.itemId)
@@ -137,6 +152,13 @@ export class ProductComponent implements OnInit {
       itemImage: '',
 
       quantity: 1,
+    };
+    
+    if(this.authService.isloggedIn()){
+      return true
+    }else{
+      this.routes.navigateByUrl('/login')
+      return false
     };
   }
 
@@ -165,4 +187,5 @@ export class ProductComponent implements OnInit {
       }
     });
   }
+
 }

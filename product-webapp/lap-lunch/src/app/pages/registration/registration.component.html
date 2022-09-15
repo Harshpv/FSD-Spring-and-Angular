@@ -5,7 +5,12 @@
             <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <div class="input-icons">
+<<<<<<< HEAD
                         <input type="email" class="form-control" formControlName="userEmailId" placeholder="laplunch@gmail.com" [ngClass]="{ 'is-invalid': submitted }">
+=======
+                        <i class="fa fa-envelope icon" matTooltip="Email" matTooltipPosition="left"></i>
+                        <input type="email" class="form-control" matTooltip="Enter your Email" matTooltipPosition="right" placeholder="Email" formControlName="userEmailId" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+>>>>>>> dc757943c9b49699e4adce6f22003815681fe435
                             <span class="text-danger"
                                 *ngIf="(f.userEmailId.touched || submitted) && f.userEmailId.errors?.required">
                                 Email is required
@@ -18,7 +23,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <input type="text" class="form-control" formControlName="firstName" placeholder="Enter Firstname" >
+                        <i class="fa fa-user icon" matTooltip="Username" matTooltipPosition="left"></i>
+                        <input type="text" class="form-control" matTooltip="Enter your Firstname" matTooltipPosition="right" placeholder="Username" formControlName="firstName">
                             <span class="text-danger"
                                 *ngIf="(f.firstName.touched || submitted) && f.firstName.errors?.required">
                                 Firstname is required
@@ -27,7 +33,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <input type="text" class="form-control" formControlName="lastName" placeholder="Enter Lastname">
+                        <i class="fa fa-user icon" matTooltip="Lastname" matTooltipPosition="left"></i>
+                        <input type="text" class="form-control" matTooltip="Enter your Lastname" matTooltipPosition="right" placeholder="Lastname" formControlName="lastName">
                             <span class="text-danger"
                                 *ngIf="(f.lastName.touched || submitted) && f.lastName.errors?.required">
                                 Lastname is required
@@ -36,7 +43,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <input type="email" class="form-control" formControlName="password" placeholder="Enter password">
+                        <i class="fa fa-key icon" matTooltip="Password" matTooltipPosition="left"></i>
+                        <input type="email" class="form-control" matTooltip="Enter your password" matTooltipPosition="right" placeholder="Password" formControlName="password">
                             <span class="text-danger"
                                 *ngIf="(f.password.touched || submitted) && f.password.errors?.required">
                                 Password is required
@@ -50,7 +58,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <input type="email" class="form-control" formControlName="confirmPassword" placeholder="Confirm password">
+                        <i class="fa fa-key icon" matTooltip="Confirm Password" matTooltipPosition="left"></i>
+                        <input type="email" class="form-control" matTooltip="Confirm your password" matTooltipPosition="right" placeholder="Confirm Password" formControlName="confirmPassword">
                             <span class="text-danger"
                                 *ngIf="(f.confirmPassword.touched || submitted)&& f.confirmPassword.errors?.required">
                                 Confirm Password is required

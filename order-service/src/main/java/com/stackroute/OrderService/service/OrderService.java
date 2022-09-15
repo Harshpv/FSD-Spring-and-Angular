@@ -2,6 +2,8 @@ package com.stackroute.OrderService.service;
 
 import com.stackroute.OrderService.exceptions.OrderAlreadyExistsException;
 import com.stackroute.OrderService.exceptions.OrderNotFoundException;
+import com.stackroute.OrderService.model.Menu;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.stackroute.OrderService.Respository.OrderRepository;
@@ -11,6 +13,7 @@ import com.stackroute.OrderService.model.OrderModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.stackroute.OrderService.model.OrderModel.SEQUENCE_NAME;
 
 
 @Service
@@ -18,15 +21,27 @@ public class OrderService {
 
 	private final OrderRepository orderRepository;
 
+	@Autowired
+	private SequenceGeneratorService service;
+
+
+
 	public OrderService(OrderRepository orderRepository) {
 		super();
 		this.orderRepository = orderRepository;
+
 	}
 
 	public void addOrder(OrderModel orderModel) throws OrderAlreadyExistsException {
-		if(orderRepository.existsById(orderModel.getOrderId())){
-			throw new OrderAlreadyExistsException();		
+		if(orderRepository.existsById(orderModel.getOrderId())) {
+			throw new OrderAlreadyExistsException();
 		}
+		orderModel.setOrderId(service.getSequenceNumber(SEQUENCE_NAME));
+		int sum = 0;
+		for (Menu item : orderModel.getItemsList()) {
+			sum = (int) (sum + item.getItemCost()* item.getQty());
+		}
+		orderModel.setTotalPrice(sum);
 		orderRepository.insert(orderModel);
 	}
 

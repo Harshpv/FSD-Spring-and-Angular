@@ -1,24 +1,25 @@
 import { NgModule } from '@angular/core';
 
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes,CanActivate } from '@angular/router';
 import { ProfilepageComponent } from './profilepage.component';
 import { OrdersComponent } from './orders/orders.component';
 import { AddressesComponent } from './addresses/addresses.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { AuthGuard } from '../login/Service/auth.guard';
 
 const routes: Routes = [
   {
     path: 'profilepage',
     component: ProfilepageComponent,
     children: [
-      { path: 'orders', component: OrdersComponent },
+      { path: 'orders', component: OrdersComponent,canActivate:[AuthGuard] },
       {
         path: 'addresses',
-        component: AddressesComponent,
+        component: AddressesComponent,canActivate:[AuthGuard]
       },
       {
         path: 'subscription',
-        component: SubscriptionComponent,
+        component: SubscriptionComponent,canActivate:[AuthGuard]
       },
     ],
   },
