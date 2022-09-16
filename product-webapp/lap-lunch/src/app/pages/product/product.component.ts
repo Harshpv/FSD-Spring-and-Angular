@@ -136,10 +136,13 @@ export class ProductComponent implements OnInit {
       this.snackbar.open("You have successfully added the item!","OK",{
         duration:2500,
       });
+     
     } else {
       this.tempdata.items[
         this.tempdata.items.findIndex((item) => item.itemId === menuitem.itemId)
       ].quantity += 1;
+      this.snackbar.open("You have successfully added the item!","OK",{
+        duration:2500,});
     }
 
     this.api.updateItems(this.tempdata).subscribe();
