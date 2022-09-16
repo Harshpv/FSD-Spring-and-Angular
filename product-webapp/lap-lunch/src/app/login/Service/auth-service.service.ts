@@ -6,6 +6,7 @@ import { Login } from '../login';
 import { User } from 'src/app/pages/registration/user.model';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 // import{router} from '.angular/router';
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class AuthServiceService {
   helper= new JwtHelperService();
   constructor(private http:HttpClient,private jwtHelper :JwtHelperService, private router:Router,private snackbar:MatSnackBar) { }
   
+  url=environment.url
   login(email:string, password:string )  {
     return this.http.post<Login>('http://localhost:8080/api/v1/auth/login', {email, password})
   }
