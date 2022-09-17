@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Allitems } from '../Items/allitems';
 import { Cart } from '../Items/cart.model';
 @Injectable({
@@ -17,19 +18,21 @@ export class ApiserviceService {
   //   .pipe(map((res:any)=>{
   //     return res;
   //   }));
+  url=environment.url
   getItem(): Observable<Allitems[]> {
-    return this.http.get<Allitems[]>('http://localhost:8085/api/v1/getall');
+    return this.http.get<Allitems[]>(`${this.url}/menuuser/api/v1/getall`);
   }
+
 
   updateItems(cart: Cart): Observable<Cart> {
     return this.http.post<Cart>(
-      'http://localhost:8083/api/v1/cart/create',
+      `${this.url}/menuuser/api/v1/updateitems`,
       cart
     );
   }
   getallitems(): Observable<Cart> {
     return this.http
-      .get<Cart>('http://localhost:8083/api/v1/cart/karthiga@gmail.com')
+      .get<Cart>(`${this.url}/menuuser/api/v1/getallitems`)
       .pipe(
         map((res: any) => {
           return res;
@@ -38,7 +41,7 @@ export class ApiserviceService {
   }
   emptyCart(): Observable<Cart> {
     return this.http.delete<Cart>(
-      'http://localhost:8083/api/v1/cart/karthiga@gmail.com'
+      `${this.url}/menuuser/api/v1/emptycart`
     );
   }
 }
