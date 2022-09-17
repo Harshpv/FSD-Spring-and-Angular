@@ -32,17 +32,18 @@ public class OrderService {
 
 	}
 
-	public void addOrder(OrderModel orderModel) throws OrderAlreadyExistsException {
+	public int addOrder(OrderModel orderModel) throws OrderAlreadyExistsException {
 		if(orderRepository.existsById(orderModel.getOrderId())) {
 			throw new OrderAlreadyExistsException();
 		}
 		orderModel.setOrderId(service.getSequenceNumber(SEQUENCE_NAME));
-		int sum = 0;
-		for (Menu item : orderModel.getItemsList()) {
-			sum = (int) (sum + item.getItemCost()* item.getQty());
-		}
-		orderModel.setTotalPrice(sum);
+//		int sum = 0;
+//		for (Menu item : orderModel.getItemsList()) {
+//			sum = (int) (sum + item.getItemCost()* item.getQty());
+//		}
+//		orderModel.setTotalPrice(sum);
 		orderRepository.insert(orderModel);
+		return orderModel.getOrderId();
 	}
 
     public List<OrderModel> getOrders() throws OrderNotFoundException {
