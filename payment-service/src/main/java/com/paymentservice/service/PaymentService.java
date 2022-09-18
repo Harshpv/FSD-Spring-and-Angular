@@ -6,6 +6,8 @@ import com.paymentservice.model.PaymentModel;
 import com.paymentservice.repository.PaymentRepository;
 import com.razorpay.RazorpayException;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,16 +19,18 @@ public class PaymentService {
         this.paymentRepository = paymentRepository;
     }
 
-    public void addPayment(PaymentModel paymentModel) throws PaymentAlreadyExistsException, RazorpayException {
+    public PaymentModel addPayment(PaymentModel paymentModel) throws PaymentAlreadyExistsException, RazorpayException {
         if(!paymentRepository.existsById(paymentModel.getPaymentId())){
             RazorpayOrderService razorpayOrderService=new RazorpayOrderService(); //tightly coupled
             String razorpayOrderId=razorpayOrderService.newRazorpayOrder(paymentModel);
             paymentModel.setRazorpayOrderId(razorpayOrderId);
+
             paymentRepository.save(paymentModel);
         }
         else {
             throw new PaymentAlreadyExistsException();
         }
+        return paymentModel;
     }
 
     public PaymentModel getPaymentByPaymentId(int paymentId) throws PaymentNotFoundException {
@@ -52,6 +56,8 @@ public class PaymentService {
             PaymentModel newModel= paymentRepository.findById(paymentModel.getPaymentId()).get();
             newModel.setOrderId(paymentModel.getOrderId());
             newModel.setTotalPrice(paymentModel.getTotalPrice());
+            newModel.setStatus(paymentModel.getStatus());
+
             paymentRepository.save(newModel);
         }
         else{
@@ -66,5 +72,23 @@ public class PaymentService {
         else{
             throw new PaymentNotFoundException();
         }
+    }
+    public List<PaymentModel> getPaymentsByEmailId(String userEmailId) throws PaymentNotFoundException {
+        List<PaymentModel> allPayments=this.paymentRepository.findAll();
+        List<PaymentModel> userPayments=new ArrayList<PaymentModel>();
+
+       for(PaymentModel pm:allPayments){
+           try {
+               if(pm.getUserEmailId().equals(userEmailId)){
+                   userPayments.add(pm);
+               }
+           } catch(NullPointerException e){
+               e.getMessage();
+           }
+       }
+       if(userPayments.isEmpty()){
+           throw new PaymentNotFoundException();
+       }
+       return userPayments;
     }
 }

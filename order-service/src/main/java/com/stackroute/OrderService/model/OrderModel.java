@@ -24,9 +24,7 @@ public class OrderModel {
 
 	private Address address;
 
-	private String status="Payment pending"; //status: Payment pending, placed
-
-	private int totalPrice = 0; //total price for items, generates logically
+	private int totalPrice; //total price for items, generates logically
 
 	@Setter(AccessLevel.NONE)
 	private LocalDateTime time; //time at which user ordered
@@ -44,11 +42,12 @@ public class OrderModel {
 
 	}
 
-	public OrderModel(int orderId, String userEmailId, List<Menu> itemsList, Address address) {
+	public OrderModel(int orderId, String userEmailId, List<Menu> itemsList, Address address, int totalPrice) {
 		this.orderId = orderId;
 		this.userEmailId = userEmailId;
 		this.itemsList = itemsList;
 		this.address=address;
+		this.totalPrice=totalPrice;
 	}
 
 

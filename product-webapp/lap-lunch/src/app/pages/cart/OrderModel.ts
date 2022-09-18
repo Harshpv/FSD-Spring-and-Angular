@@ -2,6 +2,7 @@ export class Order {
   userEmailId!: string;
   address!: address;
   itemsList!: orderMenu[];
+  totalPrice!: number;
 }
 
 export class orderMenu {
