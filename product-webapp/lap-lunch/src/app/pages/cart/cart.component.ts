@@ -1,12 +1,12 @@
 import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
-import { OrderModel } from 'src/app/profilepage/orders/ordersmodel';
+
 import { OrdersService } from 'src/app/profilepage/orders/ordersService';
 import { ProfilepageService } from 'src/app/profilepage/profilepageService';
 import { addressModel, userModel } from 'src/app/profilepage/usermodel';
-import { Allitems } from '../Items/allitems';
+
 
 import { Cart } from '../Items/cart.model';
-import { Menu } from '../Items/menu.model';
+
 import { ApiserviceService } from '../menuapiservice/apiservice.service';
 
 import { CartService } from '../menuapiservice/cart.service';

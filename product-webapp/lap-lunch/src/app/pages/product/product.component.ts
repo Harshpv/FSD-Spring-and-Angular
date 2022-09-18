@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit {
   public filterCategory: any;
   allitems: any;
   tempdata!: Cart;
-
+  alert:boolean=false;
   @Input()
   searchString: string = '';
 
@@ -133,19 +133,18 @@ export class ProductComponent implements OnInit {
         (this.tempItem.category = menuitem.category),
         (this.tempItem.quantity = 1);
       this.tempdata.items.push(this.tempItem);
-      this.snackbar.open("You have successfully added the item!","OK",{
-        duration:2500,
-      });
+   
      
     } else {
       this.tempdata.items[
         this.tempdata.items.findIndex((item) => item.itemId === menuitem.itemId)
       ].quantity += 1;
-      this.snackbar.open("You have successfully added the item!","OK",{
-        duration:2500,});
+      
     }
 
     this.api.updateItems(this.tempdata).subscribe();
+    this.alert=true;
+
     this.tempItem = {
       itemId: 1,
       itemName: '',
@@ -163,6 +162,9 @@ export class ProductComponent implements OnInit {
       this.routes.navigateByUrl('/login')
       return false
     };
+  }
+  closeAlert(){
+    this.alert=false;
   }
 
   //   addItemsToCart(newitem:any){
