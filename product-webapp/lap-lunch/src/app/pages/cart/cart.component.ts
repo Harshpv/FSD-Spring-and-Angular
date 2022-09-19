@@ -12,7 +12,7 @@ import { addressModel, userModel } from 'src/app/profilepage/usermodel';
 import { Allitems } from '../Items/allitems';
 
 import { Cart } from '../Items/cart.model';
-import { Menu } from '../Items/menu.model';
+
 import { ApiserviceService } from '../menuapiservice/apiservice.service';
 
 import { CartService } from '../menuapiservice/cart.service';
