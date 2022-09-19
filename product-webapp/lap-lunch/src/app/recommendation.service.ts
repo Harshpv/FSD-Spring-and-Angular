@@ -15,7 +15,7 @@ export class RecommendationService {
   }
 
   getDataByCity(city:any){
-    let url=`${this.url}/userrecommendation/api/v4/bycity`+city;
+    let url=`${this.url}/userrecommendation/api/v4/bycity/`+city;
     return this.http.get(url);
   }
 

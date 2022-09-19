@@ -26,13 +26,13 @@ export class ApiserviceService {
 
   updateItems(cart: Cart): Observable<Cart> {
     return this.http.post<Cart>(
-      `${this.url}/menuuser/api/v1/updateitems`,
+      `${this.url}/menuuser/api/v1/`,
       cart
     );
   }
   getallitems(): Observable<Cart> {
     return this.http
-      .get<Cart>(`${this.url}/menuuser/api/v1/getallitems`)
+      .get<Cart>(`${this.url}/menuuser/api/v1/getall`)
       .pipe(
         map((res: any) => {
           return res;
@@ -41,7 +41,7 @@ export class ApiserviceService {
   }
   emptyCart(): Observable<Cart> {
     return this.http.delete<Cart>(
-      `${this.url}/menuuser/api/v1/emptycart`
+      `${this.url}/menuuser/api/v1/{itemId}`
     );
   }
 }

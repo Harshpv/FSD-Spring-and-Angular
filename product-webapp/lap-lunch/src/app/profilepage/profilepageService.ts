@@ -13,7 +13,7 @@ export class ProfilepageService {
   url=environment.url
   getAddressesById(id: string) {
     return this.http
-      .get<any>(`${this.url}/api/v3/getUser/` + id)
+      .get<any>(`${this.url}/user/api/v3/getUser/` + id)
       .pipe(
         map((res: any) => {
           return res;
@@ -23,7 +23,7 @@ export class ProfilepageService {
 
   updateAddressById(id: string, userData: any) {
     return this.http
-      .put<any>(`${this.url}/menuuser/api/v3/updateUser/` + id, userData)
+      .put<any>(`${this.url}/user/api/v3/updateUser/` + id, userData)
       .pipe(
         map((res: any) => {
           return res;

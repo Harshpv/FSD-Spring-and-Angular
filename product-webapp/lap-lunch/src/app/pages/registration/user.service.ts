@@ -14,7 +14,7 @@ export class UserService {
 
   url=environment.url
   getUser(): Observable<User[]>{
-    return this.http.get<User[]>(`${this.url}/user/api/v3/getuser`);
+    return this.http.get<User[]>(`${this.url}/user/api/v3/getusers`);
   }
 
   addUser(user : any): Observable<User> {

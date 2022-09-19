@@ -5,12 +5,8 @@
             <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <div class="input-icons">
-<<<<<<< HEAD
-                        <input type="email" class="form-control" formControlName="userEmailId" placeholder="laplunch@gmail.com" [ngClass]="{ 'is-invalid': submitted }">
-=======
                         <i class="fa fa-envelope icon" matTooltip="Email" matTooltipPosition="left"></i>
                         <input type="email" class="form-control" matTooltip="Enter your Email" matTooltipPosition="right" placeholder="Email" formControlName="userEmailId" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
->>>>>>> dc757943c9b49699e4adce6f22003815681fe435
                             <span class="text-danger"
                                 *ngIf="(f.userEmailId.touched || submitted) && f.userEmailId.errors?.required">
                                 Email is required
