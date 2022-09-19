@@ -258,6 +258,7 @@
               <!-- <button
                 class="stretched-link"
                 (click)="addressclick(index)"
+                
               ></button> -->
             </div>
           </div>
@@ -267,12 +268,25 @@
         <button
           type="button"
           class="btn btn-primary"
-          [ngClass]="{ disabled: selectedindex === -1 }"
-          (click)="createNewOrder()"
+          data-bs-dismiss="modal"
+          [ngClass]="{
+            disabled: selectedindex === -1
+          }"
+          (click)="createNewPayment()"
         >
-          Proceed
+          Pay
         </button>
+        <!-- <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          [ngClass]="{ disabled: NotclickedButton }"
+          (click)="proceedToRazorpay()"
+        >
+          Pay
+        </button> -->
       </div>
     </div>
   </div>
 </div>
+<router-outlet></router-outlet>
