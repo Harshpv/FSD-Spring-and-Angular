@@ -19,8 +19,9 @@ export class LoginComponent {
   action:any;
   helper= new JwtHelperService();
 
-  constructor( private fb:FormBuilder, private authService:AuthServiceService,private mattooltip:MatTooltipModule, private router: Router,private snackbar:MatSnackBar) {}
-
+  constructor( private fb:FormBuilder, private authService:AuthServiceService,
+               private mattooltip:MatTooltipModule, private router: Router,
+               public snackbar:MatSnackBar) {}
 
 loginform =this.fb.group({
   email: [null,[Validators.email,Validators.required]],
@@ -54,7 +55,7 @@ login() {
             )
     }
     else{
-      this.snackbar.open("please enter correct details","OK");
+      // this.snackbar.open("please enter correct details","OK");
       console.log("enter correct details")
       alert("enter correct details");
       this.loginform.reset();

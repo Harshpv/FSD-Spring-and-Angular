@@ -21,7 +21,7 @@ import { SubscriptionPlansComponent } from './subscription-plans/subscription-pl
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthGuard } from './login/Service/auth.guard';
 import { ProfilepageModule } from './profilepage/profilepage.module';
 
@@ -40,7 +40,6 @@ import { ProfilepageModule } from './profilepage/profilepage.module';
     BrowserAnimationsModule,
     CommonComponentsModule,
     MatSnackBarModule,
-    // SearchheaderComponent,
     PagesModule,
     ReactiveFormsModule,
     FormsModule,

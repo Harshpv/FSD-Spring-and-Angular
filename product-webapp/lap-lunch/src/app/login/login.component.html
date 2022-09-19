@@ -2,11 +2,11 @@
 <div class="col-md-4">
 <div class="container">
     <h1>Login Form</h1>
-    <h4>Already have an account <a routerLink="/registration">Sign up</a></h4>
+    <h6>Already have an account <a routerLink="/registration">Sign up</a></h6>
   <form [formGroup]="loginform" (ngSubmit)="login()">
     
     <div class="form-group">
-      <h3>Enter Email</h3>  
+      <h5>Enter Email</h5>  
       <div class="input-icons">
         <i class="fa fa-envelope icon" matTooltip="Email" matTooltipPosition="left"></i>
         <input type="email" class="form-control" matTooltip="Enter your Email" matTooltipPosition="right" placeholder="Email"
@@ -17,7 +17,7 @@
     <br>
     
     <div class="form-group">
-      <h3>Enter password</h3>
+      <h5>Enter password</h5>
       <div class="input-icons">
       <i class="fa fa-key icon" matTooltip="Password" matTooltipPosition="left"></i>
        <input id="password" type="password" required class="form-control" formControlName="password" matTooltipPosition="right" matTooltip="Enter your password"
@@ -37,7 +37,7 @@
 </div>
 
 
-
+<!-- <app-footer></app-footer> -->
 
 <!-- 
 <div fxLayoutAlign="center center"fxFlexFill class="container">
