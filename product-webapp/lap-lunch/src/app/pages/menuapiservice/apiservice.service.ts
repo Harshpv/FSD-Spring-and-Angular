@@ -18,30 +18,27 @@ export class ApiserviceService {
   //   .pipe(map((res:any)=>{
   //     return res;
   //   }));
-  url=environment.url
+  url = environment.url;
   getItem(): Observable<Allitems[]> {
     return this.http.get<Allitems[]>(`${this.url}/menuuser/api/v1/getall`);
   }
 
-
-  updateItems(cart: Cart): Observable<Cart> {
-    return this.http.post<Cart>(
-      `${this.url}/menuuser/api/v1/`,
+  updateItems(cart: Cart, userEmailId: string): Observable<Cart> {
+    return this.http.put<Cart>(
+      `${this.url}/orderservice/api/v1/cart/` + userEmailId,
       cart
     );
   }
-  getallitems(): Observable<Cart> {
+  getallitems(userEmailId: string): Observable<Cart> {
     return this.http
-      .get<Cart>(`${this.url}/menuuser/api/v1/getall`)
+      .get<Cart>(`${this.url}/orderservice/api/v1/cart/` + userEmailId)
       .pipe(
         map((res: any) => {
           return res;
         })
       );
   }
-  emptyCart(): Observable<Cart> {
-    return this.http.delete<Cart>(
-      `${this.url}/menuuser/api/v1/{itemId}`
-    );
+  emptyCart(userEmailId: string): Observable<Cart> {
+    return this.http.delete<Cart>(`${this.url}/menuuser/api/v1/` + userEmailId);
   }
 }

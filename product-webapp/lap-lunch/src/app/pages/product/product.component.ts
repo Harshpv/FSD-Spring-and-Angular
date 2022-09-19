@@ -16,13 +16,14 @@ import { CartService } from '../menuapiservice/cart.service';
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+  userEmailId: any = sessionStorage.getItem('emailId');
   itemList: any[] = [];
   searchedItems: Allitems[] = [];
   searchKey: string = '';
   public filterCategory: any;
   allitems: any;
   tempdata!: Cart;
-  alert:boolean=false;
+  alert: boolean = false;
   @Input()
   searchString: string = '';
 
@@ -30,9 +31,9 @@ export class ProductComponent implements OnInit {
     private api: ApiserviceService,
     private cartService: CartService,
     private route: AppRoutingModule,
-    private routes:Router,
-    private authService:AuthServiceService,
-    private snackbar:MatSnackBar
+    private routes: Router,
+    private authService: AuthServiceService,
+    private snackbar: MatSnackBar
   ) {}
 
   message: any;
@@ -44,7 +45,7 @@ export class ProductComponent implements OnInit {
       this.filterCategory = res;
 
       console.log(this.searchKey);
-      this.api.getallitems().subscribe((res) => {
+      this.api.getallitems(this.userEmailId).subscribe((res) => {
         this.tempdata = res;
       });
 
@@ -133,17 +134,14 @@ export class ProductComponent implements OnInit {
         (this.tempItem.category = menuitem.category),
         (this.tempItem.quantity = 1);
       this.tempdata.items.push(this.tempItem);
-   
-     
     } else {
       this.tempdata.items[
         this.tempdata.items.findIndex((item) => item.itemId === menuitem.itemId)
       ].quantity += 1;
-      
     }
 
-    this.api.updateItems(this.tempdata).subscribe();
-    this.alert=true;
+    this.api.updateItems(this.tempdata, this.userEmailId).subscribe();
+    this.alert = true;
 
     this.tempItem = {
       itemId: 1,
@@ -155,16 +153,16 @@ export class ProductComponent implements OnInit {
 
       quantity: 1,
     };
-    
-    if(this.authService.isloggedIn()){
-      return true
-    }else{
-      this.routes.navigateByUrl('/login')
-      return false
-    };
+
+    if (this.authService.isloggedIn()) {
+      return true;
+    } else {
+      this.routes.navigateByUrl('/login');
+      return false;
+    }
   }
-  closeAlert(){
-    this.alert=false;
+  closeAlert() {
+    this.alert = false;
   }
 
   //   addItemsToCart(newitem:any){
@@ -192,5 +190,4 @@ export class ProductComponent implements OnInit {
       }
     });
   }
-
 }
