@@ -1,5 +1,10 @@
 
-    
+<div  *ngIf= "alert" class="alert alert-success alert-dismissible fade show popup" role="alert">
+    <strong>Success!</strong> Your items are added..
+    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 
 
 <div class="card-top container"> 
@@ -75,6 +80,7 @@
 
 <div #veg class="container">
     <div class="row">
+        
         <h4 style="color: darkblue;">Veg Items</h4>
         <ng-container *ngFor= "let item of filterCategory | filter: 'Vegetarian' :'category'">
         <div  class="card col-md-3">
@@ -92,7 +98,9 @@
     </div> 
 </div> 
 <br><br>
+
  <div #nonveg class="container">
+    <br><br>
     <div class="row">
         <h4 style="color: darkblue;">Non Veg Items</h4>
         
@@ -139,7 +147,9 @@
 </div>-->
 <br><br>
 <div #milkshake class="container">
+    <br><br>
     <div class="row">
+        
         <h4 style="color: darkblue;">Milk Shakes</h4>
         <ng-container *ngFor= "let item of filterCategory | filter: 'milk shake' :'category'">
         <div class="card col-md-3">
@@ -156,7 +166,9 @@
 </div> 
 <br><br>
 <div #icecream class="container">
+    <br><br>
     <div class="row">
+        
         <h4 style="color: darkblue;">Ice Creams</h4>
         <ng-container *ngFor= "let item of filterCategory | filter: 'ice cream' :'category'">
         <div class="card col-md-3">
@@ -173,6 +185,7 @@
 </div> 
 <br><br>
 <div #softdrink class="container">
+    <br><br>
     <div class="row">
         <h4 style="color: darkblue;">Soft Drinks</h4>
         <ng-container *ngFor= "let item of filterCategory | filter: 'soft drink' :'category' ">
@@ -187,6 +200,7 @@
         </div>
     </ng-container> 
     </div> 
+    <br><br>
 </div> 
 
 

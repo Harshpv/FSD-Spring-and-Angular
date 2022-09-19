@@ -25,6 +25,10 @@ import { CommonModule } from '@angular/common';
 //import { ProfilepageModule } from 'src/profilepage/profilepage.module';
 
 import { ProfilepageModule } from './profilepage/profilepage.module';
+import { HttpClient } from '@angular/common/http';
+import {MatButtonModule} from '@angular/material/button'
+import {MatSnackBarModule} from '@angular/material/snack-bar'
+
 
 @NgModule({
   declarations: [
@@ -50,6 +54,8 @@ import { ProfilepageModule } from './profilepage/profilepage.module';
     MatCardModule,
     MatInputModule,
     CommonModule,
+    MatSnackBarModule,
+    MatButtonModule,
     
 
     //profilepage module added

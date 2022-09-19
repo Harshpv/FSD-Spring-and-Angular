@@ -14,6 +14,7 @@ import { CartService } from '../menuapiservice/cart.service';
 })
 export class ProductComponent implements OnInit {
 
+  alert:boolean=false;
   itemList :any[] =[];
   searchedItems: Allitems[]=[];
   searchKey : string="";
@@ -118,7 +119,10 @@ export class ProductComponent implements OnInit {
     this.tempdata.items.push(this.tempItem)
 
     this.api.updateItems(this.tempdata).subscribe();
-   
+   this.alert=true;
+ }
+ closeAlert(){
+  this.alert=false;
  }
  
  

@@ -26,7 +26,7 @@ export class SearchheaderComponent implements OnInit {
     this.apisearchservice.getallitems()
 
     .subscribe(res=>{
-      this.itemscount =res.items.length;});
+      this.itemscount +=res.items.length;});
     
 
   

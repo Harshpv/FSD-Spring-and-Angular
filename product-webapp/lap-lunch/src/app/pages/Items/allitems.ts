@@ -1,9 +1,9 @@
 export class Allitems {
-   itemId: number | undefined;
-   itemName: String | undefined;
-   itemDescription: String | undefined;
-   category: String | undefined;
+   itemId !: number ;
+   itemName!: String ;
+   itemDescription!: String ;
+   category!: String ;
    itemCost!: number;
-   itemImage: String | undefined;
+   itemImage!: String ;
 
 }
