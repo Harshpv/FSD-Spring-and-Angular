@@ -32,13 +32,15 @@ message : boolean =false;
       this.api.getallitems().subscribe((data) => 
       {
       this.menuproduct=data
+      console.log(this.menuproduct);
+      
       })}
 
       
 
 
   removeItem(index: any){
-    this.menuproduct.items.splice(index, 1);
+    this.menuproduct.items.splice(index,1)
     this.api.updateItems(this.menuproduct).subscribe((data) => this.product=data)
     console.log(this.menuproduct);
 
@@ -46,7 +48,7 @@ message : boolean =false;
 
   emptycart(){
     this.menuproduct.items = [];
-    this.api.updateItems(this.menuproduct).subscribe((data) => this.product=data)
+    this.api.updateItems(this.menuproduct).subscribe((data) => this.menuproduct=data)
     console.log(this.menuproduct);
   }
   getTotalAmount(): number{

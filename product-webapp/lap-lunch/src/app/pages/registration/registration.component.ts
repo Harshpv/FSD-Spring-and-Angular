@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 import { CustomvalidationService } from './customvalidation.service';
 import { MatFormField } from '@angular/material/form-field';
 import { AuthServiceService } from 'src/app/login/Service/auth-service.service';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import * as $ from "jquery";
+
 
 @Component({
   selector: 'app-registration',
@@ -15,11 +19,13 @@ import { AuthServiceService } from 'src/app/login/Service/auth-service.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  alert:boolean = false;
 
   regForm! : FormGroup;
 
    user: User =  {
     userEmailId: '',
+    mobileNum : '',
     firstName : '',
     lastName : '',
     password : '',
@@ -32,12 +38,16 @@ export class RegistrationComponent implements OnInit {
   constructor(private service : UserService, private router: Router,
     private authService:AuthServiceService, private builder: FormBuilder, 
     private customValidator : CustomvalidationService,
-    private _snackBar : MatSnackBar
+    private _snackBar : MatSnackBar,
+    private dialogBox : MatDialog,
+  
+   
     ) { }
   message:any;
   ngOnInit(): void {
     this.regForm = this.builder.group({
       userEmailId : ['', [Validators.required, Validators.email]],
+      mobileNum : ['',[Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       firstName : ['', Validators.required],
       lastName : ['', Validators.required],
       password : ['', Validators.compose([Validators.required, this.customValidator.patternValidator()])],
@@ -69,20 +79,24 @@ export class RegistrationComponent implements OnInit {
 
   public registerNow(){
     this.user.userEmailId = this.regForm.value.userEmailId;
+    this.user.mobileNum = this.regForm.value.mobileNum;
     this.user.firstName = this.regForm.value.firstName;
     this.user.lastName = this.regForm.value.lastName;
     this.user.password = this.regForm.value.password;
     this.user.address = this.regForm.value.address;
-    this.service.addUser(this.user).subscribe((data) => {this.message=data
-      this.authService.addUser(this.regForm.controls['userEmailId'].value,this.regForm.controls['password'].value)
-      .subscribe()
-    },
+    this.service.addUser(this.user).subscribe((data) => {this.message=data},
     )
+    this.alert=true;
     console.log(this.message);
-    this.router.navigateByUrl('/login').then(()=>{
-      this._snackBar.open("Registered successfully", "ok");
-    });
+    this.regForm.reset({})
+    // this.router.navigateByUrl('/login')
+    
       
+  }
+  
+  
+  closeAlert(){
+    this.alert=false;
   }
   
 }

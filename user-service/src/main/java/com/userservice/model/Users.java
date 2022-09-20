@@ -14,8 +14,14 @@ public class Users {
 
     @Id
     private String userEmailId;
-//    private String mobileNum;
+    private String mobileNum;
     private String firstName;
     private String lastName;
     private List<Address> address;
+
+//    public Users(String userEmailId, String firstName, String lastName, List<Address> address) {
+//    }
+
+//    public Users(String userEmailId, String firstName, String lastName, List<Address> address) {
+//    }
 }

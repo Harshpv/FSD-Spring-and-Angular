@@ -116,6 +116,8 @@ export class ProductComponent implements OnInit {
     this.tempItem.quantity = 1
  
     this.tempdata.items.push(this.tempItem)
+
+    this.api.updateItems(this.tempdata).subscribe();
    
  }
  

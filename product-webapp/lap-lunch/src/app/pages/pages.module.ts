@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { RecommendationComponent } from './recommendation/recommendation.component';
 import { LoginComponent } from '../login/login.component';
 import { TimetableComponent } from './timetable/timetable.component';
+import { DialogBoxComponent } from './registration/dialog-box/dialog-box.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -21,13 +23,14 @@ import { TimetableComponent } from './timetable/timetable.component';
     ProductComponent,
     SearchheaderComponent,
     FilterPipe,
-    RegistrationComponent, 
+    RegistrationComponent,
     RecommendationComponent,
     RecommendationComponent,
     RegistrationComponent,
 
     RecommendationComponent,
-    TimetableComponent
+    TimetableComponent,
+    DialogBoxComponent
   ],
   imports: [
     CommonModule,
@@ -35,6 +38,7 @@ import { TimetableComponent } from './timetable/timetable.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule
   ],
   exports: [SearchheaderComponent, CartComponent, ProductComponent],
 })

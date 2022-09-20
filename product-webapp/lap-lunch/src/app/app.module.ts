@@ -12,9 +12,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 //profile components
-import { ProfileComponent } from './profile/profile.component';
-import { SubscriptionComponent } from './profile/subscription/subscription.component';
-import { AddressComponent } from './profile/address/address.component';
 import { MatCommonModule } from '@angular/material/core';
 // import { ServiceComponent } from './service/service.component';
 import { MatCardModule } from '@angular/material/card';
@@ -25,17 +22,14 @@ import { SubscriptionPlansComponent } from './subscription-plans/subscription-pl
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
+//import { ProfilepageModule } from 'src/profilepage/profilepage.module';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
-
+import { ProfilepageModule } from './profilepage/profilepage.module';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SubscriptionPlansComponent,
-    SubscribedPlanComponent,
-    ProfileComponent,
-    SubscriptionComponent,
-    AddressComponent,
     SubscriptionPlansComponent,
     SubscribedPlanComponent,
   ],
@@ -56,6 +50,8 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     MatInputModule,
     MatSnackBarModule,
+    MatDialogModule,
+
     
     CommonModule
     // AuthServiceService
