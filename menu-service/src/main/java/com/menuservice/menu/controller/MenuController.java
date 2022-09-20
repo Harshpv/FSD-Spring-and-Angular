@@ -18,7 +18,7 @@ import com.menuservice.menu.exceptions.MenuNotFoundException;
 import com.menuservice.menu.services.Services;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1")
 public class MenuController {

@@ -14,6 +14,7 @@ import { RecommendationComponent } from './recommendation/recommendation.compone
 import { LoginComponent } from '../login/login.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -26,7 +27,6 @@ import { HttpClientModule } from '@angular/common/http';
     RecommendationComponent,
     RecommendationComponent,
     RegistrationComponent,
-
     RecommendationComponent,
     TimetableComponent
   ],
@@ -36,7 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTooltipModule
   ],
   exports: [SearchheaderComponent, CartComponent, ProductComponent],
 })

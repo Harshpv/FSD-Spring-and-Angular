@@ -12,7 +12,7 @@ import com.authenticationservice.Exceptions.UserNotFoundException;
 import com.authenticationservice.Userlogin.Service.UserService;
 import com.authenticationservice.jwtToken.JwtTokenGenerator;
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1")
 public class AuthenticationController {

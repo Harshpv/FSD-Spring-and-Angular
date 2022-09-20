@@ -15,7 +15,7 @@ import java.util.List;
 @Slf4j
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1/cart")
 public class cartServiceController {
 	private final cartServices services;
@@ -75,7 +75,7 @@ public class cartServiceController {
 
 	//Getmapping  api with id used to fetch specific data with it's userEmailid, present in the mongo database.
 	// To find cart by using user email id 
-	@GetMapping("/{userEmailId}")
+	@GetMapping("/{userEmailIdget}")
 	public ResponseEntity<Cart> findCartByEmailId(@PathVariable String userEmailId) {
 
 		try {
