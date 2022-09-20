@@ -7,19 +7,24 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @Data
 public class OrderModel {
 
+	@Transient
+	public static final String SEQUENCE_NAME = "user_sequence";
+
 	@Id
 	private int orderId; //unique Id for each order
 
 	private String userEmailId;
 
-	@Setter(AccessLevel.NONE)
-	private int totalPrice = 0; //total price for items, generates logically
+	private Address address;
+
+	private int totalPrice; //total price for items, generates logically
 
 	@Setter(AccessLevel.NONE)
 	private LocalDateTime time; //time at which user ordered
@@ -37,18 +42,13 @@ public class OrderModel {
 
 	}
 
-	public OrderModel(int orderId, String userEmailId, List<Menu> itemsList) {
+	public OrderModel(int orderId, String userEmailId, List<Menu> itemsList, Address address, int totalPrice) {
 		this.orderId = orderId;
 		this.userEmailId = userEmailId;
 		this.itemsList = itemsList;
+		this.address=address;
+		this.totalPrice=totalPrice;
 	}
 
-	public int getTotalPrice() {
-		int sum = 0;
-		for (Menu item : this.itemsList) {
-			sum = (int) (sum + item.itemCost*item.qty);
-		}
-		this.totalPrice = sum;
-		return this.totalPrice;
-	}
+
 }

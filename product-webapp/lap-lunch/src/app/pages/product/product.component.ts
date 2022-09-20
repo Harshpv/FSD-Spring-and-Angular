@@ -1,5 +1,6 @@
 import { ReturnStatement } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AuthServiceService } from 'src/app/login/Service/auth-service.service';
@@ -21,7 +22,7 @@ export class ProductComponent implements OnInit {
   public filterCategory: any;
   allitems: any;
   tempdata!: Cart;
-
+  alert:boolean=false;
   @Input()
   searchString: string = '';
 
@@ -30,7 +31,8 @@ export class ProductComponent implements OnInit {
     private cartService: CartService,
     private route: AppRoutingModule,
     private routes:Router,
-    private authService:AuthServiceService
+    private authService:AuthServiceService,
+    private snackbar:MatSnackBar
   ) {}
 
   message: any;
@@ -131,13 +133,18 @@ export class ProductComponent implements OnInit {
         (this.tempItem.category = menuitem.category),
         (this.tempItem.quantity = 1);
       this.tempdata.items.push(this.tempItem);
+   
+     
     } else {
       this.tempdata.items[
         this.tempdata.items.findIndex((item) => item.itemId === menuitem.itemId)
       ].quantity += 1;
+      
     }
 
     this.api.updateItems(this.tempdata).subscribe();
+    this.alert=true;
+
     this.tempItem = {
       itemId: 1,
       itemName: '',
@@ -155,6 +162,9 @@ export class ProductComponent implements OnInit {
       this.routes.navigateByUrl('/login')
       return false
     };
+  }
+  closeAlert(){
+    this.alert=false;
   }
 
   //   addItemsToCart(newitem:any){

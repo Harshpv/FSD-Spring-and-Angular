@@ -8,7 +8,7 @@
   padding: 30px;
   margin: 24px 0 37px;
   width: 700px;
-  background-color: ghostwhite;
+  background: linear-gradient(to bottom, white 0%, #ebedee 100%);
 }
 .item-card {
   padding-bottom: 20px;
