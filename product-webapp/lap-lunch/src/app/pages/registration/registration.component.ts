@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { CustomvalidationService } from './customvalidation.service';
 import { AuthServiceService } from 'src/app/login/Service/auth-service.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { RecommendationService } from './../../recommendation.service';
+
 
 @Component({
   selector: 'app-registration',
@@ -30,7 +32,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private service : UserService, private router: Router,
     private authService:AuthServiceService, private builder: FormBuilder,
-    private matTooltip:MatTooltipModule, private customValidator : CustomvalidationService) { }
+    private matTooltip:MatTooltipModule, private customValidator : CustomvalidationService,
+    private recommendation:RecommendationService) { }
   message:any;
   ngOnInit(): void {
     this.regForm = this.builder.group({
@@ -70,7 +73,8 @@ export class RegistrationComponent implements OnInit {
     this.user.address = this.regForm.value.address;
     this.service.addUser(this.user).subscribe((data) => {this.message=data
       this.authService.addUser(this.regForm.controls['userEmailId'].value,this.regForm.controls['password'].value)
-      .subscribe()
+      .subscribe();
+      this.recommendation.addUser(this.user).subscribe();
     },
     )
     console.log(this.message);
