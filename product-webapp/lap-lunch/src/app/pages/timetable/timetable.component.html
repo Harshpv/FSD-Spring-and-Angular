@@ -201,7 +201,9 @@
                         
                         <td style="width: 12%;">{{item.itemCost}}</td>
                         <td>
-                          <button class="btn btn-success"  (click)= "addItems(i)">Add</button>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
                         </td>
                     </tr>
                   
@@ -237,7 +239,7 @@
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
   &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
-  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="ts.close()" ></i>
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="ts.close()" (click)="onClickCloseTuesday()" ></i>
 
 
   <div class="container">
@@ -322,7 +324,9 @@
                         
                         <td style="width: 12%;">{{item.itemCost}}</td>
                         <td>
-                          <button class="btn btn-success"  (click)= "addItems(i)">Add</button>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
                         </td>
                     </tr>
                   
@@ -355,7 +359,7 @@
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
   &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
-  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="wed.close()" ></i>
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="wed.close()" (click)="onClickCloseWednesday()"></i>
 
 
   <div class="container">
@@ -441,7 +445,9 @@
                         
                         <td style="width: 12%;">{{item.itemCost}}</td>
                         <td>
-                          <button class="btn btn-success"  (click)= "addItems(i)">Add</button>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
                         </td>
                     </tr>
                   
@@ -475,7 +481,7 @@
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
   &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
-  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="thurs.close()" ></i>
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="thurs.close()" (click)="onClickCloseThursday()"></i>
 
 
   <div class="container">
@@ -561,7 +567,9 @@
                         
                         <td style="width: 12%;">{{item.itemCost}}</td>
                         <td>
-                          <button class="btn btn-success"  (click)= "addItems(i)">Add</button>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
                         </td>
                     </tr>
                   
@@ -595,7 +603,7 @@
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
   &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
-  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="friday.close()" ></i>
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="friday.close()" (click)="onClickCloseFriday()"></i>
 
 
   <div class="container">
@@ -679,7 +687,9 @@
                         
                         <td style="width: 12%;">{{item.itemCost}}</td>
                         <td>
-                          <button class="btn btn-success"  (click)= "addItems(i)">Add</button>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
                         </td>
                     </tr>
                   
@@ -713,7 +723,7 @@
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
   &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
-  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="satur.close()" ></i>
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="satur.close()" (click)="onClickCloseSaturday()"></i>
 
 
   <div class="container">
@@ -798,7 +808,9 @@
                         
                         <td style="width: 12%;">{{item.itemCost}}</td>
                         <td>
-                          <button class="btn btn-success"  (click)= "addItems(i)">Add</button>
+                          <button  class="btn btn-success"   (click)= "addItems(i)" >
+                            {{addedItems[i]? "Added": "Add"}}
+                         </button>
                         </td>
 
                     </tr>
@@ -833,7 +845,7 @@
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
   &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;
-  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="sunday.close()" ></i>
+  <i class="fa fa-window-close fa-2xl" aria-hidden="true" onclick="sunday.close()" (click)="onClickCloseSunday()"></i>
 
   <div class="container">
     <div class="card-table">

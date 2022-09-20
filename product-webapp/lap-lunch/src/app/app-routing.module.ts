@@ -15,7 +15,7 @@ import { AuthGuard } from './login/Service/auth.guard';
 const routes: Routes = [
 
   // { path: '', component: HeaderComponent },
-  { path: 'menu', component: SearchheaderComponent},
+  { path: '', component: SearchheaderComponent},
   { path: 'cart', component: CartComponent},
   { path: 'product', component: ProductComponent },
   { path: "search/:searchItem",component: SearchheaderComponent},

@@ -152,6 +152,10 @@ for(i=0; i<this. ListofItems.length; i++){
   
   }
 
+  onClickCloseTuesday(){
+    this.tueList=[];
+  }
+
   removeWednesdayItem(index: any){
     this.wedList.splice(index,1)
     this.serviceapi.deleteTimeTableData(this.selectedTimeTableId,index).subscribe();
@@ -168,6 +172,10 @@ for(i=0; i<this. ListofItems.length; i++){
       }
     })
   
+  }
+
+  onClickCloseWednesday(){
+    this.wedList=[];
   }
 
   removeThursdayItem(index: any){
@@ -187,6 +195,10 @@ for(i=0; i<this. ListofItems.length; i++){
     })
   
   }
+  onClickCloseThursday(){
+    this.thursList=[];
+  }
+
   removeFridayItem(index: any){
     this.friList.splice(index,1)
     this.serviceapi.deleteTimeTableData(this.selectedTimeTableId,index).subscribe();
@@ -203,6 +215,9 @@ for(i=0; i<this. ListofItems.length; i++){
       }
     })
   
+  }
+  onClickCloseFriday(){
+    this.friList=[];
   }
   
   removeSaturdayItem(index: any){
@@ -222,6 +237,9 @@ for(i=0; i<this. ListofItems.length; i++){
     })
   
   }
+  onClickCloseSaturday(){
+    this.satList=[];
+  }
   
   removeSundayItem(index: any){
     this.sunList.splice(index,1)
@@ -239,6 +257,10 @@ for(i=0; i<this. ListofItems.length; i++){
       }
     })
   
+  }
+
+  onClickCloseSunday(){
+    this.sunList=[];
   }
   
   

@@ -59,7 +59,7 @@ export class CartComponent implements OnInit {
   message: boolean = false;
 
   ngOnInit(): void {
-    this.api.getallitems().subscribe((data) => {
+    this.api.getallitems(this.userEmailId).subscribe((data) => {
       this.menuproduct = data;
       console.log(this.menuproduct.items);
     });
@@ -69,7 +69,7 @@ export class CartComponent implements OnInit {
   removeItem(index: any) {
     this.menuproduct.items.splice(index, 1);
     this.api
-      .updateItems(this.menuproduct)
+      .updateItems(this.menuproduct, this.userEmailId)
       .subscribe((data) => (this.product = data));
     console.log(this.menuproduct);
   }
@@ -77,7 +77,7 @@ export class CartComponent implements OnInit {
   emptycart() {
     this.menuproduct.items = [];
     this.api
-      .updateItems(this.menuproduct)
+      .updateItems(this.menuproduct, this.userEmailId)
       .subscribe((data) => (this.menuproduct = data));
     console.log(this.menuproduct);
   }

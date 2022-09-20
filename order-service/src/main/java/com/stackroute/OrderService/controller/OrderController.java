@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.stackroute.OrderService.model.OrderModel;
 import com.stackroute.OrderService.service.OrderService;
 
-@CrossOrigin
+
 @Slf4j
 @RestController
 @RequestMapping("/api/v1")

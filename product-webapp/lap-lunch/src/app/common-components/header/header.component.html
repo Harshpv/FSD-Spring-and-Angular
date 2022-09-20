@@ -1,15 +1,15 @@
 <nav>
   <ul class="menu">
-    <li class="logo"><a href="/menu"><img style="width: 65px; height:65px;" src="assets/logo.jpg"></a></li>
-    <li class="item"><a href="/menu">Home</a></li>
-    <li class="item"><a href="/menu">Menu </a></li>
+    <li class="logo"><a href="/"><img style="width: 65px; height:65px;" src="assets/logo.jpg"></a></li>
+    <li class="item"><a href="/">Home</a></li>
+
     <li class="item"><a href="/timetable">Timetable</a></li>
     <li class="item"><a href="/profilepage/orders">Profile</a></li>
     <li class="item"><a href="/subscriptionplan">Subscriptions</a></li>
 
     <li class="item button">
       <a *ngIf="!authService.isloggedIn()" routerLink="/login">Log In</a>
-      <a *ngIf="authService.isloggedIn()" (click)="authService.logout()" routerLink="./menu">Log out</a>
+      <a *ngIf="authService.isloggedIn()" (click)="authService.logout()" routerLink="./">Log out</a>
     </li>
     <li class="item button secondary">
       <a *ngIf="!authService.isloggedIn()" href="/registration">Sign Up</a>
