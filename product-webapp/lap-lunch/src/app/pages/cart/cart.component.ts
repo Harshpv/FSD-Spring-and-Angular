@@ -1,8 +1,10 @@
 import {
   Component,
   ComponentFactoryResolver,
+  ElementRef,
   HostListener,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { OrderModel } from 'src/app/profilepage/orders/ordersmodel';
 import { OrdersService } from 'src/app/profilepage/orders/ordersService';
@@ -48,6 +50,9 @@ export class CartComponent implements OnInit {
   checkoutPayment: paymentModel = new paymentModel();
   totPrice: number = 0;
   newOrderId: number = 0;
+
+  // order related
+  @ViewChild('myModal', { static: true }) myModal!: ElementRef;
 
   constructor(
     private cartService: CartService,
@@ -133,6 +138,10 @@ export class CartComponent implements OnInit {
     this.selectedindex = index;
   }
 
+  closeButtonAddressPopoup() {
+    this.selectedindex = -1;
+  }
+
   createNewPayment(): any {
     this.totPrice = this.getTotalAmount() + this.getTotalAmount() * 0.02 + 50;
     this.newPayment.userEmailId = this.userEmailId;
@@ -166,7 +175,7 @@ export class CartComponent implements OnInit {
         // alert(response.razorpay_payment_id);
         // alert(response.razorpay_order_id);
         // alert(response.razorpay_signature);
-        alert('Order Placed!');
+        // alert('Order Placed!');
         console.log('inside handler');
         var event: CustomEvent = new CustomEvent('payment.success', {
           detail: response,
@@ -255,9 +264,13 @@ export class CartComponent implements OnInit {
     this.newOrder.itemsList = this.itemsList;
     this.newOrder.address = this.addressList[this.selectedindex];
     this.newOrder.totalPrice = this.totPrice;
+
     // console.log(this.newOrder);
     this.ordersApi.createOrderforUser(this.newOrder).subscribe((res) => {
-      this.checkoutPayment.orderId = res;
+      this.newOrderId = res;
+      this.triggerOrderModal();
+      this.emptycart();
+      this.checkoutPayment.orderId = this.newOrderId;
       this.checkoutPayment.status = 'success';
       this.paymentApi.updatePayment(this.checkoutPayment).subscribe((res) => {
         console.log(this.checkoutPayment);
@@ -265,6 +278,18 @@ export class CartComponent implements OnInit {
       // email service to be added
     });
   }
+  triggerOrderModal() {
+    this.myModal.nativeElement.click();
+  }
+
+  // triggering modal
+
+  // @ViewChild('orderButton')
+  // orderButton!: ElementRef<HTMLElement>;
+  // triggerFalseClick() {
+  //   let el: HTMLElement = this.orderButton.nativeElement;
+  //   el.click();
+  // }
 
   // proceedButton() {
   //   setTimeout(this.createNewPayment(), 0);
