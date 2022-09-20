@@ -23,15 +23,18 @@ public class RelationshipService {
 		relationshipRepositrory.save(relationship);
 	}
 	
-	public List<RelationshipModel> suggestByCity(RelationshipModel relationship){
-		String city = relationship.getUser().getAddress().getCity();
-		return relationshipRepositrory.suggestByCity(city);
-	}
+//	public List<RelationshipModel> suggestByCity(RelationshipModel relationship){
+//		String city = relationship.getUser().getAddress().getCity();
+//		return relationshipRepositrory.suggestByCity(city);
+//	}
 	public List<RelationshipModel> getall(){
 		return relationshipRepositrory.findAll();
 	}
 	
-	public List<RelationshipModel> getallOrdersByUserId(Long id){
-		return relationshipRepositrory.getOrdersByUserId(id);
+//	public List<RelationshipModel> getallOrdersByUserId(Long id){
+////		return relationshipRepositrory.getOrdersByUserId(id);
+////	}
+	public List<RelationshipModel> recommend(String city){
+		return relationshipRepositrory.getOrdersByCity(city);
 	}
 }

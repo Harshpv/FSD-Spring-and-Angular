@@ -24,7 +24,7 @@ public class MenuService {
 		return menuRepository.getAllMenu();
 	}
 
-	public Menu findByItemId(Long itemId) throws MenuNotFoundException {
+	public Menu findByItemId(int itemId) throws MenuNotFoundException {
 		if (menuRepository.findByItemId(itemId) != null) {
 			return menuRepository.findByItemId(itemId);
 		}
@@ -39,7 +39,7 @@ public class MenuService {
 		throw new MenuAlreadyExistsException();
 	}
 
-	public void deleteMenu(Long itemId) {
+	public void deleteMenu(int itemId) {
 		menuRepository.deleteById(itemId);
 	}
 
@@ -55,7 +55,7 @@ public class MenuService {
 		throw new MenuNotFoundException();
 
 	}
-	public Menu getByOrder(Long id){
+	public Menu getByOrder(int id){
 		return menuRepository.getByOrder(id);
 	}
 }

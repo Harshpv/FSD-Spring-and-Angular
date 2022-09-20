@@ -25,16 +25,16 @@ public class UserService {
 	}
 
 	public String addUser(User user) throws UserAlreadyExistsException {
-		if (userRepository.findByUserId(user.getId()) == null) {
+		if (userRepository.findByEmailId(user.getUserEmailId()) == null) {
 			userRepository.save(user);
 			return "User Added Successfully!";
 		}
 		throw new UserAlreadyExistsException();
 	}
 
-	public User findById(Long id) throws UserNotFoundException {
-		if (userRepository.findByUserId(id) != null) {
-			return userRepository.findByUserId(id);
+	public User findByEmailId(String email) throws UserNotFoundException {
+		if (userRepository.findByEmailId(email) != null) {
+			return userRepository.findByEmailId(email);
 		}
 		throw new UserNotFoundException();
 
@@ -42,7 +42,7 @@ public class UserService {
 
 	public String updateUser(User user) throws UserNotFoundException {
 //		return userRepository.findById(id);
-		if (userRepository.findByUserId(user.getId()) != null) {
+		if (userRepository.findByEmailId(user.getUserEmailId()) != null) {
 			userRepository.save(user);
 			return "Updated Succesfully";
 		}
@@ -50,8 +50,8 @@ public class UserService {
 
 	}
 
-	public void deleteUser(Long userId) {
-		userRepository.deleteById(userId);
+	public void deleteUser(String emailId) {
+		userRepository.deleteById(emailId);
 	}
 
 	public List<User> suggestByCity(String city) {
