@@ -21,6 +21,7 @@ import { CartService } from '../menuapiservice/cart.service';
 import { Order, orderMenu } from './OrderModel';
 import { paymentService } from '../../profilepage/payments/paymentApi';
 import { paymentModel } from '../../profilepage/payments/paymentModel';
+import { RecommendationService } from './../../recommendation.service';
 
 declare var Razorpay: any;
 
@@ -59,7 +60,8 @@ export class CartComponent implements OnInit {
     private api: ApiserviceService,
     private profileApi: ProfilepageService,
     private ordersApi: OrdersService,
-    private paymentApi: paymentService
+    private paymentApi: paymentService,
+    private recommendation: RecommendationService
   ) {}
   message: boolean = false;
 
@@ -264,6 +266,7 @@ export class CartComponent implements OnInit {
     this.newOrder.itemsList = this.itemsList;
     this.newOrder.address = this.addressList[this.selectedindex];
     this.newOrder.totalPrice = this.totPrice;
+    
 
     // console.log(this.newOrder);
     this.ordersApi.createOrderforUser(this.newOrder).subscribe((res) => {
@@ -274,9 +277,13 @@ export class CartComponent implements OnInit {
       this.checkoutPayment.status = 'success';
       this.paymentApi.updatePayment(this.checkoutPayment).subscribe((res) => {
         console.log(this.checkoutPayment);
+        
       });
+      this.recommendation.addOrder(this.newOrder).subscribe();
       // email service to be added
+      this.recommendation.sendEmail(this.newOrder).subscribe();
     });
+    
   }
   triggerOrderModal() {
     this.myModal.nativeElement.click();

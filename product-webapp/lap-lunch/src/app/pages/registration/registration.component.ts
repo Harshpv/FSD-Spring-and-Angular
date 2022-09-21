@@ -13,6 +13,8 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import * as $ from "jquery";
 
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { RecommendationService } from './../../recommendation.service';
+
 
 @Component({
   selector: 'app-registration',
@@ -41,8 +43,7 @@ export class RegistrationComponent implements OnInit {
     private _snackBar : MatSnackBar,
     private dialogBox : MatDialog,
     private matTooltip:MatTooltipModule,
-   
-    ) { }
+    private recommendation:RecommendationService) { }
   message:any;
   ngOnInit(): void {
     this.regForm = this.builder.group({
@@ -84,7 +85,9 @@ export class RegistrationComponent implements OnInit {
     this.user.lastName = this.regForm.value.lastName;
     this.user.password = this.regForm.value.password;
     this.user.address = this.regForm.value.address;
-    this.service.addUser(this.user).subscribe((data) => {this.message=data},
+    this.service.addUser(this.user).subscribe((data) => {this.message=data,
+      this.recommendation.addUser(this.user).subscribe();
+    },
     )
     this.alert=true;
     console.log(this.message);

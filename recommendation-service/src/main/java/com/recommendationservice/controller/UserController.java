@@ -53,11 +53,11 @@ public class UserController {
 		}
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Object> getById(@PathVariable Long id) {
+	@GetMapping("/{email}")
+	public ResponseEntity<Object> getByEmail(@PathVariable String email) {
 		try {
 			log.info("The requested user was fetched");
-			return new ResponseEntity<Object>(userService.findById(id), HttpStatus.OK);
+			return new ResponseEntity<Object>(userService.findByEmailId(email), HttpStatus.OK);
 		} catch (UserNotFoundException e) {
 			log.error("The requested user could not be fetched");
 			return new ResponseEntity<Object>("The requested User could not be found.", HttpStatus.CONFLICT);
@@ -68,7 +68,7 @@ public class UserController {
 	}
 
 	@DeleteMapping("/{Id}")
-	public void deleteUser(@PathVariable Long Id) {
+	public void deleteUser(@PathVariable String Id) {
 		userService.deleteUser(Id);
 	}
 
