@@ -101,4 +101,9 @@ public class MenuController {
 		return menuService.getByOrder(id);
 	}
 
+	@GetMapping("/menuId/{id}")
+	public Menu findByMenuId (@PathVariable int id) throws MenuNotFoundException {
+		return menuService.findByItemId(id);
+	}
+
 }

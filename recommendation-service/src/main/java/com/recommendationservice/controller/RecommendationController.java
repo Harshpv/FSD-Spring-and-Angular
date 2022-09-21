@@ -57,7 +57,7 @@ public class RecommendationController {
 //		return (HashSet<Menu>) menuList;
 //
 //	}
-	@GetMapping("city/{city}")
+	@GetMapping("/city/{city}")
 	public HashSet<Menu> recommend(@PathVariable String city) throws MenuNotFoundException {
 		List<Long> orderIdList = new ArrayList<Long>();
 		List<Integer> menuIdList = new ArrayList<Integer>();

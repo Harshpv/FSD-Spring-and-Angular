@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @Node
 public class RelationshipModel {
-	@Id @GeneratedValue
+	@Id
 	private Long orderId;
 	private String userEmailId;
 	private Address address;

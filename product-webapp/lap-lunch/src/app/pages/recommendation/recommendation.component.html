@@ -119,7 +119,8 @@
                 <div class="card-body" style = "margin-top: 0%;" >
                   <p class="card-title">{{item.itemName}}</p>
                   <p style="margin-bottom: 10%;">र{{item.itemCost}}</p>
-                  <!-- <button id="addButton">Add +</button> -->
+                  <button id="addButton" (click)=additems(item)>Add +</button>
+                  <!-- <a href = "/menu#{{item.itemName}}">Link</a> -->
                   <!-- <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
                   <a href="#" class="btn btn-primary">See Profile</a> -->
                 </div>
