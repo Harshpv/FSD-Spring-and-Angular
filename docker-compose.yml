@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.3"
 services:
   laplunch-mongo:
     image: mongo:latest
@@ -51,7 +51,7 @@ services:
     build: ./menu-service
     container_name: menu-service
     network_mode: host
-    hostname: localhost
+#    hostname: localhost
     restart: always
     ports:
       - 8085:8085
@@ -85,7 +85,7 @@ services:
     build: ./product-webapp
     container_name: product-webapp
     network_mode: host
-    hostname: localhost
+#    hostname: localhost
     restart: always
     ports:
       - 4200:4200

@@ -12,7 +12,7 @@
       <a *ngIf="authService.isloggedIn()" (click)="authService.logout()" routerLink="./">Log out</a>
     </li>
     <li class="item button secondary">
-      <a *ngIf="!authService.isloggedIn()" href="/registration">Sign Up</a>
+      <a *ngIf="!authService.isloggedIn()" routerLink="/registration">Sign Up</a>
       <a *ngIf="authService.isloggedIn()" href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
     </li>
     <li class="toggle"><span class="bars"></span></li>

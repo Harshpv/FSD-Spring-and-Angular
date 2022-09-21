@@ -1,4 +1,4 @@
-package com.niit.userservice.model;
+package com.niit.userservice.config;
 
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class MQConfig {
+public class MessageConfiguration {
 
     public static final String QUEUE = "user_credentials";
     public static final String EXCHANGE = "credentials_exchange";
@@ -37,8 +37,6 @@ public class MQConfig {
         template.setMessageConverter(messageConverter());
         return template;
     }
-
-
-
-
 }
+
+

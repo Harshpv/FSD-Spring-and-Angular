@@ -5,6 +5,7 @@ import com.niit.userservice.Services.UserRepositoryService;
 import com.niit.userservice.exceptiions.UserAlreadyExistsException;
 import com.niit.userservice.exceptiions.UserNotFoundException;
 
+import com.niit.userservice.model.UsersDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ public class UsersController {
     private Users userDemo;
 
     @PostMapping //change
-    public ResponseEntity<?> addUser(@RequestBody Users user) {
+    public ResponseEntity<?> addUser(@RequestBody UsersDTO user) {
 
 //        return new ResponseEntity<Users>(repositoryService.addUser(user),HttpStatus.ACCEPTED);
         try {
