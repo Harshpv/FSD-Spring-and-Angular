@@ -3,9 +3,9 @@
     <li class="logo"><a href="/"><img style="width: 65px; height:65px;" src="assets/logo.jpg"></a></li>
     <li class="item"><a href="/">Home</a></li>
 
-    <li class="item"><a href="/timetable">Timetable</a></li>
-    <li class="item"><a href="/profilepage/orders">Profile</a></li>
-    <li class="item"><a href="/subscriptionplan">Subscriptions</a></li>
+    <li class="item"><a routerLink="/timetable">Timetable</a></li>
+    <li class="item"><a routerLink="/profilepage/orders">Profile</a></li>
+    <li class="item"><a routerLink="/subscriptionplan">Subscriptions</a></li>
 
     <li class="item button">
       <a *ngIf="!authService.isloggedIn()" routerLink="/login">Log In</a>

@@ -45,7 +45,7 @@ login() {
                     sessionStorage.setItem("emailId",this.decodedToken.sub);
                     sessionStorage.setItem('token',result.token);
                     this.loginform.reset();
-                    this.router.navigateByUrl('/menu').then(()=>{
+                    this.router.navigateByUrl('/').then(()=>{
                       this.snackbar.open("You are logged in!","OK",{
                         duration:2500,
                       });
