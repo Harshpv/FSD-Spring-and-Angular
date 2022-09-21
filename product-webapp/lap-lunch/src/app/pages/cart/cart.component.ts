@@ -54,6 +54,7 @@ export class CartComponent implements OnInit {
 
   // order related
   @ViewChild('myModal', { static: true }) myModal!: ElementRef;
+  placedOrder: OrderModel = new OrderModel();
 
   constructor(
     private cartService: CartService,
@@ -102,15 +103,18 @@ export class CartComponent implements OnInit {
   }
 
   inc(index: number) {
-    if (this.menuproduct.items[index].quantity + 1 < 1) {
-      this.menuproduct.items[index].quantity = 1;
-      console.log('item_1-> ' + this.product.items[index].quantity);
-    } else {
-      this.menuproduct.items[index].quantity += 1;
-      console.log(
-        'item_2-> ' + index + '  ' + this.product.items[index].quantity
-      );
-    }
+    // if (this.menuproduct.items[index].quantity + 1 < 1) {
+    //   this.menuproduct.items[index].quantity = 1;
+    //   console.log('item_1-> ' + this.product.items[index].quantity);
+    // } else {
+    this.menuproduct.items[index].quantity += 1;
+    // console.log(
+    //   'item_2-> ' + index + '  ' + this.product.items[index].quantity
+    // );
+    this.api
+      .updateItems(this.menuproduct, this.userEmailId)
+      .subscribe((data) => (this.product = data));
+    // }
   }
 
   desc(index: number) {
@@ -124,6 +128,9 @@ export class CartComponent implements OnInit {
         'item_2-> ' + index + '  ' + this.menuproduct.items[index].quantity
       );
     }
+    this.api
+      .updateItems(this.menuproduct, this.userEmailId)
+      .subscribe((data) => (this.product = data));
   }
 
   // Address popup part-----
@@ -266,24 +273,25 @@ export class CartComponent implements OnInit {
     this.newOrder.itemsList = this.itemsList;
     this.newOrder.address = this.addressList[this.selectedindex];
     this.newOrder.totalPrice = this.totPrice;
-    
 
     // console.log(this.newOrder);
     this.ordersApi.createOrderforUser(this.newOrder).subscribe((res) => {
-      this.newOrderId = res;
+      this.placedOrder = res;
+      console.log(this.placedOrder);
       this.triggerOrderModal();
       this.emptycart();
-      this.checkoutPayment.orderId = this.newOrderId;
+      this.checkoutPayment.orderId = this.placedOrder.orderId;
       this.checkoutPayment.status = 'success';
-      this.paymentApi.updatePayment(this.checkoutPayment).subscribe((res) => {
-        console.log(this.checkoutPayment);
-        
-      });
-      this.recommendation.addOrder(this.newOrder).subscribe();
-      // email service to be added
-      this.recommendation.sendEmail(this.newOrder).subscribe();
+      this.paymentApi.updatePayment(this.checkoutPayment).subscribe(
+        (res) => {},
+        (err) => {
+          console.log(this.checkoutPayment);
+          this.recommendation.addOrder(this.placedOrder).subscribe();
+          // email service to be added
+          this.recommendation.sendEmail(this.placedOrder).subscribe();
+        }
+      );
     });
-    
   }
   triggerOrderModal() {
     this.myModal.nativeElement.click();
