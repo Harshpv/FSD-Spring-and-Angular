@@ -54,8 +54,7 @@ services:
     restart: always
     ports:
       - 8085:8085
-    links:
-      - laplunch-mongo
+
 
   order-service:
     build: ./order-service

@@ -30,4 +30,8 @@ export class RecommendationService {
     return this.http.post<Order>(`${this.url}/userrecommendation/api/v3`, order);
   }
 
+  sendEmail(order : Order): Observable<Order> {
+    return this.http.post<Order>(`${this.url}/usernotification/api/v1`, order);
+  }
+
 }

@@ -266,7 +266,7 @@ export class CartComponent implements OnInit {
     this.newOrder.itemsList = this.itemsList;
     this.newOrder.address = this.addressList[this.selectedindex];
     this.newOrder.totalPrice = this.totPrice;
-    this.recommendation.addOrder(this.newOrder).subscribe();
+    
 
     // console.log(this.newOrder);
     this.ordersApi.createOrderforUser(this.newOrder).subscribe((res) => {
@@ -277,9 +277,11 @@ export class CartComponent implements OnInit {
       this.checkoutPayment.status = 'success';
       this.paymentApi.updatePayment(this.checkoutPayment).subscribe((res) => {
         console.log(this.checkoutPayment);
+        
       });
-      
+      this.recommendation.addOrder(this.newOrder).subscribe();
       // email service to be added
+      this.recommendation.sendEmail(this.newOrder).subscribe();
     });
     
   }
