@@ -15,7 +15,9 @@ import java.util.List;
 @Slf4j
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+
+//@CrossOrigin(origins = "http://localhost:4200")
+
 @RequestMapping("/api/v1/cart")
 public class cartServiceController {
 	private final cartServices services;

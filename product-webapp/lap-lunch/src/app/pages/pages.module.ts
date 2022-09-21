@@ -15,6 +15,8 @@ import { LoginComponent } from '../login/login.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { DialogBoxComponent } from './registration/dialog-box/dialog-box.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -27,7 +29,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     RecommendationComponent,
     RecommendationComponent,
     RegistrationComponent,
-
     RecommendationComponent,
     TimetableComponent,
     DialogBoxComponent
@@ -38,7 +39,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
+    MatTooltipModule
   ],
   exports: [SearchheaderComponent, CartComponent, ProductComponent],
 })

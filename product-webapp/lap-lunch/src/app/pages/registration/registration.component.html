@@ -5,14 +5,14 @@
     </button>
 </div>
 <div class="bg">
-    
     <div class="col-md-4">
         <div class="container">
             <h1>Sign Up for LapLunch</h1>
             <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <div class="input-icons">
-                        <input type="email" class="form-control" formControlName="userEmailId" placeholder="laplunch@gmail.com" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                        <!-- <i class="fa fa-envelope icon" ></i> -->
+                        <input type="email" class="form-control"  placeholder="Email" formControlName="userEmailId" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
                             <span class="text-danger"
                                 *ngIf="(f.userEmailId.touched || submitted) && f.userEmailId.errors?.required">
                                 Email is required
@@ -38,7 +38,9 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <input type="text" class="form-control" formControlName="firstName" placeholder="Enter Firstname" >
+                        <!-- <input type="text" class="form-control" formControlName="firstName" placeholder="Enter Firstname" > -->
+                        <!-- <i class="fa fa-user icon" ></i> -->
+                        <input type="text" class="form-control"  placeholder="Firstname" formControlName="firstName">
                             <span class="text-danger"
                                 *ngIf="(f.firstName.touched || submitted) && f.firstName.errors?.required">
                                 Firstname is required
@@ -47,7 +49,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <input type="text" class="form-control" formControlName="lastName" placeholder="Enter Lastname">
+                        <!-- <i class="fa fa-user icon"></i> -->
+                        <input type="text" class="form-control"  placeholder="Lastname" formControlName="lastName">
                             <span class="text-danger"
                                 *ngIf="(f.lastName.touched || submitted) && f.lastName.errors?.required">
                                 Lastname is required
@@ -56,7 +59,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <input type="email" class="form-control" formControlName="password" placeholder="Enter password">
+                        <!-- <i class="fa fa-key icon"></i> -->
+                        <input type="email" class="form-control"  placeholder="Password" formControlName="password">
                             <span class="text-danger"
                                 *ngIf="(f.password.touched || submitted) && f.password.errors?.required">
                                 Password is required
@@ -70,7 +74,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <input type="email" class="form-control" formControlName="confirmPassword" placeholder="Confirm password">
+                        <!-- <i class="fa fa-key icon" ></i> -->
+                        <input type="email" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
                             <span class="text-danger"
                                 *ngIf="(f.confirmPassword.touched || submitted)&& f.confirmPassword.errors?.required">
                                 Confirm Password is required
@@ -97,8 +102,7 @@
     
 </div>
 
-
-                
+             
 
             
         

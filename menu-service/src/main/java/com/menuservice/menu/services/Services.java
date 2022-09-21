@@ -1,6 +1,7 @@
 package com.menuservice.menu.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,8 @@ public class Services {
 	//addItems method consists of business logic to add new data to database
 	public void addItems(MenuModel menuModel) throws MenuAlreadyExistsException {
 
+		UUID uuid= UUID.randomUUID();
+		menuModel.setItemId(uuid.toString());
 		menuRepository.insert(menuModel);
 
 	}
@@ -69,7 +72,7 @@ public class Services {
 
 	}
 	//getItemsById method consists of business logic to fetch specific data present in the database using itemId.
-	public MenuModel getItemsById(int itemId) throws MenuNotFoundException {
+	public MenuModel getItemsById(String  itemId) throws MenuNotFoundException {
 
 		if (menuRepository.existsById(itemId)) {
 
@@ -80,7 +83,7 @@ public class Services {
 
 	}
 	//deleteItems method consists of business logic to delete the data present in the database using itemId.
-	public void deleteById(int itemId) throws MenuNotFoundException {
+	public void deleteById(String  itemId) throws MenuNotFoundException {
 		if (!menuRepository.existsById(itemId)) {
 
 //		   menuRepository.deleteById(itemId);

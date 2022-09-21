@@ -1,4 +1,4 @@
-export class userCredentials {
+export class userModel {
   userEmailId!: string;
   mobileNum!: string;
   firstName!: string;

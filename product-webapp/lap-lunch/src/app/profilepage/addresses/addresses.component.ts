@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 import { ProfilepageService } from '../profilepageService';
-import { addressModel, userCredentials } from '../usermodel';
+import { addressModel, userModel } from '../usermodel';
 
 @Component({
   selector: 'app-addresses',
@@ -13,7 +13,7 @@ export class AddressesComponent implements OnInit {
   addressformValue!: FormGroup;
 
   userEmailId: any = sessionStorage.getItem('emailId');
-  userData!: userCredentials;
+  userData!: userModel;
   addressList!: addressModel[];
   newAddress: addressModel = new addressModel();
   indexVal!: number;

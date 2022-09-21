@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.stackroute.OrderService.model.OrderModel;
 import com.stackroute.OrderService.service.OrderService;
 
-@CrossOrigin
+
 @Slf4j
 @RestController
 @RequestMapping("/api/v1")
@@ -29,9 +29,9 @@ public class OrderController {
 	@PostMapping("/addOrder")
 	public ResponseEntity<Object> postOrder(@RequestBody OrderModel order){
 		try {
-			service.addOrder(order);
+//
 			log.info("Order added");
-			return new ResponseEntity<>("Order added!",HttpStatus.CREATED);
+			return new ResponseEntity<>(service.addOrder(order), HttpStatus.CREATED);
 		} catch (OrderAlreadyExistsException e) {
 			log.error("Order already exists");
 			return new ResponseEntity<>("Order already exists", HttpStatus.CONFLICT);

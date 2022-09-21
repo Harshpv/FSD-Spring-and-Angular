@@ -13,7 +13,6 @@ import { LoginComponent } from './login/login.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 //profile components
 import { MatCommonModule } from '@angular/material/core';
-// import { ServiceComponent } from './service/service.component';
 import { MatCardModule } from '@angular/material/card';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { provideRoutes } from '@angular/router';
@@ -25,13 +24,21 @@ import { CommonModule } from '@angular/common';
 //import { ProfilepageModule } from 'src/profilepage/profilepage.module';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { AuthGuard } from './login/Service/auth.guard';
 import { ProfilepageModule } from './profilepage/profilepage.module';
+import { HttpClient } from '@angular/common/http';
+import {MatButtonModule} from '@angular/material/button'
+import { MatTooltipModule } from '@angular/material/tooltip';
+//import {MatSnackBarModule} from '@angular/material/snack-bar'
+
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SubscriptionPlansComponent,
-    SubscribedPlanComponent,
+    SubscribedPlanComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +47,7 @@ import { ProfilepageModule } from './profilepage/profilepage.module';
     HttpClientModule,
     BrowserAnimationsModule,
     CommonComponentsModule,
+    MatSnackBarModule,
     // SearchheaderComponent,
     PagesModule,
     ReactiveFormsModule,
@@ -51,14 +59,14 @@ import { ProfilepageModule } from './profilepage/profilepage.module';
     MatInputModule,
     MatSnackBarModule,
     MatDialogModule,
-
-    
-    CommonModule
     // AuthServiceService
+    CommonModule,
+    MatTooltipModule,
+    ProfilepageModule,
   ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService,
+    JwtHelperService,AuthGuard
   ],
   bootstrap: [AppComponent],
 })

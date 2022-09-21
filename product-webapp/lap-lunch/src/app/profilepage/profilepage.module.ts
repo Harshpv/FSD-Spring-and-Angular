@@ -8,6 +8,7 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { RouterModule } from '@angular/router';
 import { CommonComponentsModule } from '../common-components/common-components.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     OrdersComponent,
     AddressesComponent,
     SubscriptionComponent,
+    PaymentsComponent,
   ],
   imports: [
     CommonModule,

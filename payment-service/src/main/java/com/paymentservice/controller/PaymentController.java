@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+//@CrossOrigin(origins = "http://localhost:4200")
 @Slf4j
 @RestController
 @RequestMapping("/api/v1")
@@ -23,9 +23,8 @@ public class PaymentController {
     @PostMapping("/payNow")
     public ResponseEntity<Object> newPayment(@RequestBody PaymentModel paymentModel){
         try {
-            paymentService.addPayment(paymentModel);
             log.info("New payment initiated");
-            return new ResponseEntity<Object>("New payment initiated", HttpStatus.OK);
+            return new ResponseEntity<Object>(paymentService.addPayment(paymentModel), HttpStatus.OK);
         } catch (PaymentAlreadyExistsException e) {
             log.error("Payment already exists, try to initiate new payment");
             return new ResponseEntity<Object>("Payment already exists, try to initiate new payment",HttpStatus.CONFLICT);
@@ -90,6 +89,15 @@ public class PaymentController {
             return new ResponseEntity<Object>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @GetMapping("/getPayments/{userEmailId}")
+    public ResponseEntity<Object> getPaymentByUserEmailId(@PathVariable String userEmailId){
+        try {
+            return new ResponseEntity<Object>(paymentService.getPaymentsByEmailId(userEmailId), HttpStatus.OK);
+        } catch (PaymentNotFoundException e) {
+            return new ResponseEntity<Object>("Payment not found",HttpStatus.CONFLICT);
+        } catch(Exception e){
+            return new ResponseEntity<Object>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }

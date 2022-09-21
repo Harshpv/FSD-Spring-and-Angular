@@ -12,6 +12,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import * as $ from "jquery";
 
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-registration',
@@ -33,14 +34,13 @@ export class RegistrationComponent implements OnInit {
 
   };
 
-  
 
   constructor(private service : UserService, private router: Router,
     private authService:AuthServiceService, private builder: FormBuilder, 
     private customValidator : CustomvalidationService,
     private _snackBar : MatSnackBar,
     private dialogBox : MatDialog,
-  
+    private matTooltip:MatTooltipModule,
    
     ) { }
   message:any;

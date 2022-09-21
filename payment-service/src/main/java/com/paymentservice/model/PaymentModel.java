@@ -18,13 +18,13 @@ public class PaymentModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int paymentId;
 
-    private int orderId;
+    private int orderId=0;
 
-    //to be added userEmailId
+    private String userEmailId;
 
     private float totalPrice;
 
-    //to be added status="initiated"
+    private String status="initiated";
 
     private String razorpayOrderId="ToBeGenerated";
 

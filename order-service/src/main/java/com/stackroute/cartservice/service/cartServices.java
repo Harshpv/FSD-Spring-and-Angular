@@ -101,9 +101,15 @@ public class cartServices {
 					cartRepository.existsById(userEmailId)) {
 
 				return cartRepository.findById(userEmailId).get();
+			} else{
+				Cart newCart=new Cart();
+				newCart.setUserEmailId(userEmailId);
+				newCart.setItems(new ArrayList<com.stackroute.cartservice.model.Menu>());
+				cartRepository.save(newCart);
+				return newCart;
 			}
-            log.info("inside findCartByEmailId");
-			throw new CartNotFoundException();
+//            log.info("inside findCartByEmailId");
+
 
 		}
 	public void emptyCart(String userEmailId)  {

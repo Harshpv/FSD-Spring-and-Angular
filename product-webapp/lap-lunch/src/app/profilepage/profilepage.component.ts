@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 import { ProfilepageService } from './profilepageService';
-import { userCredentials } from './usermodel';
+import { userModel } from './usermodel';
 
 @Component({
   selector: 'app-profilepage',
@@ -11,7 +11,7 @@ import { userCredentials } from './usermodel';
 })
 export class ProfilepageComponent implements OnInit {
   userEmailId: any = sessionStorage.getItem('emailId');
-  userData!: userCredentials;
+  userData!: userModel;
   userformValue: any;
 
   constructor(
