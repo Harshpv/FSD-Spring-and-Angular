@@ -38,7 +38,7 @@ public class MenuController {
 	}
 
 	@GetMapping("/{itemId}")
-	public ResponseEntity<Object> getById(@PathVariable Long itemId) {
+	public ResponseEntity<Object> getById(@PathVariable int itemId) {
 		try {
 			log.info("The requested item was found");
 			return new ResponseEntity<Object>(menuService.findByItemId(itemId), HttpStatus.OK);
@@ -76,7 +76,7 @@ public class MenuController {
 	}
 
 	@DeleteMapping("/{Id}")
-	public void deleteMenu(@PathVariable Long Id) {
+	public void deleteMenu(@PathVariable int Id) {
 		menuService.deleteMenu(Id);
 	}
 
@@ -97,8 +97,13 @@ public class MenuController {
 	}
 	
 	@GetMapping("/order/{id}")
-	public Menu getByOrder (@PathVariable Long id){
+	public Menu getByOrder (@PathVariable int id){
 		return menuService.getByOrder(id);
+	}
+
+	@GetMapping("/menuId/{id}")
+	public Menu findByMenuId (@PathVariable int id) throws MenuNotFoundException {
+		return menuService.findByItemId(id);
 	}
 
 }

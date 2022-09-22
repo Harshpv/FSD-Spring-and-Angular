@@ -1,3 +1,9 @@
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Registration successful!! </strong>   Login to continue to the application
+    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <div class="bg">
     <div class="col-md-4">
         <div class="container">
@@ -5,8 +11,8 @@
             <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <div class="input-icons">
-                        <i class="fa fa-envelope icon" matTooltip="Email" matTooltipPosition="left"></i>
-                        <input type="email" class="form-control" matTooltip="Enter your Email" matTooltipPosition="right" placeholder="Email" formControlName="userEmailId" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                        <!-- <i class="fa fa-envelope icon" ></i> -->
+                        <input type="email" class="form-control"  placeholder="Email" formControlName="userEmailId" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
                             <span class="text-danger"
                                 *ngIf="(f.userEmailId.touched || submitted) && f.userEmailId.errors?.required">
                                 Email is required
@@ -19,8 +25,22 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <i class="fa fa-user icon" matTooltip="Username" matTooltipPosition="left"></i>
-                        <input type="text" class="form-control" matTooltip="Enter your Firstname" matTooltipPosition="right" placeholder="Username" formControlName="firstName">
+                        <input type="text" class="form-control" formControlName="mobileNum" placeholder="Phone Number" >
+                            <span class="text-danger"
+                            *ngIf="(f.mobileNum.touched || submitted) && f.mobileNum.errors?.required" >
+                                Mobile Number is required
+                            </span>
+                            <span class="text-danger"
+                            *ngIf="f.mobileNum.touched && f.mobileNum.errors?.pattern">
+                                Enter 10 digit mobile number
+                            </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icons">
+                        <!-- <input type="text" class="form-control" formControlName="firstName" placeholder="Enter Firstname" > -->
+                        <!-- <i class="fa fa-user icon" ></i> -->
+                        <input type="text" class="form-control"  placeholder="Firstname" formControlName="firstName">
                             <span class="text-danger"
                                 *ngIf="(f.firstName.touched || submitted) && f.firstName.errors?.required">
                                 Firstname is required
@@ -29,8 +49,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <i class="fa fa-user icon" matTooltip="Lastname" matTooltipPosition="left"></i>
-                        <input type="text" class="form-control" matTooltip="Enter your Lastname" matTooltipPosition="right" placeholder="Lastname" formControlName="lastName">
+                        <!-- <i class="fa fa-user icon"></i> -->
+                        <input type="text" class="form-control"  placeholder="Lastname" formControlName="lastName">
                             <span class="text-danger"
                                 *ngIf="(f.lastName.touched || submitted) && f.lastName.errors?.required">
                                 Lastname is required
@@ -39,8 +59,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <i class="fa fa-key icon" matTooltip="Password" matTooltipPosition="left"></i>
-                        <input type="email" class="form-control" matTooltip="Enter your password" matTooltipPosition="right" placeholder="Password" formControlName="password">
+                        <!-- <i class="fa fa-key icon"></i> -->
+                        <input type="password" class="form-control"  placeholder="Password" formControlName="password">
                             <span class="text-danger"
                                 *ngIf="(f.password.touched || submitted) && f.password.errors?.required">
                                 Password is required
@@ -54,8 +74,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <i class="fa fa-key icon" matTooltip="Confirm Password" matTooltipPosition="left"></i>
-                        <input type="email" class="form-control" matTooltip="Confirm your password" matTooltipPosition="right" placeholder="Confirm Password" formControlName="confirmPassword">
+                        <!-- <i class="fa fa-key icon" ></i> -->
+                        <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
                             <span class="text-danger"
                                 *ngIf="(f.confirmPassword.touched || submitted)&& f.confirmPassword.errors?.required">
                                 Confirm Password is required
@@ -69,16 +89,21 @@
                 <div class="form-group">
                     <div class="input-icons">
                         <div class="bt">
-                            <button type="submit" class="btn btn-dark" routerLink="./" >Register</button>
+                            <button type="submit" class="btn btn-dark"  >Register</button>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
-</div>
-                   
                 
+            </form>
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+             
+
             
         
     

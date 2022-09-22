@@ -21,6 +21,7 @@ export class OrdersComponent implements OnInit {
   getAllOrdersByEmailId() {
     this.api.getOrdersByemailId(this.userEmailId).subscribe((res) => {
       this.orderData = res;
+      this.orderData.reverse();
       console.log(res);
     });
   }

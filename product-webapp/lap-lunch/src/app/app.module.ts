@@ -7,10 +7,10 @@ import { PagesModule } from './pages/pages.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 //profile components
 import { MatCommonModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
@@ -21,11 +21,15 @@ import { SubscriptionPlansComponent } from './subscription-plans/subscription-pl
 import { SubscribedPlanComponent } from './subscribed-plan/subscribed-plan.component';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
-import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+//import { ProfilepageModule } from 'src/profilepage/profilepage.module';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { AuthGuard } from './login/Service/auth.guard';
 import { ProfilepageModule } from './profilepage/profilepage.module';
 import { HttpClient } from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button'
+import { MatTooltipModule } from '@angular/material/tooltip';
 //import {MatSnackBarModule} from '@angular/material/snack-bar'
 
 
@@ -53,6 +57,9 @@ import {MatButtonModule} from '@angular/material/button'
     MatCommonModule,
     MatCardModule,
     MatInputModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    // AuthServiceService
     CommonModule,
     MatTooltipModule,
     ProfilepageModule,
