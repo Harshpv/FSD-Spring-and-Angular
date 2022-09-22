@@ -99,10 +99,11 @@
 
 
 
-<div class="card-top container d-flex" id="recmenu"> 
+<div class="card-top container d-flex" id="recmenu" *ngIf="isCity"> 
     <div style="margin-top: 10px;margin-bottom: 10px;">
     <h4 style="margin-left: 25px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Popular Food Items In {{city}}:</h4>
     <div>
+    
     <div class="container d-flex" >
         <ng-container *ngFor= "let item of data">
             <!-- <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
@@ -114,7 +115,7 @@
                   </div>
                 </div>
               </div> -->
-              <div class="card" style="width:200px;height:270px;background-color: white;"  id="recCard">
+              <div class="card" style="width:fit-content;height:fit-content;background-color: white;"  id="recCard">
                 <img class="card-img-top" src= "{{item.itemImage}}" alt="Card image" style="width:100%;">
                 <div class="card-body" style = "margin-top: 0%;" >
                   <p class="card-title">{{item.itemName}}</p>

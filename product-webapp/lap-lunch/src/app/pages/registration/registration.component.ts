@@ -10,7 +10,7 @@ import { MatFormField } from '@angular/material/form-field';
 import { AuthServiceService } from 'src/app/login/Service/auth-service.service';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
-import * as $ from "jquery";
+// import * as $ from "jquery";
 
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RecommendationService } from './../../recommendation.service';
