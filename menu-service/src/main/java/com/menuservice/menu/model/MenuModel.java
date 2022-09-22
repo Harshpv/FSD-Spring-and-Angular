@@ -14,7 +14,7 @@ public class MenuModel {
 
 	
 	@Id
-	private int itemId;
+	private String itemId;
 	@Field(name="name")
 	@Indexed(unique = true)
 	private String itemName;

@@ -8,9 +8,11 @@
     <div class="form-group">
       <h5>Enter Email</h5>  
       <div class="input-icons">
-        <i class="fa fa-envelope icon" matTooltip="Email" matTooltipPosition="left"></i>
-        <input type="email" class="form-control" matTooltip="Enter your Email" matTooltipPosition="right" placeholder="Email"
-         formControlName="email">
+        <i class="fa fa-envelope icon"  data-bs-toggle="tooltip" title="Email" data-bs-placement="top"></i>
+        <input type="email" class="form-control" 
+        data-bs-toggle="tooltip" title="Email" data-bs-placement="top"
+        placeholder="Email"
+        formControlName="email">
          <div *ngIf="loginform.controls['email'].hasError('email')">Email not valid</div>
       </div>
     </div>
@@ -19,8 +21,9 @@
     <div class="form-group">
       <h5>Enter password</h5>
       <div class="input-icons">
-      <i class="fa fa-key icon" matTooltip="Password" matTooltipPosition="left"></i>
-       <input id="password" type="password" required class="form-control" formControlName="password" matTooltipPosition="right" matTooltip="Enter your password"
+      <i class="fa fa-key icon" data-bs-toggle="tooltip" title="Password" data-bs-placement="top"></i>
+       <input id="password" type="password" required class="form-control" formControlName="password"
+        data-bs-toggle="tooltip" title="Password" data-bs-placement="top"
        placeholder="Password" minlength="8">
        <div *ngIf="loginform.controls['password'].hasError('minlength')">Password must contain minimun 8 characters</div>
       </div>

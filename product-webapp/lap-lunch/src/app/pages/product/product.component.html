@@ -18,6 +18,7 @@
             </a>
         </div>
         
+        
         <div class="Veg Items">
             <a (click)= "scroll(veg)">
             
@@ -31,6 +32,15 @@
             </a>
             <p><strong style="color: black;">Non-Veg Items</strong></p>
         </div>
+    
+        <div class="fastfood">
+            <a (click)= "scroll(fastfood)">
+             <img style="width: 130px; height: 130px "  src="assets/fastfood.jpg"  alt="Fast Food">
+             &nbsp;
+             <p><strong style="color: black;">Fast Food</strong></p>
+            </a>
+        </div>
+
         <div class="milk shakes">
             <a (click)= "scroll(milkshake)">
              <img style="width: 130px; height: 130px "  src="assets/milkshake-cate.jpg"  alt="Milk Shakes">
@@ -57,12 +67,14 @@
 </div>
 
 
-<div class="container">
+<div class="container" >
+    <!-- <ng-container *ngIf= " filter:searchKey:'itemName' ">
+             -->
+             <ng-container *ngFor =  "let item of searchedItems |filter:searchKey:'itemName' ">
+        
     <div class="row">
        <h4 style="color: darkblue;">Search Results</h4>
-        <ng-container *ngFor =  "let item of searchedItems">
-        <!-- <ng-container *ngIf= " filter:searchKey:'itemName' ">
-             -->
+        
         <div class="card col-md-3">
             <img src={{item.itemImage}} alt="Dish Image">
             <h5>{{item.itemName}}</h5>
@@ -71,16 +83,18 @@
             <p>{{item.category}}</p>
             <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
             <button (click)=additems(item) >Add +</button>
-      
+        </div>
     <!-- </ng-container>  -->
     </div>
 </ng-container>
+</div>
 
 
 <br><br>
 
 <div #veg class="container">
     <div class="row">
+        
         <h4 style="color: darkblue;">Veg Items</h4>
         <ng-container *ngFor= "let item of filterCategory | filter: 'Vegetarian' :'category'">
         <div  class="card col-md-3">
@@ -98,7 +112,10 @@
     </div> 
 </div> 
 <br><br>
+
+
  <div #nonveg class="container">
+    <br><br>
     <div class="row">
         <h4 style="color: darkblue;">Non Veg Items</h4>
         
@@ -117,8 +134,27 @@
     
     </div> 
 </div> 
+<br><br>
+<div #fastfood class="container">
+    <div class="row">
+        
+        <h4 style="color: darkblue;">Fast Food</h4>
+        <ng-container *ngFor= "let item of filterCategory | filter: 'fastfood' :'category'">
+        <div  class="card col-md-3">
+            <img src={{item.itemImage}} alt="Dish Image">
+            <h5>{{item.itemName}}</h5>
+            <p>{{item.itemDescription}}</p> 
+            
+            <p>{{item.category}}</p>
 
-
+            <p><strong><i class="fas fa-rupee-sign"></i></strong>{{item.itemCost}}</p>
+            
+            <button (click)=additems(item) >Add +</button>
+        </div>
+    </ng-container> 
+    </div> 
+</div> 
+<br><br>
 <!-- <div class="card">
     <div class="image">
         <ng-container *ngFor= "let item of filterCategory | filter: 'Vegetarian' :'category'"> 
@@ -145,7 +181,9 @@
 </div>-->
 <br><br>
 <div #milkshake class="container">
+    <br><br>
     <div class="row">
+        
         <h4 style="color: darkblue;">Milk Shakes</h4>
         <ng-container *ngFor= "let item of filterCategory | filter: 'milk shake' :'category'">
         <div class="card col-md-3">
@@ -162,7 +200,9 @@
 </div> 
 <br><br>
 <div #icecream class="container">
+    <br><br>
     <div class="row">
+        
         <h4 style="color: darkblue;">Ice Creams</h4>
         <ng-container *ngFor= "let item of filterCategory | filter: 'ice cream' :'category'">
         <div class="card col-md-3">
@@ -179,6 +219,7 @@
 </div> 
 <br><br>
 <div #softdrink class="container">
+    <br><br>
     <div class="row">
         <h4 style="color: darkblue;">Soft Drinks</h4>
         <ng-container *ngFor= "let item of filterCategory | filter: 'soft drink' :'category' ">
@@ -193,6 +234,7 @@
         </div>
     </ng-container> 
     </div> 
+    <br><br>
 </div> 
 
 <!-- <app-footer></app-footer> -->

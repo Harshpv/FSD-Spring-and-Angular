@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { RecommendationComponent } from './recommendation/recommendation.component';
 import { LoginComponent } from '../login/login.component';
 import { TimetableComponent } from './timetable/timetable.component';
+import { HttpClientModule } from '@angular/common/http';
 import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
 
 
@@ -35,6 +36,7 @@ import { MatTooltip, MatTooltipModule } from '@angular/material/tooltip';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatTooltipModule
   ],
   exports: [SearchheaderComponent, CartComponent, ProductComponent],

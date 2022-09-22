@@ -58,13 +58,13 @@ h1{
 .btn{
   width: 100%;
 } 
-/* @media all and (max-width: 600px) {
+/* @media all and (max-width: 900px) {
   .container{
-    /* display: block; */
-    /* width: auto; */
-    /* width: 70%; */
-  /* } */
-/* } */
+    display: block;
+    width: auto;
+    width: 100%;
+  }
+} */
 .error{
   color: red;
 }

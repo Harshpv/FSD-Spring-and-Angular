@@ -9,43 +9,38 @@ import { Menu } from '../Items/menu.model';
 @Component({
   selector: 'app-searchheader',
   templateUrl: './searchheader.component.html',
-  styleUrls: ['./searchheader.component.css']
+  styleUrls: ['./searchheader.component.css'],
 })
 export class SearchheaderComponent implements OnInit {
-  
-  public searchvalue: string='';
-  public itemscount : number =0;
+  userEmailId: any = sessionStorage.getItem('emailId');
+  public searchvalue: string = '';
+  public itemscount: number = 0;
   allitems!: Allitems[];
-  items ! :Menu;
- searchItem:string='';
-  
-  constructor(private apisearchservice : ApiserviceService
-   , private cartService: CartService, private route : ActivatedRoute ) { }
+  items!: Menu;
+  searchItem: string = '';
 
-   ngOnInit(): void {
-    this.apisearchservice.getallitems()
+  constructor(
+    private apisearchservice: ApiserviceService,
+    private cartService: CartService,
+    private route: ActivatedRoute
+  ) {}
 
-    .subscribe(res=>{
-      this.itemscount =res.items.length;});
-    
+  ngOnInit(): void {
+    this.apisearchservice
+      .getallitems(this.userEmailId)
 
-  
+      .subscribe((res) => {
+        this.itemscount = res.items.length;
+      });
 
-    this.route.params.subscribe(params=>{
-      if(params['searchItem'])
-      this.searchItem=params['searchItem'];
-    })
-
+    this.route.params.subscribe((params) => {
+      if (params['searchItem']) this.searchItem = params['searchItem'];
+    });
   }
-  
-   search(event:any){
-     this.searchvalue=(event.target as HTMLInputElement).value;
+
+  search(event: any) {
+    this.searchvalue = (event.target as HTMLInputElement).value;
     //  console.log(this.searchvalue);
-     this.apisearchservice.search.next(this.searchvalue);
-    
-    }
-
+    this.apisearchservice.search.next(this.searchvalue);
+  }
 }
-
-
- 

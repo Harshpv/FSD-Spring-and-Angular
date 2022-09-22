@@ -18,7 +18,7 @@ import com.menuservice.menu.exceptions.MenuNotFoundException;
 import com.menuservice.menu.services.Services;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1")
 public class MenuController {
@@ -80,7 +80,7 @@ public class MenuController {
 	}
 	//Getmapping  api with id used to fetch specific data with it's id, present in the mongo database.
 	@GetMapping("/{itemId}")
-	public ResponseEntity<Object> getItemsById(@PathVariable int itemId) {
+	public ResponseEntity<Object> getItemsById(@PathVariable String itemId) {
 
 		try {
 
@@ -99,7 +99,7 @@ public class MenuController {
 	//Deletemapping api with id used to delete specific data with it's id, present in the mongo database
 	@SuppressWarnings("unchecked")
 	@DeleteMapping("/{itemId}")
-	public ResponseEntity<?> deleteItem(@PathVariable int itemId) {
+	public ResponseEntity<?> deleteItem(@PathVariable String itemId) {
 		try {
 
 			services.deleteById(itemId);

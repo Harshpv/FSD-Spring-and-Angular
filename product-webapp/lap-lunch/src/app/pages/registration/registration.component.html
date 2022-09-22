@@ -5,8 +5,8 @@
             <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <div class="input-icons">
-                        <i class="fa fa-envelope icon" matTooltip="Email" matTooltipPosition="left"></i>
-                        <input type="email" class="form-control" matTooltip="Enter your Email" matTooltipPosition="right" placeholder="Email" formControlName="userEmailId" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                        <i class="fa fa-envelope icon" data-bs-toggle="tooltip" title="Email" data-bs-placement="top"></i>
+                        <input type="email" class="form-control" data-bs-toggle="tooltip" title="Enter Email" data-bs-placement="top" placeholder="Email" formControlName="userEmailId" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
                             <span class="text-danger"
                                 *ngIf="(f.userEmailId.touched || submitted) && f.userEmailId.errors?.required">
                                 Email is required
@@ -19,8 +19,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <i class="fa fa-user icon" matTooltip="Username" matTooltipPosition="left"></i>
-                        <input type="text" class="form-control" matTooltip="Enter your Firstname" matTooltipPosition="right" placeholder="Username" formControlName="firstName">
+                        <i class="fa fa-user icon" data-bs-toggle="tooltip" title="Username" data-bs-placement="top"></i>
+                        <input type="text" class="form-control" data-bs-toggle="tooltip" title="Enter Username" data-bs-placement="top" placeholder="Username" formControlName="firstName">
                             <span class="text-danger"
                                 *ngIf="(f.firstName.touched || submitted) && f.firstName.errors?.required">
                                 Firstname is required
@@ -29,8 +29,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <i class="fa fa-user icon" matTooltip="Lastname" matTooltipPosition="left"></i>
-                        <input type="text" class="form-control" matTooltip="Enter your Lastname" matTooltipPosition="right" placeholder="Lastname" formControlName="lastName">
+                        <i class="fa fa-user icon" data-bs-toggle="tooltip" title="Lastname" data-bs-placement="top"></i>
+                        <input type="text" class="form-control" data-bs-toggle="tooltip" title="Enter Lastname" data-bs-placement="top" placeholder="Lastname" formControlName="lastName">
                             <span class="text-danger"
                                 *ngIf="(f.lastName.touched || submitted) && f.lastName.errors?.required">
                                 Lastname is required
@@ -39,8 +39,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <i class="fa fa-key icon" matTooltip="Password" matTooltipPosition="left"></i>
-                        <input type="email" class="form-control" matTooltip="Enter your password" matTooltipPosition="right" placeholder="Password" formControlName="password">
+                        <i class="fa fa-key icon"  data-bs-toggle="tooltip" title="Password" data-bs-placement="top"></i>
+                        <input type="password" class="form-control" data-bs-toggle="tooltip" title="Enter Password" data-bs-placement="top" placeholder="Password" formControlName="password">
                             <span class="text-danger"
                                 *ngIf="(f.password.touched || submitted) && f.password.errors?.required">
                                 Password is required
@@ -54,8 +54,8 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <i class="fa fa-key icon" matTooltip="Confirm Password" matTooltipPosition="left"></i>
-                        <input type="email" class="form-control" matTooltip="Confirm your password" matTooltipPosition="right" placeholder="Confirm Password" formControlName="confirmPassword">
+                        <i class="fa fa-key icon" data-bs-toggle="tooltip" title="Confirm Password" data-bs-placement="top"></i>
+                        <input type="password" class="form-control"data-bs-toggle="tooltip" title="Confirm Password" data-bs-placement="top" placeholder="Confirm Password" formControlName="confirmPassword">
                             <span class="text-danger"
                                 *ngIf="(f.confirmPassword.touched || submitted)&& f.confirmPassword.errors?.required">
                                 Confirm Password is required
