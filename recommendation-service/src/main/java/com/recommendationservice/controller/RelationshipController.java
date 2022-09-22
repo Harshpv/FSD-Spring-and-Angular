@@ -33,4 +33,5 @@ public class RelationshipController {
 //	public List<RelationshipModel> getOrderByUserId(@PathVariable Long id ){
 //		return relationshipService.getallOrdersByUserId(id);
 //	}
+
 }

@@ -76,16 +76,16 @@ spring:
 
 
         - id: notification-service
-          uri: http://localhost:8080/
+          uri: http://localhost:9191/
           predicates:
             - Path=/usernotification/**
           filters:
             - RewritePath=/usernotification(?<segment>/?.*), $\{segment}
 
 
-        - id: config-server
-          uri: http://localhost:8080/
+        - id: product-webapp
+          uri: http://localhost:4200/
           predicates:
-            - Path=/configserver**
+            - Path=/**
           filters:
-            - RewritePath=/configserver/(?<segment>/?.*), $\{segment}
+            - RewritePath=(?<segment>/?.*), $\{segment}

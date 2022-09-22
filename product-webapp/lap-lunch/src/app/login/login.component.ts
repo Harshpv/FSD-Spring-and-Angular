@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, Validators} from '@angular/forms';
+import { FormBuilder,FormsModule, FormControl, Validators} from '@angular/forms';
 import { MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';

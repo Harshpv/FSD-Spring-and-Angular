@@ -1,9 +1,20 @@
 package com.niit.userservice.Services;
 
+//<<<<<<< HEAD:user-service/src/main/java/com/userservice/Services/UserRepositoryService.java
+import com.niit.userservice.model.UsersDTO;
+import com.niit.userservice.config.Producer;
+import com.niit.userservice.exceptiions.UserAlreadyExistsException;
+import com.niit.userservice.exceptiions.UserNotFoundException;
+import com.niit.userservice.model.Users;
+import com.niit.userservice.model.UsersDTO;
+import com.niit.userservice.rabbitmq.model.UserCredentials;
+import com.niit.userservice.repository.UserRepository;
+//=======
 import com.niit.userservice.exceptiions.UserAlreadyExistsException;
 import com.niit.userservice.exceptiions.UserNotFoundException;
 import com.niit.userservice.model.Users;
 import com.niit.userservice.repository.UserRepository;
+//>>>>>>> 63edf689972ce1eb50bf84b490f62882ed9e74ae:user-service/src/main/java/com/niit/userservice/Services/UserRepositoryService.java
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,28 +24,23 @@ import java.util.List;
 public class UserRepositoryService {
     @Autowired
     private UserRepository repository;
+    @Autowired
+    Producer producer;
     private Users userDemo;
-
-
-
-
-//    public String publishMessage(@RequestBody UserModel credentials) {
-//                return "Message Published";
-//    }
-
+    private UserCredentials userCredentials;
     // this method is used to add new users to the database
-    public Users addUser(Users user) throws UserAlreadyExistsException {
+    public Users addUser(UsersDTO user) throws UserAlreadyExistsException {
         if (repository.existsById(user.getUserEmailId())) {
             throw new UserAlreadyExistsException();
         }
-        //userDemo = new Users(user.getUserEmailId(), user.getFirstName(), user.getLastName(), user.getAddress());
+        else {
+            userDemo=new Users(user.getUserEmailId(),user.getMobileNum(),user.getFirstName(),user.getLastName(),user.getAddress());
+            userCredentials = new UserCredentials(user.getUserEmailId(), user.getPassword());
+            repository.save(userDemo);
+            producer.sendMessageToRabbitMq(userCredentials);
+        }
+        return userDemo;
 
-        userDemo=new Users(user.getUserEmailId(),user.getMobileNum(),user.getFirstName(),user.getLastName(),user.getAddress());
-//        userDemo.setUserEmailId(user.getUserEmailId());
-//        userDemo.setFirstName(user.getFirstName());
-//        userDemo.setLastName(user.getLastName());
-//        userDemo.setAddress(user.getAddress());
-        return repository.save(userDemo);
     }
 
     // this method returns all the users from the database

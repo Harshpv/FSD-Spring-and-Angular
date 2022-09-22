@@ -1,3 +1,9 @@
+<div *ngIf="alert" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Registration successful!! </strong>   Login to continue to the application
+    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <div class="bg">
     <div class="col-md-4">
         <div class="container">
@@ -19,8 +25,23 @@
                 </div>
                 <div class="form-group">
                     <div class="input-icons">
-                        <i class="fa fa-user icon" data-bs-toggle="tooltip" title="Username" data-bs-placement="top"></i>
-                        <input type="text" class="form-control" data-bs-toggle="tooltip" title="Enter Username" data-bs-placement="top" placeholder="Username" formControlName="firstName">
+                        <i class="fa fa-phone icon" data-bs-toggle="tooltip" title="Mobile number" data-bs-placement="top"></i>
+                        <input type="text" class="form-control" formControlName="mobileNum" placeholder="Phone Number" >
+                            <span class="text-danger"
+                            *ngIf="(f.mobileNum.touched || submitted) && f.mobileNum.errors?.required" >
+                                Mobile Number is required
+                            </span>
+                            <span class="text-danger"
+                            *ngIf="f.mobileNum.touched && f.mobileNum.errors?.pattern">
+                                Enter 10 digit mobile number
+                            </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-icons">
+                        <!-- <input type="text" class="form-control" formControlName="firstName" placeholder="Enter Firstname" > -->
+                        <i class="fa fa-user icon" data-bs-toggle="tooltip" title="Firstname" data-bs-placement="top"></i>
+                        <input type="text" class="form-control" data-bs-toggle="tooltip" title="Enter Username" data-bs-placement="top" placeholder="Firstname" formControlName="firstName">
                             <span class="text-danger"
                                 *ngIf="(f.firstName.touched || submitted) && f.firstName.errors?.required">
                                 Firstname is required
@@ -69,16 +90,21 @@
                 <div class="form-group">
                     <div class="input-icons">
                         <div class="bt">
-                            <button type="submit" class="btn btn-dark" routerLink="./" >Register</button>
+                            <button type="submit" class="btn btn-dark"  >Register</button>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
-    </div>
-</div>
-                   
                 
+            </form>
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+             
+
             
         
     

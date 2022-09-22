@@ -13,6 +13,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,17 +28,18 @@ public class NotificationService {
     public void sendEmail(Order order) throws MessagingException, IOException, TemplateException {
         Map<String, Object> model = new HashMap<>(); //This map is used for sending data to the UI template
         //Converting LocalDateTime to string
+        LocalDateTime now = LocalDateTime.now();
         String placedAt = new String();
-        placedAt = order.getTime().getDayOfMonth()+", "+
-                    order.getTime().getMonth()+", "+
-                    order.getTime().getYear()+", "+
-                    order.getTime().getHour()+":"+order.getTime().getMinute();
+        placedAt = now.getDayOfMonth()+", "+
+                    now.getMonth()+", "+
+                    now.getYear()+", "+
+                    now.getHour()+":"+now.getMinute();
         //Converting LocalDateTime to string
         String timeOfDelivery = new String();
-        timeOfDelivery = order.getOrderScheduleTime().getDayOfMonth()+", "+
-                order.getOrderScheduleTime().getMonth()+", "+
-                order.getOrderScheduleTime().getYear()+", "+
-                order.getOrderScheduleTime().getHour()+":"+order.getOrderScheduleTime().getMinute();
+        timeOfDelivery = now.getDayOfMonth()+1+", "+
+                now.getMonth()+", "+
+                now.getYear()+", "+
+                now.getHour()+":"+now.getMinute();
 
         //Adding all data to map
         model.put("orderNumber", order.getOrderId());

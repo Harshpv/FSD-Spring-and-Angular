@@ -1,8 +1,10 @@
 import {
   Component,
   ComponentFactoryResolver,
+  ElementRef,
   HostListener,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { OrderModel } from 'src/app/profilepage/orders/ordersmodel';
 import { OrdersService } from 'src/app/profilepage/orders/ordersService';
@@ -19,6 +21,7 @@ import { CartService } from '../menuapiservice/cart.service';
 import { Order, orderMenu } from './OrderModel';
 import { paymentService } from '../../profilepage/payments/paymentApi';
 import { paymentModel } from '../../profilepage/payments/paymentModel';
+import { RecommendationService } from './../../recommendation.service';
 
 declare var Razorpay: any;
 
@@ -49,12 +52,17 @@ export class CartComponent implements OnInit {
   totPrice: number = 0;
   newOrderId: number = 0;
 
+  // order related
+  @ViewChild('myModal', { static: true }) myModal!: ElementRef;
+  placedOrder: OrderModel = new OrderModel();
+
   constructor(
     private cartService: CartService,
     private api: ApiserviceService,
     private profileApi: ProfilepageService,
     private ordersApi: OrdersService,
-    private paymentApi: paymentService
+    private paymentApi: paymentService,
+    private recommendation: RecommendationService
   ) {}
   message: boolean = false;
 
@@ -95,15 +103,18 @@ export class CartComponent implements OnInit {
   }
 
   inc(index: number) {
-    if (this.menuproduct.items[index].quantity + 1 < 1) {
-      this.menuproduct.items[index].quantity = 1;
-      console.log('item_1-> ' + this.product.items[index].quantity);
-    } else {
-      this.menuproduct.items[index].quantity += 1;
-      console.log(
-        'item_2-> ' + index + '  ' + this.product.items[index].quantity
-      );
-    }
+    // if (this.menuproduct.items[index].quantity + 1 < 1) {
+    //   this.menuproduct.items[index].quantity = 1;
+    //   console.log('item_1-> ' + this.product.items[index].quantity);
+    // } else {
+    this.menuproduct.items[index].quantity += 1;
+    // console.log(
+    //   'item_2-> ' + index + '  ' + this.product.items[index].quantity
+    // );
+    this.api
+      .updateItems(this.menuproduct, this.userEmailId)
+      .subscribe((data) => (this.product = data));
+    // }
   }
 
   desc(index: number) {
@@ -117,6 +128,9 @@ export class CartComponent implements OnInit {
         'item_2-> ' + index + '  ' + this.menuproduct.items[index].quantity
       );
     }
+    this.api
+      .updateItems(this.menuproduct, this.userEmailId)
+      .subscribe((data) => (this.product = data));
   }
 
   // Address popup part-----
@@ -131,6 +145,10 @@ export class CartComponent implements OnInit {
 
   addressclick(index: number) {
     this.selectedindex = index;
+  }
+
+  closeButtonAddressPopoup() {
+    this.selectedindex = -1;
   }
 
   createNewPayment(): any {
@@ -166,7 +184,7 @@ export class CartComponent implements OnInit {
         // alert(response.razorpay_payment_id);
         // alert(response.razorpay_order_id);
         // alert(response.razorpay_signature);
-        alert('Order Placed!');
+        // alert('Order Placed!');
         console.log('inside handler');
         var event: CustomEvent = new CustomEvent('payment.success', {
           detail: response,
@@ -255,16 +273,38 @@ export class CartComponent implements OnInit {
     this.newOrder.itemsList = this.itemsList;
     this.newOrder.address = this.addressList[this.selectedindex];
     this.newOrder.totalPrice = this.totPrice;
+
     // console.log(this.newOrder);
     this.ordersApi.createOrderforUser(this.newOrder).subscribe((res) => {
-      this.checkoutPayment.orderId = res;
+      this.placedOrder = res;
+      console.log(this.placedOrder);
+      this.triggerOrderModal();
+      this.emptycart();
+      this.checkoutPayment.orderId = this.placedOrder.orderId;
       this.checkoutPayment.status = 'success';
-      this.paymentApi.updatePayment(this.checkoutPayment).subscribe((res) => {
-        console.log(this.checkoutPayment);
-      });
-      // email service to be added
+      this.paymentApi.updatePayment(this.checkoutPayment).subscribe(
+        (res) => {},
+        (err) => {
+          console.log(this.checkoutPayment);
+          this.recommendation.addOrder(this.placedOrder).subscribe();
+          // email service to be added
+          this.recommendation.sendEmail(this.placedOrder).subscribe();
+        }
+      );
     });
   }
+  triggerOrderModal() {
+    this.myModal.nativeElement.click();
+  }
+
+  // triggering modal
+
+  // @ViewChild('orderButton')
+  // orderButton!: ElementRef<HTMLElement>;
+  // triggerFalseClick() {
+  //   let el: HTMLElement = this.orderButton.nativeElement;
+  //   el.click();
+  // }
 
   // proceedButton() {
   //   setTimeout(this.createNewPayment(), 0);

@@ -32,7 +32,7 @@ public class OrderService {
 
 	}
 
-	public int addOrder(OrderModel orderModel) throws OrderAlreadyExistsException {
+	public OrderModel addOrder(OrderModel orderModel) throws OrderAlreadyExistsException {
 		if(orderRepository.existsById(orderModel.getOrderId())) {
 			throw new OrderAlreadyExistsException();
 		}
@@ -43,7 +43,7 @@ public class OrderService {
 //		}
 //		orderModel.setTotalPrice(sum);
 		orderRepository.insert(orderModel);
-		return orderModel.getOrderId();
+		return orderModel;
 	}
 
     public List<OrderModel> getOrders() throws OrderNotFoundException {

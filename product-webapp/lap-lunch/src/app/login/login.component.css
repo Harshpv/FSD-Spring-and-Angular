@@ -1,9 +1,8 @@
 .container{ 
   background-color: rgb(242, 237, 231);
   padding: 50px;
-  /* background-image: url('https://www.istockphoto.com/photos/nature'); */
   border-radius: 10px; 
- padding-bottom: 60px;
+  padding-bottom: 60px;
   margin: auto;
   justify-content: center; 
 }

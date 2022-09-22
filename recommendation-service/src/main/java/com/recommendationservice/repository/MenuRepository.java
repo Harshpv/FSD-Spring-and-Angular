@@ -7,18 +7,18 @@ import org.springframework.data.neo4j.repository.query.Query;
 
 import com.recommendationservice.model.Menu;
 
-public interface MenuRepository extends Neo4jRepository<Menu, Long>{
+public interface MenuRepository extends Neo4jRepository<Menu, Integer>{
 	@Query("MATCH (n:Menu) RETURN (n)")
 	List<Menu> getAllMenu();
 	
 	@Query("MATCH(n:Menu{itemId:$itemId}) RETURN n")
-	Menu findByItemId(Long itemId);
+	Menu findByItemId(int itemId);
 	
 
 	@Query("MATCH (m:Menu) WHERE $category IN m.category RETURN m")
 	List<Menu> suggestByCity(String category);
 	
 	@Query("MATCH(m:Menu)<-[rel:MENU]-(o:RelationshipModel{orderId:$id}) RETURN (m)")
-	Menu getByOrder(Long id);
+	Menu getByOrder(int id);
 	
 }
