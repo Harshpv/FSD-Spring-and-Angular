@@ -17,8 +17,9 @@ import { ApiserviceService } from '../menuapiservice/apiservice.service';
 export class RecommendationComponent implements OnInit {
   data: any = [];
   itemList: any[] = [];
-  city: string = "Banglore";
+  city: string = "Bangalore";
   isCity: boolean = false;
+  isPopUp: boolean = false;
   tempdata!: Cart;
   userEmailId: any = sessionStorage.getItem('emailId');
   alert: boolean = false
@@ -75,13 +76,6 @@ export class RecommendationComponent implements OnInit {
   };
 
   public additems(menuitem: Menu) {
-    // this.cart.menu.push(newitem)
-    // if(this.authService.isloggedIn()){
-    //   return true
-    // }else{
-    //   this.routes.navigateByUrl('/login')
-    //   return false
-    // };
 
     if (
       this.tempdata.items.findIndex(
@@ -104,6 +98,7 @@ export class RecommendationComponent implements OnInit {
 
     this.api.updateItems(this.tempdata, this.userEmailId).subscribe();
     this.alert = true;
+    this.isPopUp = true;
 
     this.tempItem = {
       itemId: 1,
@@ -122,6 +117,11 @@ export class RecommendationComponent implements OnInit {
       this.routes.navigateByUrl('/login');
       return false;
     }
+    
+
+  }
+  public isPopUpFalse(){
+    this.isPopUp = false;
   }
 
 }
