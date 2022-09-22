@@ -3,11 +3,9 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { Login } from '../login';
-import { User } from 'src/app/pages/registration/user.model';
-import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
-// import{router} from '.angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -30,11 +28,12 @@ export class AuthServiceService {
 logout(){
   sessionStorage.removeItem('emailId');
   sessionStorage.removeItem('token');
-  this.router.navigateByUrl('/menu').then(()=>{
-    this.snackbar.open("You have been logged out successfully!","Dismiss", {
-    duration:2500,
-  });
-  });
+  this.router.navigateByUrl('/')
+  // .then(()=>{
+  //   this.snackbar.open("You have been logged out successfully!","Dismiss", {
+  //   duration:2500,
+  // });
+  // });
 }
 isloggedIn() {
   return !!sessionStorage.getItem('token');;

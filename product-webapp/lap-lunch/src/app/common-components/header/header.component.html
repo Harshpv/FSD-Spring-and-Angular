@@ -4,8 +4,10 @@
     <li class="item"><a href="/">Home</a></li>
 
     <li class="item"><a routerLink="/timetable">Timetable</a></li>
-    <li class="item"><a routerLink="/profilepage/orders">Profile</a></li>
     <li class="item"><a routerLink="/subscriptionplan">Subscriptions</a></li>
+    <li class="item button secondary">
+      <a *ngIf="authService.isloggedIn()" routerLink="/profilepage/orders"><i class="fa fa-user" aria-hidden="true"></i></a>
+    </li>
 
     <li class="item button">
       <a *ngIf="!authService.isloggedIn()" routerLink="/login">Log In</a>
@@ -13,7 +15,6 @@
     </li>
     <li class="item button secondary">
       <a *ngIf="!authService.isloggedIn()" routerLink="/registration">Sign Up</a>
-      <a *ngIf="authService.isloggedIn()" href="#"><i class="fa fa-user" aria-hidden="true"></i></a>
     </li>
     <li class="toggle"><span class="bars"></span></li>
   </ul>
