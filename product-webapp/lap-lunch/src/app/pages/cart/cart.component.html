@@ -67,14 +67,21 @@
                 <button class="btn">
                   <i class="fa fa-plus" (click)="inc(i)"></i>
                 </button>
-                <!-- <span {{item.Quantity}}></span> -->
+                
                 <input value=" {{ item.quantity }}" />
                 <button class="btn-block">
                   <i class="fa fa-minus" (click)="desc(i)"></i>
                 </button>
+                <!-- <select name="Qty" id="item.quantity">
+                  <option (click)="one(i)" selected="selected" value="one"> 1</option>
+                  <option  (click)="two(i)"value="two"> 2</option>
+                  <option (click)="three(i)" value="three"> 3</option>
+                  <option (click)="four(i)" value="four"> 4</option>
+                  <option (click)="five(i)"value="five"> 5</option>
+                  </select> -->
               </td>
               <td scope="col" class="text-center" style="width: 12%">
-                {{ item.itemCost }}
+                {{ item.itemCost * item.quantity }}
               </td>
               <td>
                 <button

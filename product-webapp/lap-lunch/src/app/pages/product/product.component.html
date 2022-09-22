@@ -1,8 +1,8 @@
+<br>
 <div *ngIf="alert" class="alert alert-success alert-dimissible fade show popup"role="alert">
-    <strong>success!</strong>You have successfully added the item!
-    <button (click)="closeAlert()" type="button"class="Close" data-dismiss="alert"aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+    <strong>success!</strong>You have successfully added the item to cart!
+    <i class="fa fa-times fa-xl" (click)="closeAlert()" aria-hidden="true" ></i>
+ 
 </div>
     
 
@@ -37,7 +37,7 @@
             <a (click)= "scroll(fastfood)">
              <img style="width: 130px; height: 130px "  src="assets/fastfood.jpg"  alt="Fast Food">
              &nbsp;
-             <p><strong style="color: black;">Fast Food</strong></p>
+             <p><strong style="color: black;">American</strong></p>
             </a>
         </div>
 

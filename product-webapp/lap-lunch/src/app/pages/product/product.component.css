@@ -35,6 +35,14 @@
 
     
 }
+.popup{
+    margin-left:70%;
+    margin-right: 10px;
+    margin-top: auto;
+    box-sizing: 300px;
+    text-align: right;
+    
+}
 
 
 .card-top img:hover {
