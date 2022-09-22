@@ -2,6 +2,7 @@ package com.menuservice.menu.model;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -10,11 +11,14 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Data
 @Document(collection="menuitems")
 public class MenuModel {
-	
 
-	
+
+	@Transient
+	public static final String SEQUENCE_NAME = "user_sequence";
+
+
 	@Id
-	private String itemId;
+	private int itemId;
 	@Field(name="name")
 	@Indexed(unique = true)
 	private String itemName;

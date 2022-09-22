@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 public class Menu {
-	private String itemId;
+	private int itemId;
 	private String itemName;
 	private long itemCost;
 

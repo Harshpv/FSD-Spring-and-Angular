@@ -12,6 +12,8 @@ import com.menuservice.menu.exceptions.MenuNotFoundException;
 //import com.menuservice.datamodel.MenuSequence;
 import com.menuservice.menu.repository.MenuRepository;
 
+import static com.menuservice.menu.model.MenuModel.SEQUENCE_NAME;
+
 @Service
 public class Services {
 	
@@ -22,6 +24,8 @@ public class Services {
 	@SuppressWarnings("unused")
 	private MenuModel menuModel;
 
+	@Autowired
+	private SequenceGeneratorService sequenceGeneratorService;
 	public Services(MenuRepository menuRepository) {
 		this.menuRepository = menuRepository;
 
@@ -30,9 +34,11 @@ public class Services {
 	//addItems method consists of business logic to add new data to database
 	public void addItems(MenuModel menuModel) throws MenuAlreadyExistsException {
 
-		UUID uuid= UUID.randomUUID();
-		menuModel.setItemId(uuid.toString());
+	//	UUID uuid= UUID.randomUUID();
+	//	menuModel.setItemId(uuid.toString());
+		menuModel.setItemId(sequenceGeneratorService.getSequenceNumber(SEQUENCE_NAME));
 		menuRepository.insert(menuModel);
+
 
 	}
 
@@ -72,7 +78,7 @@ public class Services {
 
 	}
 	//getItemsById method consists of business logic to fetch specific data present in the database using itemId.
-	public MenuModel getItemsById(String  itemId) throws MenuNotFoundException {
+	public MenuModel getItemsById(int  itemId) throws MenuNotFoundException {
 
 		if (menuRepository.existsById(itemId)) {
 
@@ -83,7 +89,7 @@ public class Services {
 
 	}
 	//deleteItems method consists of business logic to delete the data present in the database using itemId.
-	public void deleteById(String  itemId) throws MenuNotFoundException {
+	public void deleteById(int  itemId) throws MenuNotFoundException {
 		if (!menuRepository.existsById(itemId)) {
 
 //		   menuRepository.deleteById(itemId);
