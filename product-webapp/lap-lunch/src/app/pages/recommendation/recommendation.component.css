@@ -126,7 +126,7 @@
     position: absolute;
     top: 30%;
     left: 50%;
-    width:1000px;
+    width:fit-content;
     height:fit-content;
     transform: translate(-50%, -50%);
     border-radius: 10px;

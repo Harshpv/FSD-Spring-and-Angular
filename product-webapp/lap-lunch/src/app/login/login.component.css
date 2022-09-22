@@ -1,9 +1,8 @@
 .container{ 
   background-color: rgb(242, 237, 231);
   padding: 50px;
-  /* background-image: url('https://www.istockphoto.com/photos/nature'); */
   border-radius: 10px; 
- padding-bottom: 60px;
+  padding-bottom: 60px;
   margin: auto;
   justify-content: center; 
 }
@@ -25,8 +24,9 @@ h1{
   margin: auto;
   justify-content: center;
 }
- h1,h4{
+ h1,h6{
   text-align: center;
+
 }
 .input-icons i {
   position: absolute;
@@ -57,13 +57,13 @@ h1{
 .btn{
   width: 100%;
 } 
-/* @media all and (max-width: 600px) {
+/* @media all and (max-width: 900px) {
   .container{
-    /* display: block; */
-    /* width: auto; */
-    /* width: 70%; */
-  /* } */
-/* } */
+    display: block;
+    width: auto;
+    width: 100%;
+  }
+} */
 .error{
   color: red;
 }

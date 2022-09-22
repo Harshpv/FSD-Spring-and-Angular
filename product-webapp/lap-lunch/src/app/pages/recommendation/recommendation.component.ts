@@ -17,7 +17,8 @@ import { ApiserviceService } from '../menuapiservice/apiservice.service';
 export class RecommendationComponent implements OnInit {
   data: any = [];
   itemList: any[] = [];
-  city: string = "Banglore";
+  city: string = "none";
+  isCity: boolean = false;
   tempdata!: Cart;
   userEmailId: any = sessionStorage.getItem('emailId');
   alert: boolean = false
@@ -54,7 +55,7 @@ export class RecommendationComponent implements OnInit {
   }
 
   suggestByCity(city:any){
-
+    this.isCity = true;
     this.recommendation.getDataByCity(city).subscribe(data=>{
       this.data = data;
       this.city = city;
