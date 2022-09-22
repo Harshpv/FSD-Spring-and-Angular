@@ -17,7 +17,7 @@ import { ApiserviceService } from '../menuapiservice/apiservice.service';
 export class RecommendationComponent implements OnInit {
   data: any = [];
   itemList: any[] = [];
-  city: string = "none";
+  city: string = "Banglore";
   isCity: boolean = false;
   tempdata!: Cart;
   userEmailId: any = sessionStorage.getItem('emailId');
