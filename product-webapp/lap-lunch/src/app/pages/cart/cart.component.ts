@@ -132,6 +132,42 @@ export class CartComponent implements OnInit {
       .updateItems(this.menuproduct, this.userEmailId)
       .subscribe((data) => (this.product = data));
   }
+//   one(index:number){
+//     this.menuproduct.items[index].quantity =1;
+//     this.api
+//       .updateItems(this.menuproduct, this.userEmailId)
+//       .subscribe((data) => (this.product = data));
+//     console.log(this.menuproduct);
+//   }
+//   two(index:number){
+//     this.menuproduct.items[index].quantity =2;
+//     this.api
+//       .updateItems(this.menuproduct, this.userEmailId)
+//       .subscribe((data) => (this.product = data));
+//     console.log(this.menuproduct);
+//   }
+  
+// three(index:number){
+//     this.menuproduct.items[index].quantity =3;
+//     this.api
+//       .updateItems(this.menuproduct, this.userEmailId)
+//       .subscribe((data) => (this.product = data));
+//     console.log(this.menuproduct);
+//   }
+//   four(index:number){
+//     this.menuproduct.items[index].quantity =4;
+//     this.api
+//       .updateItems(this.menuproduct, this.userEmailId)
+//       .subscribe((data) => (this.product = data));
+//     console.log(this.menuproduct);
+//   }
+//   five(index:number){
+//     this.menuproduct.items[index].quantity =5;
+//     this.api
+//       .updateItems(this.menuproduct, this.userEmailId)
+//       .subscribe((data) => (this.product = data));
+//     console.log(this.menuproduct);
+//   }
 
   // Address popup part-----
 
