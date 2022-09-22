@@ -77,10 +77,13 @@ public class MenuController {
 		} catch (MenuNotFoundException e) {
 			return new ResponseEntity<Object>("Empty repository!!", HttpStatus.CONFLICT);
 		}
+		catch (Exception e){
+			return  new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	//Getmapping  api with id used to fetch specific data with it's id, present in the mongo database.
 	@GetMapping("/{itemId}")
-	public ResponseEntity<Object> getItemsById(@PathVariable String itemId) {
+	public ResponseEntity<Object> getItemsById(@PathVariable int itemId) {
 
 		try {
 
@@ -99,7 +102,7 @@ public class MenuController {
 	//Deletemapping api with id used to delete specific data with it's id, present in the mongo database
 	@SuppressWarnings("unchecked")
 	@DeleteMapping("/{itemId}")
-	public ResponseEntity<?> deleteItem(@PathVariable String itemId) {
+	public ResponseEntity<?> deleteItem(@PathVariable int itemId) {
 		try {
 
 			services.deleteById(itemId);
