@@ -205,7 +205,6 @@
 
 // }
 
-import { ReturnStatement } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -231,6 +230,7 @@ export class ProductComponent implements OnInit {
   allitems: any;
   tempdata!: Cart;
   alert: boolean = false;
+  nameofitem: String="";
   @Input()
   searchString: string = '';
 
@@ -348,7 +348,13 @@ export class ProductComponent implements OnInit {
     }
 
     this.api.updateItems(this.tempdata, this.userEmailId).subscribe();
+    this.nameofitem=menuitem.itemName;
+
     this.alert = true;
+    //setTimeout(this.closeAlert(),10000);
+    setTimeout(() => {
+      this.alert=false;
+    }, 2000);
 
     this.tempItem = {
       itemId: 1,
@@ -368,7 +374,7 @@ export class ProductComponent implements OnInit {
       return false;
     }
   }
-  closeAlert() {
+  closeAlert(): any {
     this.alert = false;
   }
 
