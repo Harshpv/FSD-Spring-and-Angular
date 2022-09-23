@@ -33,17 +33,19 @@ public class NotificationService {
         LocalDateTime ldt = LocalDateTime.now();
         ZoneId zoneId = ZoneId.of("Asia/Kolkata");
         ZonedDateTime now = ZonedDateTime.of(ldt, zoneId);
+        String hour = String.format("%02d",now.getHour());
+        String minute = String.format("%02d",now.getMinute());
         String placedAt = new String();
         placedAt = now.getDayOfMonth()+", "+
                     now.getMonth()+", "+
                     now.getYear()+", "+
-                    now.getHour()+":"+now.getMinute();
+                    hour+":"+minute;
         //Converting LocalDateTime to string
         String timeOfDelivery = new String();
         timeOfDelivery = now.getDayOfMonth()+1+", "+
                 now.getMonth()+", "+
                 now.getYear()+", "+
-                now.getHour()+":"+now.getMinute();
+                hour+":"+minute;
 
         //Adding all data to map
         model.put("orderNumber", order.getOrderId());

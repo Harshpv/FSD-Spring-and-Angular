@@ -105,21 +105,22 @@
     <h4 style="margin-left: 25px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Popular Food Items In {{city}}:</h4>
     <div>
         <!--  -->
-        <div class="alert alert-success alert-dismissible fade show row" role="alert" style="width:95%;margin-left: auto;margin-right: auto;" *ngIf="isPopUp">
-            <div class="col-11">
-                <strong>Item added to cart.</strong> 
-            </div>
-            <div class="col-1">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-left: 90%;" (click)="isPopUpFalse()">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-            </div>
-            
-          </div>
+        
         <!--  -->
     
     <div class="container d-flex" >
         <ng-container *ngFor= "let item of data">
+            <div *ngIf="isPopUp" class="toast show bg-success" role="alert" aria-live="assertive" aria-atomic="true"  style="position: fixed; top:83%;  left:73%; z-index: 10; ">
+                <div class="toast-header">
+                
+                  <strong class="me-auto"><i>LapLunch</i></strong>
+                  <small>2 sec ago</small>
+                  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" (click)="isPopUpFalse"></button>
+                </div>
+                <div class="toast-body" ><b style="color: white;">
+                 {{item.itemName}} is added to cart !!</b>
+                </div>
+            </div>
             <!-- <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
                 <div class="card rounded shadow-sm border-0" style="background-color:cornsilk;margin-left: 0px;">
                   <div class="card-body p-4"><img src="assets/recCarousel10.jpg" alt="" class="img-fluid d-block mx-auto mb-3">

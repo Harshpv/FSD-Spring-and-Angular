@@ -99,6 +99,9 @@ export class RecommendationComponent implements OnInit {
     this.api.updateItems(this.tempdata, this.userEmailId).subscribe();
     this.alert = true;
     this.isPopUp = true;
+    setTimeout(() => {
+      this.isPopUp=false;
+    }, 2000);
 
     this.tempItem = {
       itemId: 1,
