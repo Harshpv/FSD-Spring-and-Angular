@@ -44,6 +44,7 @@ services:
   eureka-server:
     build: ./eureka-server
     container_name: eureka-server
+    restart: always
     ports:
       - 8761:8761
 
@@ -115,6 +116,7 @@ services:
   rabbitmq:
     image: rabbitmq:3-management
     container_name: rabbitmq
+    restart: always
     ports:
       - 5672:5672
       - 15672:15672
