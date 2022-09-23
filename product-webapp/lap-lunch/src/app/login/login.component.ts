@@ -3,6 +3,7 @@ import { FormBuilder,FormsModule, FormControl, Validators} from '@angular/forms'
 import { MatSnackBar} from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+//import { error } from 'console';
 import { AuthServiceService } from './Service/auth-service.service';
 
 declare var $:any;
@@ -48,8 +49,19 @@ login() {
                     //     duration:2500,
                     //   });
                     // });
+                },
+
+                error=>{
+                  console.log("Incorrect Details"); 
+                  this.alert=true;
+                  setTimeout(() => {
+                    this.alert=false;
+                  }, 3000);
                 }
-            )        
+            )
+      
+            
+                    
     }
     else{
       console.log("enter correct details")
