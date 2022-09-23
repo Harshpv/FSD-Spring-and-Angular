@@ -14,6 +14,8 @@ import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +30,9 @@ public class NotificationService {
     public void sendEmail(Order order) throws MessagingException, IOException, TemplateException {
         Map<String, Object> model = new HashMap<>(); //This map is used for sending data to the UI template
         //Converting LocalDateTime to string
-        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime ldt = LocalDateTime.now();
+        ZoneId zoneId = ZoneId.of("Asia/Kolkata");
+        ZonedDateTime now = ZonedDateTime.of(ldt, zoneId);
         String placedAt = new String();
         placedAt = now.getDayOfMonth()+", "+
                     now.getMonth()+", "+
