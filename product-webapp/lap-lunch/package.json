@@ -26,7 +26,6 @@
     "auth0-angular2": "^1.0.15",
     "jquery": "^3.6.1",
     "jwthelper": "^0.0.4",
-    "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",
     "zone.js": "~0.11.4"
   },

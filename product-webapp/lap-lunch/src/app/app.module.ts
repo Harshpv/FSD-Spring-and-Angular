@@ -26,7 +26,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthGuard } from './login/Service/auth.guard';
-
+//import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
