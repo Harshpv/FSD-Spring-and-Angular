@@ -132,42 +132,42 @@ export class CartComponent implements OnInit {
       .updateItems(this.menuproduct, this.userEmailId)
       .subscribe((data) => (this.product = data));
   }
-//   one(index:number){
-//     this.menuproduct.items[index].quantity =1;
-//     this.api
-//       .updateItems(this.menuproduct, this.userEmailId)
-//       .subscribe((data) => (this.product = data));
-//     console.log(this.menuproduct);
-//   }
-//   two(index:number){
-//     this.menuproduct.items[index].quantity =2;
-//     this.api
-//       .updateItems(this.menuproduct, this.userEmailId)
-//       .subscribe((data) => (this.product = data));
-//     console.log(this.menuproduct);
-//   }
-  
-// three(index:number){
-//     this.menuproduct.items[index].quantity =3;
-//     this.api
-//       .updateItems(this.menuproduct, this.userEmailId)
-//       .subscribe((data) => (this.product = data));
-//     console.log(this.menuproduct);
-//   }
-//   four(index:number){
-//     this.menuproduct.items[index].quantity =4;
-//     this.api
-//       .updateItems(this.menuproduct, this.userEmailId)
-//       .subscribe((data) => (this.product = data));
-//     console.log(this.menuproduct);
-//   }
-//   five(index:number){
-//     this.menuproduct.items[index].quantity =5;
-//     this.api
-//       .updateItems(this.menuproduct, this.userEmailId)
-//       .subscribe((data) => (this.product = data));
-//     console.log(this.menuproduct);
-//   }
+  //   one(index:number){
+  //     this.menuproduct.items[index].quantity =1;
+  //     this.api
+  //       .updateItems(this.menuproduct, this.userEmailId)
+  //       .subscribe((data) => (this.product = data));
+  //     console.log(this.menuproduct);
+  //   }
+  //   two(index:number){
+  //     this.menuproduct.items[index].quantity =2;
+  //     this.api
+  //       .updateItems(this.menuproduct, this.userEmailId)
+  //       .subscribe((data) => (this.product = data));
+  //     console.log(this.menuproduct);
+  //   }
+
+  // three(index:number){
+  //     this.menuproduct.items[index].quantity =3;
+  //     this.api
+  //       .updateItems(this.menuproduct, this.userEmailId)
+  //       .subscribe((data) => (this.product = data));
+  //     console.log(this.menuproduct);
+  //   }
+  //   four(index:number){
+  //     this.menuproduct.items[index].quantity =4;
+  //     this.api
+  //       .updateItems(this.menuproduct, this.userEmailId)
+  //       .subscribe((data) => (this.product = data));
+  //     console.log(this.menuproduct);
+  //   }
+  //   five(index:number){
+  //     this.menuproduct.items[index].quantity =5;
+  //     this.api
+  //       .updateItems(this.menuproduct, this.userEmailId)
+  //       .subscribe((data) => (this.product = data));
+  //     console.log(this.menuproduct);
+  //   }
 
   // Address popup part-----
 
@@ -255,10 +255,10 @@ export class CartComponent implements OnInit {
         };
       }) {
         // alert(response.error.code);
-        alert(response.error.description);
+        // alert(response.error.description);
         // alert(response.error.source);
         // alert(response.error.step);
-        alert(response.error.reason);
+        // alert(response.error.reason);
         // alert(response.error.metadata.order_id);
         // alert(response.error.metadata.payment_id);
         var event: CustomEvent = new CustomEvent('payment.failure', {
@@ -288,7 +288,7 @@ export class CartComponent implements OnInit {
   @HostListener('window:payment.failure', ['$event'])
   onPaymentFailure(event: any): void {
     console.log(event);
-    this.checkoutPayment.status = 'failed';
+    this.checkoutPayment.status = 'FAILED';
     this.paymentApi.updatePayment(this.checkoutPayment).subscribe((res) => {
       console.log(this.checkoutPayment);
     });
@@ -317,7 +317,7 @@ export class CartComponent implements OnInit {
       this.triggerOrderModal();
       this.emptycart();
       this.checkoutPayment.orderId = this.placedOrder.orderId;
-      this.checkoutPayment.status = 'success';
+      this.checkoutPayment.status = 'SUCCESS';
       this.paymentApi.updatePayment(this.checkoutPayment).subscribe(
         (res) => {},
         (err) => {
