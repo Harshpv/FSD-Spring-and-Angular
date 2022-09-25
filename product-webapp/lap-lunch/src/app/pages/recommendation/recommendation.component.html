@@ -99,7 +99,7 @@
 
 
 
-<div class="card-top container d-flex" id="recmenu" *ngIf="isCity"> 
+<div class="card-top container d-flex" id="recmenu" *ngIf="isCity" style="overflow-x: scroll;"> 
     
     <div style="margin-top: 10px;margin-bottom: 10px;">
     <h4 style="margin-left: 25px;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Popular Food Items In {{city}}:</h4>
@@ -130,7 +130,7 @@
                   </div>
                 </div>
               </div> -->
-              <div class="card" style="width:250px;height:300px;background-color: white;"  id="recCard">
+              <div class="card" style="min-width:250px;min-height:300px;background-color: white;"  id="recCard">
                 <img class="card-img-top" src= "{{item.itemImage}}" alt="Card image" style="width:100%;">
                 <div class="card-body" style = "margin-top: 0%;" >
                   <p class="card-title">{{item.itemName}}</p>
@@ -142,6 +142,7 @@
                 </div>
               </div>
         </ng-container>
+        
         
         
         
