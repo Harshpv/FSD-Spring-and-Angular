@@ -17,7 +17,7 @@ public interface RelationshipRepository extends Neo4jRepository<RelationshipMode
 	@Query("MATCH (u:User)-[rel:ADDRESS]->(a:Address{city:$city}) MATCH (o:RelationshipModel)-[r:USER]->(u) MATCH (o)-[rel2:MENU]->(m:Menu) RETURN (o)")
 	List<RelationshipModel> suggestByCity(String city);
 	
-	@Query("MATCH(o:RelationshipModel)-[rel:ADDRESS]->(a:Address{city:$city}) RETURN (o)")
+	@Query("MATCH(o:RelationshipModel)-[rel:ADDRESS]->(a:Address{city:$city}) RETURN (o) LIMIT 7")
 	List<RelationshipModel> getOrdersByCity(String city);
 
 //	

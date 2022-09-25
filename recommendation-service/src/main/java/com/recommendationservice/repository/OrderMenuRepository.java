@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface OrderMenuRepository extends Neo4jRepository<OrderMenu, Integer> {
 
-    @Query("MATCH(m:OrderMenu)<-[rel:ITEMS_LIST]-(o:RelationshipModel{orderId:$id}) RETURN (m) LIMIT 4")
+    @Query("MATCH(m:OrderMenu)<-[rel:ITEMS_LIST]-(o:RelationshipModel{orderId:$id}) RETURN (m) LIMIT 2")
     List<OrderMenu> getByOrder(Long id);
 }
